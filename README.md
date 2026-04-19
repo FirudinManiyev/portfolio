@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# 🚀 Firudin Maniyev Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern və tam responsive şəxsi portfolio saytı. React, TypeScript və Tailwind CSS istifadə edilərək sıfırdan hazırlanıb.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 [Sayta bax](...)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📌 Haqqında
 
-## Expanding the ESLint configuration
+Bu layihə şəxsi portfolio saytım kimi hazırlanıb. Məqsədim:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Öz bacarıqlarımı nümayiş etdirmək
+* Layihələrimi təqdim etmək
+* Blog yazıları paylaşmaq
+* Mənimlə əlaqə qurulmasını asanlaşdırmaq
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Texnologiyalar
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* ⚛️ React
+* 📘 TypeScript
+* 🎨 Tailwind CSS v4
+* 🌐 React Router
+* 🎬 Framer Motion
+* 🧩 Lucide Icons
+
+---
+
+## 📁 Layihə Strukturu
+
+```bash
+src/
+│
+├── components/
+├── pages/
+├── layouts/
+├── routes/
+├── assets/
+├── hooks/
+├── utils/
+├── types/
+│
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📄 Səhifələr
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* 🏠 Home
+* 👤 About
+* 🧠 Skills
+* 💼 Projects
+* 📜 Certificates
+* 📝 Blog
+* 📩 Contact
+
+---
+
+## ✨ Xüsusiyyətlər
+
+* ⚡ Tam responsive dizayn
+* 🌙 Dark tema (qara + sarı accent)
+* 🎬 Smooth animasiyalar (Framer Motion)
+* 🔗 SPA routing sistemi
+* 📱 Mobile-first yanaşma
+
+---
+
+## ☁️ Deploy
+
+Layihə Vercel üzərindən deploy olunub.
+
+---
+
+## 📬 Əlaqə
+
+* 📧 Email: [firudinmaniyev@gmail.com](mailto:firudinmaniyev@gmail.com)
+* 🐙 Instagram: https://www.instagram.com/firudin.coder/
+* 💼 LinkedIn: https://www.linkedin.com/in/firudin-maniyev-4843242b7/
+* 🐙 GitHub: https://github.com/FirudinManiyev
+
+---
+
+## 📌 Qeyd
+
+Bu layihə tamamilə şəxsi məqsədlər üçün hazırlanıb və davamlı olaraq yenilənir.
+
+---
+
+## ⭐ Dəstək
+
+Əgər layihəni bəyəndinsə ⭐ verməyi unutma!
