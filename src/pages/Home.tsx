@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Home() {
   return (
     <div>
@@ -9,9 +7,9 @@ function Home() {
 		<h1 className="text-4xl font-bold leading-tight md:text-5xl">Interdum et malesuada fames ac ante ipsum primis in faucibus?</h1>
 		<p className="text-sm dark:text-gray-600">by
 			<a rel="noopener noreferrer" href="#" target="_blank" className="underline dark:text-violet-600">
-				<span itemprop="name">Leroy Jenkins</span>
+				<span itemProp="name">Leroy Jenkins</span>
 			</a>on
-			<time datetime="2021-02-12 15:34:18-0200">Feb 12th 2021</time>
+					<time dateTime="2021-02-12 15:34:18-0200">Feb 12th 2021</time>
 		</p>
 	</div>
 	<div className="dark:text-gray-800">
@@ -19,7 +17,7 @@ function Home() {
 	</div>
 	<div className="pt-12 border-t dark:border-gray-300">
 		<div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
-			<img src="https://source.unsplash.com/75x75/?portrait" alt="" className="self-center flex-shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-300" />
+			<img src="https://source.unsplash.com/75x75/?portrait" alt="" className="self-center shrink-0 w-24 h-24 border rounded-full md:justify-self-start dark:bg-gray-500 dark:border-gray-300" />
 			<div className="flex flex-col">
 				<h4 className="text-lg font-semibold">Leroy Jenkins</h4>
 				<p className="dark:text-gray-600">Sed non nibh iaculis, posuere diam vitae, consectetur neque. Integer velit ligula, semper sed nisl in, cursus commodo elit. Pellentesque sit amet mi luctus ligula euismod lobortis ultricies et nibh.</p>

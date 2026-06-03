@@ -4,10 +4,10 @@ import Footer from "../components/Footer"
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div className="relative z-10 min-h-screen overflow-x-hidden text-white">
       <Header />
 
-      <main className="px-4 py-8 sm:px-6 lg:px-8">
+      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-8">
         <Outlet />
       </main>
 
