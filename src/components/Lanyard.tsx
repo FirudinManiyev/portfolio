@@ -71,10 +71,14 @@ export default function Lanyard({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Responsive position and scale
+  const responsivePosition = isMobile ? [0, 2, 25] : position;
+  const responsiveFov = isMobile ? 25 : fov;
+
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center">
       <Canvas
-        camera={{ position, fov }}
+        camera={{ position: responsivePosition as [number, number, number], fov: responsiveFov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
@@ -331,10 +335,10 @@ function Band({
               <meshPhysicalMaterial
                 map={cardMap}
                 map-anisotropy={16}
-                clearcoat={isMobile ? 0 : 1}
-                clearcoatRoughness={0.15}
-                roughness={0.9}
-                metalness={0.8}
+                clearcoat={0}
+                clearcoatRoughness={1}
+                roughness={1}
+                metalness={0}
               />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
