@@ -23,10 +23,6 @@ const socialLinks = [
   { href: "https://www.instagram.com/firudin.coder/", label: "Instagram", icon: FaInstagram },
 ]
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" })
-}
-
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden border-t border-yellow-300/20 bg-neutral-950">
@@ -136,18 +132,10 @@ const Footer = () => {
 
         {/* Divider */}
         <div className="mt-10 border-t border-yellow-300/10 pt-5">
-          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <p className="text-xs text-neutral-600">
               © 2026 Firudin Maniyev. Bütün hüquqlar qorunur.
             </p>
-            <button
-              onClick={scrollToTop}
-              aria-label="Yuxarı qay"
-              className="group flex items-center gap-1.5 rounded-full border border-yellow-300/20 bg-white/4 px-3.5 py-1.5 text-xs text-neutral-500 transition duration-300 hover:border-yellow-300/50 hover:bg-yellow-400/10 hover:text-yellow-200"
-            >
-              Yuxarı qay
-              <ArrowUpRight size={11} className="rotate-[-45deg] transition duration-300 group-hover:-translate-y-0.5" />
-            </button>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { BrowserRouter } from "react-router-dom"
 import AppRoutes from "./routes/AppRoutes"
 import PortfolioBackground from "./components/PortfolioBackground"
+import ScrollToTop from "./components/ScrollToTop"
+import WhatsAppButton from "./components/WhatsAppButton"
 
 function App() {
   return (
@@ -10,6 +12,9 @@ function App() {
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
+
+      <ScrollToTop />
+      <WhatsAppButton />
     </div>
   )
 }

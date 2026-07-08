@@ -6,9 +6,9 @@ import Lanyard from '../components/Lanyard';
 
 function Home() {
 	return (
-		<section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+		<section className="relative flex min-h-[calc(100vh-5rem)] items-start justify-center overflow-hidden pt-6 sm:pt-8 lg:pt-10">
 
-			<div className="container mx-auto px-6 py-3 relative z-10">
+			<div className="container relative z-10 mx-auto px-6 py-2 sm:py-4">
 				<div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center lg:items-center">
 					{/* Left side - Text content */}
 					<div className="order-1 lg:order-1">
@@ -16,7 +16,7 @@ function Home() {
 							initial={{ opacity: 0, x: -50 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.6 }}
-							className="space-y-6 max-w-lg lg:ml-10 xl:ml-16"
+							className="max-w-lg space-y-6 lg:ml-10 xl:ml-16"
 						>
 							<motion.div
 								initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,7 @@ function Home() {
 							initial={{ opacity: 0, x: 50 }}
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.6, delay: 0.3 }}
-							className="relative lg:h-[700px] h-[450px]"
+							className="relative h-[450px] lg:h-[700px]"
 						>
 							<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
 						</motion.div>
