@@ -10,7 +10,7 @@ const quickLinks = [
   { to: "/skills", label: "Skills" },
   { to: "/projects", label: "Proyektlər" },
   { to: "/certificates", label: "Sertifikatlar" },
-  { to: "/blog", label: "Bloq" },
+  { to: "/blog", label: "Təhsil" },
 ]
 
 const socialLinks = [
@@ -44,7 +44,7 @@ const Footer = () => {
               className="h-20 w-20 object-contain drop-shadow-[0_0_28px_rgba(250,204,21,0.35)]"
             />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutral-400">
-              Kod, dizayn və istifadəçi təcrübəsinin kəsişməsində — ideyanı performanslı məhsula çevirirəm.
+              Kod, dizayn və istifadəçi təcrübəsinin kəsişməsində ideyanı performanslı məhsula çevirirəm.
             </p>
 
             {/* Social icons */}
