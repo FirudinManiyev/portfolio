@@ -13,7 +13,7 @@ const MainLayout = () => {
       <main
         className={[
           "flex-1 px-4 sm:px-6 lg:px-8",
-          isHomePage ? "pt-2 pb-8 sm:pt-4 lg:pt-6" : "py-8",
+          isHomePage ? "pt-1 pb-8 sm:pt-4 lg:pt-1" : "py-8",
         ].join(" ")}
       >
         <Outlet />
