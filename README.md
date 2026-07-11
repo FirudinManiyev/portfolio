@@ -14,7 +14,7 @@ Bu layihə şəxsi portfolio saytım kimi hazırlanıb. Məqsədim:
 
 * Öz bacarıqlarımı nümayiş etdirmək
 * Layihələrimi təqdim etmək
-* Blog yazıları paylaşmaq
+* Təhsil yazıları paylaşmaq
 * Mənimlə əlaqə qurulmasını asanlaşdırmaq
 
 ---
@@ -57,7 +57,7 @@ src/
 * 🧠 Skills
 * 💼 Projects
 * 📜 Certificates
-* 📝 Blog
+* 📝 Təhsil
 * 📩 Contact
 
 ---

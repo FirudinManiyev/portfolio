@@ -9,7 +9,7 @@ const navLinks = [
   { to: "/", label: "Ana səhifə" },
   { to: "/about", label: "Haqqımda" },
   { to: "/skills", label: "Skills" },
-  { to: "/blog", label: "Təhsil" },
+  { to: "/education", label: "Təhsil" },
   { to: "/projects", label: "Proyektlər" },
   { to: "/certificates", label: "Sertifikatlar" },
 ]

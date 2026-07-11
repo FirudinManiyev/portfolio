@@ -10,7 +10,7 @@ const quickLinks = [
   { to: "/skills", label: "Skills" },
   { to: "/projects", label: "Proyektlər" },
   { to: "/certificates", label: "Sertifikatlar" },
-  { to: "/blog", label: "Təhsil" },
+  { to: "/education", label: "Təhsil" },
 ]
 
 const socialLinks = [

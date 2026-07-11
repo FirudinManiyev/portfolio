@@ -30,7 +30,7 @@ const NotFoundPage = () => {
         </h1>
 
         <p className="mb-2 text-sm font-medium uppercase tracking-widest text-yellow-400">
-          Hövsələ Edin
+          Hövsələ EDİN
         </p>
 
         <p className="mx-auto mb-12 max-w-lg text-base text-neutral-400 sm:text-lg">
