@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, BriefcaseBusiness, GraduationCap, Mail, Download, Sparkles } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
@@ -5,6 +6,7 @@ import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
 import Lanyard from '../components/Lanyard';
 import { about } from '../data/about';
+import { certificates } from '../data/certificates';
 import { education } from '../data/education';
 
 const aboutHighlights = [
@@ -31,6 +33,8 @@ const aboutHighlights = [
 ];
 
 function Home() {
+	const [selectedCertificateImage, setSelectedCertificateImage] = useState<string | null>(null);
+
 	return (
 		<div className="space-y-4 sm:space-y-6 lg:space-y-8">
 
@@ -314,6 +318,93 @@ function Home() {
 					</div>
 				</div>
 			</section>
+
+			{/* Certificates section */}
+			<section className="relative mt-20 sm:mt-24 lg:mt-28">
+				<div className="container relative z-10 mx-auto px-6">
+					<div className="mx-auto max-w-6xl">
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.35 }}
+							transition={{ duration: 0.5 }}
+							className="flex justify-center"
+						>
+							<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
+								SERTİFİKATLARIM
+							</div>
+						</motion.div>
+
+						<div className="mt-16 grid gap-6 md:grid-cols-3 xl:mt-14 xl:gap-8">
+							{certificates.slice(0, 3).map((item, index) => (
+								<motion.article
+									key={item.id}
+									initial={{ opacity: 0, y: 18 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true, amount: 0.25 }}
+									transition={{ duration: 0.45, delay: index * 0.08 }}
+									className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
+								>
+									<button
+										type="button"
+										onClick={() => setSelectedCertificateImage(item.image)}
+										className="block w-full text-left"
+										aria-label={`${item.title} sertifikatını tam ölçüdə aç`}
+									>
+										<div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20">
+											<img
+												src={item.image}
+												alt={item.title}
+												className="h-full w-full object-cover object-center cursor-pointer transition duration-300 group-hover:scale-105"
+											/>
+										</div>
+
+										<div className="mt-4 space-y-3">
+											<h3 className="text-lg font-semibold text-white sm:text-xl">{item.title}</h3>
+											<p className="text-sm font-medium text-neutral-400">{item.issuer}</p>
+											<p className="text-xs font-medium uppercase tracking-[0.18em] text-yellow-300/90">{item.date}</p>
+										</div>
+									</button>
+								</motion.article>
+							))}
+						</div>
+
+						<div className="mt-8 flex justify-end">
+							<Link
+								to="/certificates"
+								className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
+							>
+								Bütün sertifikatlara bax →
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{selectedCertificateImage ? (
+				<div
+					className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4 backdrop-blur-md"
+					onClick={() => setSelectedCertificateImage(null)}
+				>
+					<div
+						className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-950 shadow-[0_30px_90px_rgba(0,0,0,0.55)]"
+						onClick={(event) => event.stopPropagation()}
+					>
+						<button
+							type="button"
+							onClick={() => setSelectedCertificateImage(null)}
+							className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-sm text-white transition hover:bg-black/70"
+						>
+							Bağla
+						</button>
+						<img
+							src={selectedCertificateImage}
+							alt="Seçilmiş sertifikat"
+							className="max-h-[90vh] w-full object-contain"
+						/>
+					</div>
+				</div>
+			) : null}
 		</div>
 	);
 }

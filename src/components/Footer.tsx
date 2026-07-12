@@ -69,7 +69,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-center text-xs font-semibold tracking-[0.18em] text-yellow-200/80 uppercase lg:text-left">
-              Səhifələr
+              SƏHİFƏLƏR
             </h4>
             <ul className="mt-4 grid grid-cols-2 gap-1 sm:grid-cols-2">
               {quickLinks.map((link) => (
