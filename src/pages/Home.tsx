@@ -5,6 +5,8 @@ import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
 import Lanyard from '../components/Lanyard';
+import HomeSkillsSection from '../components/HomeSkillsSection';
+import HomeProjectsSection from '../components/HomeProjectsSection';
 import { about } from '../data/about';
 import { certificates } from '../data/certificates';
 import { education } from '../data/education';
@@ -167,7 +169,7 @@ function Home() {
 
 			{/* About section */}
 
-			<section className="relative -mt-4 sm:-mt-6 lg:-mt-10">
+			<section className="relative -mt-4 sm:-mt-6 lg:-mt-20">
 				<div className="container relative z-10 mx-auto px-6">
 					<div className="mx-auto max-w-6xl">
 						<motion.div
@@ -196,16 +198,16 @@ function Home() {
 									return (
 										<div
 											key={item.label}
-												className="flex min-h-[96px] items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 px-5 py-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
+											className="flex min-h-[96px] items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 px-5 py-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
 										>
-												<div className="flex min-w-0 items-center gap-3">
-													<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-yellow-400/15 text-yellow-300">
-														<Icon className="h-5 w-5" />
-													</div>
-													<p className="text-sm font-medium text-neutral-300 sm:text-base">{item.label}</p>
+											<div className="flex min-w-0 items-center gap-3">
+												<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-yellow-400/15 text-yellow-300">
+													<Icon className="h-5 w-5" />
 												</div>
+												<p className="text-sm font-medium text-neutral-300 sm:text-base">{item.label}</p>
+											</div>
 
-												<p className="shrink-0 text-right text-lg font-semibold text-white sm:text-xl lg:text-2xl">{item.value}</p>
+											<p className="shrink-0 text-right text-lg font-semibold text-white sm:text-xl lg:text-2xl">{item.value}</p>
 										</div>
 									)
 								})}
@@ -274,7 +276,17 @@ function Home() {
 							</div>
 						</motion.div>
 
-						<div className="mt-16 flex justify-center xl:mt-20">
+						<motion.p
+							initial={{ opacity: 0, y: 16 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.35 }}
+							transition={{ duration: 0.45, delay: 0.08 }}
+							className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
+						>
+							Təhsil və akademik təcrübəm haqqında qısa məlumat. Daha ətraflı məlumat üçün aşağıdakı linkdən bütün təhsil yoluma baxa bilərsiniz.
+						</motion.p>
+
+						<div className="mt-16 flex justify-center xl:mt-14">
 							<motion.div
 								initial={{ opacity: 0, x: -20 }}
 								whileInView={{ opacity: 1, x: 0 }}
@@ -335,6 +347,16 @@ function Home() {
 							</div>
 						</motion.div>
 
+						<motion.p
+							initial={{ opacity: 0, y: 16 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.35 }}
+							transition={{ duration: 0.45, delay: 0.08 }}
+							className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
+						>
+							Əldə etdiyim sertifikatları və təlimləri burada görə bilərsiniz. Hər bir sertifikat mənim bilik və bacarıqlarımı artırmaq üçün keçdiyim kursların nəticəsidir.
+						</motion.p>
+
 						<div className="mt-16 grid gap-6 md:grid-cols-3 xl:mt-14 xl:gap-8">
 							{certificates.slice(0, 3).map((item, index) => (
 								<motion.article
@@ -380,6 +402,10 @@ function Home() {
 					</div>
 				</div>
 			</section>
+
+			<HomeSkillsSection />
+
+			<HomeProjectsSection />
 
 			{selectedCertificateImage ? (
 				<div

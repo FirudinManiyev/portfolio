@@ -10,6 +10,17 @@ export interface SkillCategory {
     skills: Skill[];
 }
 
+const skillImageModules = import.meta.glob<string>('../assets/images/skills/*', {
+    eager: true,
+    import: 'default',
+});
+
+const getSkillImage = (fileName: string) => {
+    const image = skillImageModules[`../assets/images/skills/${fileName}`];
+
+    return image ?? '';
+};
+
 export const skillCategories: SkillCategory[] = [
     {
         id: 1,
@@ -18,47 +29,47 @@ export const skillCategories: SkillCategory[] = [
             {
                 id: 1,
                 name: "HTML5",
-                image: "/images/skills/html.png",
+                image: getSkillImage('html.jpg'),
             },
             {
                 id: 2,
                 name: "CSS3",
-                image: "/images/skills/css.png",
+                image: getSkillImage('css.jpg'),
             },
             {
                 id: 3,
                 name: "JavaScript",
-                image: "/images/skills/javascript.png",
+                image: getSkillImage('javascript.webp'),
             },
             {
                 id: 4,
                 name: "TypeScript",
-                image: "/images/skills/typescript.png",
+                image: getSkillImage('typescript.png'),
             },
             {
                 id: 5,
                 name: "React",
-                image: "/images/skills/react.png",
+                image: getSkillImage('react.png'),
             },
             {
                 id: 6,
                 name: "Bootstrap",
-                image: "/images/skills/bootstrap.png",
+                image: getSkillImage('boostrap.png'),
             },
             {
                 id: 7,
                 name: "Tailwind CSS",
-                image: "/images/skills/tailwind.png",
+                image: getSkillImage('tailwind.png'),
             },
             {
                 id: 8,
                 name: "Material UI",
-                image: "/images/skills/materialui.png",
+                image: getSkillImage('materialui.png'),
             },
             {
                 id: 9,
                 name: "jQuery",
-                image: "/images/skills/jquery.png",
+                image: getSkillImage('jquery.png'),
             },
         ],
     },
@@ -69,22 +80,22 @@ export const skillCategories: SkillCategory[] = [
             {
                 id: 10,
                 name: "C#",
-                image: "/images/skills/csharp.png",
+                image: getSkillImage('csharp.png'),
             },
             {
                 id: 11,
                 name: "Python",
-                image: "/images/skills/python.png",
+                image: getSkillImage('python.jpg'),
             },
             {
                 id: 12,
                 name: "ASP.NET Core MVC",
-                image: "/images/skills/aspnetcore.png",
+                image: getSkillImage('aspnetcore.jpg'),
             },
             {
                 id: 13,
                 name: "ASP.NET Web API",
-                image: "/images/skills/webapi.png",
+                image: getSkillImage('webapi.png'),
             },
         ],
     },
@@ -95,22 +106,22 @@ export const skillCategories: SkillCategory[] = [
             {
                 id: 14,
                 name: "Microsoft SQL Server",
-                image: "/images/skills/sqlserver.png",
+                image: getSkillImage('sqlserver.jpg'),
             },
             {
                 id: 15,
                 name: "MySQL",
-                image: "/images/skills/mysql.png",
+                image: getSkillImage('mysql.png'),
             },
             {
                 id: 16,
                 name: "Docker",
-                image: "/images/skills/docker.png",
+                image: getSkillImage('docker.png'),
             },
             {
                 id: 17,
                 name: "Postman",
-                image: "/images/skills/postman.png",
+                image: getSkillImage('postman.png'),
             },
         ],
     },
@@ -121,42 +132,42 @@ export const skillCategories: SkillCategory[] = [
             {
                 id: 18,
                 name: "Git",
-                image: "/images/skills/git.png",
+                image: getSkillImage('git.png'),
             },
             {
                 id: 19,
                 name: "GitHub",
-                image: "/images/skills/github.png",
+                image: getSkillImage('github.png'),
             },
             {
                 id: 20,
                 name: "VS Code",
-                image: "/images/skills/vscode.png",
+                image: getSkillImage('vscode.jpg'),
             },
             {
                 id: 21,
-                name: "Visual Studio",
-                image: "/images/skills/visualstudio.png",
+                name: "WordPress",
+                image: getSkillImage('wordpress.jpg'),
             },
             {
                 id: 22,
                 name: "Figma",
-                image: "/images/skills/figma.png",
+                image: getSkillImage('figma.png'),
             },
             {
                 id: 23,
-                name: "WordPress",
-                image: "/images/skills/wordpress.png",
+                name: "Visual Studio",
+                image: getSkillImage('visualstudio.png'),
             },
             {
                 id: 24,
                 name: "Canva",
-                image: "/images/skills/canva.png",
+                image: getSkillImage('canva.jpg'),
             },
             {
                 id: 25,
                 name: "CapCut",
-                image: "/images/skills/capcut.png",
+                image: getSkillImage('capcut.png'),
             },
         ],
     },
@@ -167,52 +178,52 @@ export const skillCategories: SkillCategory[] = [
             {
                 id: 26,
                 name: "OpenAI",
-                image: "/images/skills/openai.png",
+                image: getSkillImage('openai.jpg'),
             },
             {
                 id: 27,
                 name: "Claude",
-                image: "/images/skills/claude.png",
+                image: getSkillImage('claude.png'),
             },
             {
                 id: 28,
                 name: "Cursor",
-                image: "/images/skills/cursor.png",
+                image: getSkillImage('cursor.jpg'),
             },
             {
                 id: 29,
                 name: "Replit",
-                image: "/images/skills/replit.png",
+                image: getSkillImage('replit.webp'),
             },
             {
                 id: 30,
                 name: "Antigravity",
-                image: "/images/skills/antigravity.png",
+                image: getSkillImage('antigravity.jpg'),
             },
             {
                 id: 31,
                 name: "Notion",
-                image: "/images/skills/notion.png",
+                image: getSkillImage('notion.webp'),
             },
             {
                 id: 32,
                 name: "ClickUp",
-                image: "/images/skills/clickup.png",
+                image: getSkillImage('clickup.png'),
             },
             {
                 id: 33,
                 name: "Slack",
-                image: "/images/skills/slack.png",
+                image: getSkillImage('slack.png'),
             },
             {
                 id: 34,
                 name: "Codex",
-                image: "/images/skills/codex.png",
+                image: getSkillImage('codex.png'),
             },
             {
                 id: 35,
                 name: "Windsurf",
-                image: "/images/skills/windsurf.png",
+                image: getSkillImage('windsurf.jpg'),
             },
         ],
     },

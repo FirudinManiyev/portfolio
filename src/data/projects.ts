@@ -7,32 +7,43 @@ export interface Project {
     link: string;
 }
 
+const projectImageModules = import.meta.glob<string>('../assets/images/projects/*', {
+    eager: true,
+    import: 'default',
+});
+
+const getProjectImage = (fileName: string) => {
+    const image = projectImageModules[`../assets/images/projects/${fileName}`];
+
+    return image ?? '';
+};
+
 export const projects: Project[] = [
     {
         id: 1,
-        title: "Personal Portfolio",
+        title: "WorldTelecom clone",
         description:
-            "React, TypeScript və Tailwind CSS istifadə edilərək hazırlanmış şəxsi portfolio saytı.",
-        image: "/images/projects/portfolio.png",
-        date: "2026",
-        link: "https://portfolio.vercel.app",
+            "React, JavaScript və Tailwind CSS istifadə edilərək hazırlanmış WorldTelecomun clone saytı.",
+        image: getProjectImage('worldtelecom.png'),
+        date: "2025",
+        link: "https://github.com/FirudinManiyev/worldtelecom",
     },
     {
         id: 2,
         title: "Recipe Finder",
         description:
             "İstifadəçilərin müxtəlif reseptləri axtara və araşdıra bildiyi müasir web tətbiqi.",
-        image: "/images/projects/recipe-finder.png",
-        date: "2025",
-        link: "https://recipe-finder.vercel.app",
+        image: getProjectImage('recipefinder.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/recipe_finder",
     },
     {
         id: 3,
-        title: "Matanat A Clone",
+        title: "QR Kod Generator",
         description:
-            "Universitet layihəsi olaraq hazırlanmış Matanat A şirkətinin veb saytının klonu.",
-        image: "/images/projects/matanat-a.png",
-        date: "2025",
-        link: "https://matanat-a.vercel.app",
+            "İstifadəçilərin istədikləri məlumatları daxil edərək QR kodlar yaratmalarına imkan verən web tətbiqi.",
+        image: getProjectImage('qrkodgenerator.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/qr_kod_app",
     },
 ];

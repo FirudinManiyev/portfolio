@@ -24,21 +24,21 @@ export const certificates: Certificate[] = [
     },
     {
         id: 2,
-        title: "Software Development Diploma",
-        issuer: "Code Academy",
-        date: "19-05-2026",
-        image: codeAcademyDiplomaImage,
-        description:
-            "Proqramlaşdırma, verilənlər bazaları, alqoritmlər və proqram təminatının hazırlanması üzrə nəzəri və praktiki biliklər əldə etmişəm.",
-    },
-    {
-        id: 3,
         title: "AZCON Future Tech Hackathon",
         issuer: "Azcon Holding & Holberton School Azerbaijan",
         date: "27-04-2026",
         image: azconHackathonImage,
         description:
             "Holberton School Azerbaijan-da keçirilən AZCON Future Tech Hackathon-unda aktiv iştirakım və göstərdiyim töhfəyə görə təqdim olunmuş təşəkkür sertifikatı.",
+    },
+    {
+        id: 3,
+        title: "Software Development Diploma",
+        issuer: "Code Academy",
+        date: "19-05-2026",
+        image: codeAcademyDiplomaImage,
+        description:
+            "Proqramlaşdırma, verilənlər bazaları, alqoritmlər və proqram təminatının hazırlanması üzrə nəzəri və praktiki biliklər əldə etmişəm.",
     },
     {
         id: 4,
