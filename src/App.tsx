@@ -1,4 +1,5 @@
 import { BrowserRouter } from "react-router-dom"
+import { Toaster } from 'react-hot-toast'
 import AppRoutes from "./routes/AppRoutes"
 import PortfolioBackground from "./components/PortfolioBackground"
 import ScrollToTop from "./components/ScrollToTop"
@@ -12,6 +13,17 @@ function App() {
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
+
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            background: '#111827',
+            color: '#fff',
+            border: '1px solid rgba(255,255,255,0.12)',
+          },
+        }}
+      />
 
       <ScrollToTop />
       <WhatsAppButton />

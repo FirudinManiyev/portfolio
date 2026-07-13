@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
 import Lanyard from '../components/Lanyard';
+import ContactSection from '../components/ContactSection';
 import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
 import { about } from '../data/about';
@@ -406,6 +407,8 @@ function Home() {
 			<HomeSkillsSection />
 
 			<HomeProjectsSection />
+
+			<ContactSection />
 
 			{selectedCertificateImage ? (
 				<div

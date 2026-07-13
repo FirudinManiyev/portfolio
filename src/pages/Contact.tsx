@@ -1,6 +1,8 @@
+import ContactSection from '../components/ContactSection'
+
 function Contact() {
   return (
-    <div>Contact</div>
+    <ContactSection className="mt-0 sm:mt-0 lg:mt-0" />
   )
 }
 
