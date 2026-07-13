@@ -1,6 +1,6 @@
 function Certificates() {
   return (
-    <div>Certificates</div>
+    <div>Certificates səhifəsi yaxın zamanda əlavə olunacaq</div>
   )
 }
 

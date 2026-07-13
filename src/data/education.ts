@@ -16,11 +16,11 @@ export const education: Education[] = [
     {
         id: 1,
         institution: "Azərbaycan Memarlıq və İnşaat Universiteti",
-        major: "İnformasiya Texnologiyaları",
+        major: "İnformasiya Texnologiyaları - Bakalavr",
         date: "2023 - 2027",
         image: azmiuImage,
         description:
-            "İnformasiya Texnologiyaları ixtisası üzrə təhsil alıram. Proqramlaşdırma, verilənlər bazası, şəbəkələr və informasiya sistemləri sahələrində biliklər əldə etmişəm.",
+            "İnformasiya Texnologiyaları ixtisası üzrə bakalavr təhsili alıram. Təhsil müddətində proqramlaşdırma, verilənlər bazası, kompüter şəbəkələri, informasiya sistemləri, alqoritmlər və proqram təminatının hazırlanması üzrə nəzəri və praktiki biliklər əldə etmişəm. Universitet layihələri vasitəsilə problem həll etmə, analitik düşünmə və komanda ilə işləmək bacarıqlarımı inkişaf etdirmişəm.",
     },
     {
         id: 2,
@@ -29,7 +29,7 @@ export const education: Education[] = [
         date: "2024 – 2025",
         image: divAcademyImage,
         description:
-            "HTML, CSS, JavaScript, TypeScript, React və müasir frontend texnologiyaları üzrə praktiki təlim proqramını tamamlamışam.",
+            "Frontend Development proqramını uğurla tamamlayaraq HTML, CSS, JavaScript, TypeScript, React və Tailwind CSS texnologiyalarında praktiki təcrübə qazanmışam. Təlim müddətində responsiv və müasir istifadəçi interfeysləri hazırlamış, Git və GitHub ilə versiya idarəetməsindən istifadə etmiş, real layihələr üzərində işləyərək frontend inkişaf bacarıqlarımı gücləndirmişəm.",
     },
     {
         id: 3,
@@ -38,7 +38,7 @@ export const education: Education[] = [
         date: "2025 – 2026",
         image: codeAcademyImage,
         description:
-            "Proqramlaşdırma, verilənlər bazaları, alqoritmlər və proqram təminatının hazırlanması üzrə nəzəri və praktiki biliklər əldə etmişəm.",
+            "Software Development proqramı çərçivəsində proqramlaşdırma prinsipləri, obyekt yönümlü proqramlaşdırma, verilənlər bazalarının idarə olunması və alqoritmlər üzrə biliklər əldə etmişəm. Müxtəlif praktiki tapşırıqlar və layihələr hazırlayaraq proqram təminatının planlaşdırılması, hazırlanması və test edilməsi proseslərində təcrübə qazanmışam.",
     },
     {
         id: 4,
@@ -47,6 +47,6 @@ export const education: Education[] = [
         date: "2025 – 2026",
         image: holbertonSchoolImage,
         description:
-            "Frontend və backend texnologiyaları ilə tam funksional veb tətbiqlərin hazırlanması, Git əsaslı komanda işi və layihə yönümlü inkişaf qazanmışam.",
+            "Full Stack Web Specialization proqramı çərçivəsində həm frontend, həm də backend texnologiyalarından istifadə edərək tam funksional veb tətbiqlərin hazırlanmasını öyrənmişəm. Layihə əsaslı təhsil modeli sayəsində Git ilə komanda işi, REST API inteqrasiyası, verilənlər bazaları ilə işləmək və müasir proqram təminatı inkişafı prosesləri üzrə praktiki təcrübə qazanmışam.",
     },
 ];

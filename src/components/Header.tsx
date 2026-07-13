@@ -8,8 +8,8 @@ import fmLogo from "../assets/fm_logo.png"
 const navLinks = [
   { to: "/", label: "Ana səhifə" },
   { to: "/about", label: "Haqqımda" },
-  { to: "/skills", label: "Skills" },
   { to: "/education", label: "Təhsil" },
+  { to: "/skills", label: "Skills" },
   { to: "/projects", label: "Proyektlər" },
   { to: "/certificates", label: "Sertifikatlar" },
 ]

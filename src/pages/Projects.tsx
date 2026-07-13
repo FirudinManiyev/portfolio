@@ -1,6 +1,6 @@
 function Projects() {
   return (
-    <div>Projects</div>
+    <div>Projects səhifəsi yaxın zamanda əlavə olunacaq</div>
   )
 }
 
