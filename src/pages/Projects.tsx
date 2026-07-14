@@ -124,7 +124,7 @@ function Projects() {
                     className="mt-16 text-center"
                 >
                     <p className="text-[#A1A1AA] text-sm">
-                        Daha çox layihə yolda...
+                        Qeyd olaraq deyimki mini layihələri bura daxil etməmişəm. Əgər bütün işlərimi görmək istəyirsinizsə github-a keçid edin.
                     </p>
                 </motion.div>
             </motion.div>

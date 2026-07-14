@@ -7,10 +7,25 @@ export interface Certificate {
     description: string;
 }
 
-import azconHackathonImage from '../assets/images/sertifikatlar/azcon_holding_hackathon.png';
-import cyberBridgeImage from '../assets/images/sertifikatlar/cyberbridge_project.jpg';
-import divAcademyDiplomaImage from '../assets/images/sertifikatlar/diploma_div_academy.jpeg';
-import codeAcademyDiplomaImage from '../assets/images/sertifikatlar/codeacademy_diploma.jpeg';
+import azconHackathonImage from "../assets/images/sertifikatlar/azcon_holding_hackathon.png";
+import cffHackathonImage from "../assets/images/sertifikatlar/cff_hackathon.jpeg";
+import awsTrainingImage from "../assets/images/sertifikatlar/cloud_security_aws.jpg";
+import codeAcademyCertificateImage from "../assets/images/sertifikatlar/codeacademy_certicate.jpeg";
+import codeAcademyDiplomaImage from "../assets/images/sertifikatlar/codeacademy_diploma.jpeg";
+import cyberBridgeImage from "../assets/images/sertifikatlar/cyberbridge_project.jpg";
+import divAcademyDiplomaImage from "../assets/images/sertifikatlar/diploma_div_academy.jpeg";
+import dizaynxSeminarImage from "../assets/images/sertifikatlar/dizaynx_seminar.png";
+import excelDataPrimeImage from "../assets/images/sertifikatlar/excel_dataprime.jpg";
+import frontendUdemyImage from "../assets/images/sertifikatlar/frontend_udemy.jpg";
+import gitUdemyImage from "../assets/images/sertifikatlar/git_udemy.jpg";
+import gsmfImage from "../assets/images/sertifikatlar/gsmf.jpg";
+import holbertonHackathonImage from "../assets/images/sertifikatlar/holberton_school_hackathon.jpeg";
+import itEssentialsImage from "../assets/images/sertifikatlar/it_essentials_ugur_academy.jpg";
+import codeKloudWebinarImage from "../assets/images/sertifikatlar/it_vebinar_codekloud_academy.jpg";
+import oracleSqlImage from "../assets/images/sertifikatlar/oracle_sql_dataprime.jpg";
+import phpConferenceImage from "../assets/images/sertifikatlar/php_konf.jpg";
+import seherMobilliyiImage from "../assets/images/sertifikatlar/seher_mobilliyi_telim.jpg";
+import skillUpImage from "../assets/images/sertifikatlar/skill_up_secret_academy.png";
 
 export const certificates: Certificate[] = [
     {
@@ -20,16 +35,16 @@ export const certificates: Certificate[] = [
         date: "14-07-2025",
         image: divAcademyDiplomaImage,
         description:
-            "Frontend Development proqramını 1-ci dərəcə uğurla tamamlayaraq HTML, CSS, JavaScript, React və müasir web texnologiyaları üzrə biliklər əldə etmişəm.",
+            "Frontend Development proqramını uğurla tamamlayaraq HTML, CSS, JavaScript, React və müasir veb texnologiyaları üzrə biliklər əldə etmişəm.",
     },
     {
         id: 2,
         title: "AZCON Future Tech Hackathon",
-        issuer: "Azcon Holding & Holberton School Azerbaijan",
+        issuer: "Azcon Holding & Holberton School",
         date: "27-04-2026",
         image: azconHackathonImage,
         description:
-            "Holberton School Azerbaijan-da keçirilən AZCON Future Tech Hackathon-unda aktiv iştirakım və göstərdiyim töhfəyə görə təqdim olunmuş təşəkkür sertifikatı.",
+            "AZCON Future Tech Hackathon tədbirində iştirak edərək komanda işi, innovativ düşüncə və problem həll etmə bacarıqlarımı inkişaf etdirmişəm.",
     },
     {
         id: 3,
@@ -38,15 +53,150 @@ export const certificates: Certificate[] = [
         date: "19-05-2026",
         image: codeAcademyDiplomaImage,
         description:
-            "Proqramlaşdırma, verilənlər bazaları, alqoritmlər və proqram təminatının hazırlanması üzrə nəzəri və praktiki biliklər əldə etmişəm.",
+            "Software Development proqramını uğurla tamamlayaraq proqramlaşdırma və proqram təminatının hazırlanması üzrə praktiki biliklər qazanmışam.",
     },
     {
         id: 4,
-        title: "CyberBridge Training",
+        title: "CyberBridge Training Program",
         issuer: "CyberBridge",
         date: "10-12-2025",
         image: cyberBridgeImage,
         description:
-            "Kibertəhlükəsizlik sahəsində ümumi anlayışlar, təhlükəsizlik prinsipləri və praktiki yanaşmalar üzrə təlim proqramını tamamlamışam.",
+            "Kibertəhlükəsizlik sahəsində əsas anlayışlar, təhlükəsizlik prinsipləri və praktiki yanaşmalar üzrə təlim proqramını tamamlamışam.",
+    },
+    {
+        id: 5,
+        title: "Code8 Hackathon",
+        issuer: "Code Academy",
+        date: "16-05-2026",
+        image: cffHackathonImage,
+        description:
+            "Hackathon çərçivəsində komanda ilə birlikdə layihə hazırlayaraq texniki və analitik bacarıqlarımı inkişaf etdirmişəm.",
+    },
+    {
+        id: 6,
+        title: "Cloud Security Essentials",
+        issuer: "AWS Training",
+        date: "17-07-2024",
+        image: awsTrainingImage,
+        description:
+            "Bulud təhlükəsizliyi, AWS xidmətləri və təhlükəsizlik yanaşmaları üzrə əsas biliklər əldə etmişəm.",
+    },
+    {
+        id: 7,
+        title: "DizaynX Seminar",
+        issuer: "DizaynX",
+        date: "2025",
+        image: dizaynxSeminarImage,
+        description:
+            "Dizayn, istifadəçi təcrübəsi və müasir rəqəmsal məhsul yanaşmaları ilə bağlı seminarda iştirak etmişəm.",
+    },
+    {
+        id: 8,
+        title: "Software Development Certificate",
+        issuer: "Code Academy",
+        date: "19-05-2026",
+        image: codeAcademyCertificateImage,
+        description:
+            "Software Development proqramı üzrə əldə etdiyim bilik və bacarıqları təsdiq edən sertifikat.",
+    },
+    {
+        id: 9,
+        title: "Microsoft Excel Training",
+        issuer: "DataPrime Academy",
+        date: "2024",
+        image: excelDataPrimeImage,
+        description:
+            "Microsoft Excel üzrə praktiki təlim proqramında iştirak edərək məlumatların emalı və analizi bacarıqlarımı inkişaf etdirmişəm.",
+    },
+    {
+        id: 10,
+        title: "AI4CYBER Hackathon",
+        issuer: "Holberton School Azerbaijan",
+        date: "2026",
+        image: holbertonHackathonImage,
+        description:
+            "Holberton School tərəfindən təşkil olunan hackathon tədbirində iştirak etmişəm.",
+    },
+    {
+        id: 11,
+        title: "GSMF Program",
+        issuer: "GSMF",
+        date: "2025",
+        image: gsmfImage,
+        description:
+            "Peşəkar inkişaf və texnologiya yönümlü proqram çərçivəsində müxtəlif fəaliyyətlərdə iştirak etmişəm.",
+    },
+    {
+        id: 12,
+        title: "Frontend Development Course",
+        issuer: "Udemy",
+        date: "2024",
+        image: frontendUdemyImage,
+        description:
+            "Frontend Development kursunu tamamlayaraq HTML, CSS, JavaScript və müasir frontend texnologiyalarını öyrənmişəm.",
+    },
+    {
+        id: 13,
+        title: "Git & GitHub Course",
+        issuer: "Udemy",
+        date: "2024",
+        image: gitUdemyImage,
+        description:
+            "Git və GitHub üzrə versiya nəzarəti, branch idarəetməsi və komanda işi prinsiplərini öyrənmişəm.",
+    },
+    {
+        id: 14,
+        title: "IT Essentials",
+        issuer: "Uğur IT Academy",
+        date: "2025",
+        image: itEssentialsImage,
+        description:
+            "Kompüter avadanlıqları, əməliyyat sistemləri və İT əsasları üzrə təlim proqramını tamamlamışam.",
+    },
+    {
+        id: 15,
+        title: "IT Webinar",
+        issuer: "CodeKloud Academy",
+        date: "2025",
+        image: codeKloudWebinarImage,
+        description:
+            "İnformasiya texnologiyaları sahəsində keçirilən vebinarda iştirak etmişəm.",
+    },
+    {
+        id: 16,
+        title: "Oracle SQL Training",
+        issuer: "DataPrime Academy",
+        date: "2025",
+        image: oracleSqlImage,
+        description:
+            "Oracle SQL üzrə verilənlər bazası sorğuları, məlumatların idarə olunması və optimizasiya mövzularını öyrənmişəm.",
+    },
+    {
+        id: 17,
+        title: "PHP Conference",
+        issuer: "PHP Azerbaijan",
+        date: "2025",
+        image: phpConferenceImage,
+        description:
+            "PHP və backend texnologiyaları üzrə keçirilən konfransda iştirak etmişəm.",
+    },
+    {
+        id: 18,
+        title: "Şəhər Mobilliyi Təlimi",
+        issuer: "Təlim Proqramı",
+        date: "2025",
+        image: seherMobilliyiImage,
+        description:
+            "Şəhər mobilliyi və dayanıqlı inkişaf mövzularında keçirilən təlim proqramında iştirak etmişəm.",
+    },
+    {
+        id: 19,
+        title: "Skill Up Program",
+        issuer: "Secret Academy",
+        date: "2025",
+        image: skillUpImage,
+        description:
+            "Peşəkar və şəxsi inkişaf bacarıqlarının artırılmasına yönəlmiş Skill Up proqramını tamamlamışam.",
     },
 ];
