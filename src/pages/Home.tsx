@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, BriefcaseBusiness, GraduationCap, Mail, Download, Sparkles } from 'lucide-react';
+import { Award, BriefcaseBusiness, GraduationCap, Mail, Download, Sparkles, ZoomIn } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
@@ -366,7 +366,7 @@ function Home() {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true, amount: 0.25 }}
 									transition={{ duration: 0.45, delay: index * 0.08 }}
-									className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
+									className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:bg-white/7"
 								>
 									<button
 										type="button"
@@ -374,16 +374,21 @@ function Home() {
 										className="block w-full text-left"
 										aria-label={`${item.title} sertifikatını tam ölçüdə aç`}
 									>
-										<div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20">
+										<div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20">
 											<img
 												src={item.image}
 												alt={item.title}
-												className="h-full w-full object-cover object-center cursor-pointer transition duration-300 group-hover:scale-105"
+												className="h-full w-full object-cover object-center cursor-pointer transition duration-500 group-hover:scale-110"
 											/>
+											<div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+												<div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-400/90 text-black transition-transform duration-300 group-hover:scale-110">
+													<ZoomIn className="h-8 w-8" />
+												</div>
+											</div>
 										</div>
 
 										<div className="mt-4 space-y-3">
-											<h3 className="text-lg font-semibold text-white sm:text-xl">{item.title}</h3>
+											<h3 className="text-lg font-semibold text-white sm:text-xl group-hover:text-yellow-400 transition-colors duration-300">{item.title}</h3>
 											<p className="text-sm font-medium text-neutral-400">{item.issuer}</p>
 											<p className="text-xs font-medium uppercase tracking-[0.18em] text-yellow-300/90">{item.date}</p>
 										</div>
