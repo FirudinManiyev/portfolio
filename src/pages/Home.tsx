@@ -46,9 +46,9 @@ function Home() {
 			<section className="relative flex min-h-[calc(100vh-5rem)] items-start justify-center overflow-hidden pt-6 sm:pt-8 lg:pt-10">
 
 				<div className="container relative z-10 mx-auto px-6 py-2 sm:py-4">
-					<div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center lg:items-center lg:-translate-y-18">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-center lg:items-center lg:-translate-y-18">
 						{/* Left side - Text content */}
-						<div className="order-1 lg:order-1">
+						<div className="order-1 md:order-1">
 							<motion.div
 								initial={{ opacity: 0, x: -50 }}
 								animate={{ opacity: 1, x: 0 }}
@@ -154,12 +154,12 @@ function Home() {
 						</div>
 
 						{/* Right side - Lanyard 3D Card */}
-						<div className="order-2 lg:order-2">
+						<div className="order-2 lg:order-2 hidden sm:block">
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.3 }}
-								className="relative h-[450px] lg:h-[680px]"
+								className="relative h-[350px] sm:h-[450px] lg:h-[680px]"
 							>
 								<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
 							</motion.div>
