@@ -26,8 +26,6 @@ Tailwind CSS v4
 
 Framer Motion
 
-GSAP
-
 React Router DOM
 
 Lucide React
@@ -37,6 +35,14 @@ Swiper
 EmailJS
 
 React Hot Toast
+
+React Intersection Observer
+
+@react-three/fiber (3D)
+
+@react-three/drei (3D)
+
+Three.js (3D)
 
 ---
 
@@ -51,8 +57,6 @@ Minimal
 Elegant
 
 Glassmorphism
-
-Gradient
 
 Dark Theme
 
@@ -74,6 +78,8 @@ Beautiful Cards
 
 Premium Feel
 
+3D Elements
+
 Avoid generic templates.
 
 Each section should have its own identity.
@@ -81,18 +87,6 @@ Each section should have its own identity.
 ---
 
 # Color Palette
-
-Primary
-
-#7C3AED
-
-Secondary
-
-#2563EB
-
-Accent
-
-#06B6D4
 
 Background
 
@@ -110,13 +104,13 @@ Muted
 
 #A1A1AA
 
+Accent (Yellow)
+
+#F59E0B
+
 Success
 
 #22C55E
-
-Warning
-
-#F59E0B
 
 Danger
 
@@ -140,7 +134,7 @@ Consistent font weights.
 
 # Responsive Design
 
-Desktop First.
+Mobile First.
 
 Support
 
@@ -178,15 +172,9 @@ About
 
 Skills
 
-Tech Stack
-
-Experience
-
 Projects
 
 Certificates
-
-GitHub Stats
 
 Education
 
@@ -206,13 +194,11 @@ Role
 
 Short description
 
-Animated background
+3D Lanyard component
 
 CTA buttons
 
 Social icons
-
-Profile image
 
 Typing animation
 
@@ -222,8 +208,6 @@ Smooth entrance animation
 
 # About
 
-Timeline
-
 Biography
 
 Highlights
@@ -231,6 +215,8 @@ Highlights
 Quick Facts
 
 Download CV
+
+Contact section
 
 ---
 
@@ -266,10 +252,6 @@ Tech Stack
 
 GitHub Button
 
-Live Demo Button
-
-Featured Badge (optional)
-
 Hover Animation
 
 ---
@@ -278,7 +260,7 @@ Hover Animation
 
 Responsive grid.
 
-Image preview.
+Image preview with zoom overlay.
 
 Modal.
 
@@ -286,23 +268,21 @@ Issue date.
 
 Issuer.
 
-Verification link.
-
 ---
 
-# Experience
+# Education
 
 Timeline layout.
 
-Company
+Institution
 
-Position
+Major
 
-Duration
+Degree
 
-Technologies
+Date
 
-Responsibilities
+Image
 
 ---
 
@@ -320,6 +300,8 @@ Success state
 
 Error state
 
+Social links
+
 ---
 
 # Footer
@@ -334,7 +316,7 @@ Back to Top button
 
 # Animations
 
-Use Framer Motion first.
+Use Framer Motion.
 
 Animate
 
@@ -483,3 +465,4 @@ When generating code:
 - Favor accessibility and performance alongside visual quality.
 - Use modern React and TypeScript best practices.
 - Build polished, premium UI with subtle, meaningful animations.
+- Follow the data-driven approach using src/data files.

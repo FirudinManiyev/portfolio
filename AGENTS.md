@@ -10,12 +10,14 @@ This project is a personal portfolio website built with:
 - Tailwind CSS v4
 - React Router DOM
 - Framer Motion
-- GSAP
 - Lucide React
 - React Hot Toast
 - Swiper
 - EmailJS
 - React Intersection Observer
+- @react-three/fiber (3D)
+- @react-three/drei (3D)
+- Three.js (3D)
 
 The purpose of this project is to showcase:
 
@@ -24,7 +26,7 @@ The purpose of this project is to showcase:
 - Skills
 - Projects
 - Certificates
-- Experience
+- Education
 - Contact
 - Social Links
 - Resume (CV)
@@ -101,8 +103,6 @@ Preferred animation library:
 
 1. Framer Motion
 
-Use GSAP only for complex animations.
-
 Animations should be subtle.
 
 Avoid excessive motion.
@@ -121,11 +121,13 @@ Pages:
 
 about
 
+skills
+
 projects
 
 certificates
 
-experience
+education
 
 contact
 
@@ -141,15 +143,17 @@ src/data
 
 Examples:
 
-projects.ts
+about.ts
 
 skills.ts
 
+projects.ts
+
 certificates.ts
 
-experience.ts
+education.ts
 
-socials.ts
+contact.ts
 
 ---
 
