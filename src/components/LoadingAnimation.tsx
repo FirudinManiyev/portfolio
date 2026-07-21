@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import Lightfall from "./Lightfall";
 
 interface LoadingAnimationProps {
     onComplete: () => void;
@@ -25,54 +26,24 @@ export default function LoadingAnimation({
             transition={{ duration: 0.8 }}
             className="fixed inset-0 z-[999] overflow-hidden bg-[#09090B]"
         >
-            {/* Background */}
-            <div className="absolute inset-0 overflow-hidden">
-                <motion.div
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        x: [0, 80, 0],
-                        y: [0, -60, 0],
-                    }}
-                    transition={{
-                        duration: 12,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute left-[-10%] top-[-10%] h-96 w-96 rounded-full bg-yellow-400/10 blur-[120px]"
-                />
-
-                <motion.div
-                    animate={{
-                        scale: [1.2, 1, 1.2],
-                        x: [0, -70, 0],
-                        y: [0, 80, 0],
-                    }}
-                    transition={{
-                        duration: 14,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                    className="absolute bottom-[-10%] right-[-10%] h-96 w-96 rounded-full bg-orange-400/10 blur-[120px]"
-                />
-
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{
-                        duration: 40,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-yellow-400/5"
-                />
-
-                <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{
-                        duration: 55,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5"
+            {/* Lightfall Background */}
+            <div className="absolute inset-0">
+                <Lightfall
+                    colors={['#EAB308', '#84CC16', '#F97316']}
+                    backgroundColor="#09090B"
+                    speed={0.5}
+                    streakCount={2}
+                    streakWidth={1}
+                    streakLength={1.2}
+                    glow={0.9}
+                    density={0.6}
+                    twinkle={1}
+                    zoom={3}
+                    backgroundGlow={0.2}
+                    opacity={1}
+                    mouseInteraction
+                    mouseStrength={0.6}
+                    mouseRadius={1}
                 />
             </div>
 
@@ -194,7 +165,7 @@ export default function LoadingAnimation({
                     }}
                     className="mt-10 text-xs uppercase tracking-[6px] text-zinc-600"
                 >
-                    Initializing Experience
+                    Hazırlanır...
                 </motion.p>
             </div>
         </motion.div>

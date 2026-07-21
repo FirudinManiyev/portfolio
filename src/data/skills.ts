@@ -71,6 +71,11 @@ export const skillCategories: SkillCategory[] = [
                 name: "jQuery",
                 image: getSkillImage('jquery.png'),
             },
+            {
+                id: 10,
+                name: "EmailJS",
+                image: getSkillImage('emailjs.jpg'),
+            },
         ],
     },
     {
@@ -78,22 +83,22 @@ export const skillCategories: SkillCategory[] = [
         title: "Backend Development",
         skills: [
             {
-                id: 10,
+                id: 11,
                 name: "C#",
                 image: getSkillImage('csharp.png'),
             },
             {
-                id: 11,
+                id: 12,
                 name: "Python",
                 image: getSkillImage('python.jpg'),
             },
             {
-                id: 12,
+                id: 13,
                 name: "ASP.NET Core MVC",
                 image: getSkillImage('aspnetcore.jpg'),
             },
             {
-                id: 13,
+                id: 14,
                 name: "ASP.NET Web API",
                 image: getSkillImage('webapi.png'),
             },
@@ -104,22 +109,22 @@ export const skillCategories: SkillCategory[] = [
         title: "Database & DevOps",
         skills: [
             {
-                id: 14,
+                id: 15,
                 name: "Microsoft SQL Server",
                 image: getSkillImage('sqlserver.jpg'),
             },
             {
-                id: 15,
+                id: 16,
                 name: "MySQL",
                 image: getSkillImage('mysql.png'),
             },
             {
-                id: 16,
+                id: 17,
                 name: "Docker",
                 image: getSkillImage('docker.png'),
             },
             {
-                id: 17,
+                id: 18,
                 name: "Postman",
                 image: getSkillImage('postman.png'),
             },
@@ -130,44 +135,49 @@ export const skillCategories: SkillCategory[] = [
         title: "Tools & Platforms",
         skills: [
             {
-                id: 18,
+                id: 19,
                 name: "Git",
                 image: getSkillImage('git.png'),
             },
             {
-                id: 19,
+                id: 20,
                 name: "GitHub",
                 image: getSkillImage('github.png'),
             },
             {
-                id: 20,
+                id: 21,
                 name: "VS Code",
                 image: getSkillImage('vscode.jpg'),
             },
             {
-                id: 21,
+                id: 22,
                 name: "WordPress",
                 image: getSkillImage('wordpress.jpg'),
             },
             {
-                id: 22,
+                id: 23,
                 name: "Figma",
                 image: getSkillImage('figma.png'),
             },
             {
-                id: 23,
+                id: 24,
                 name: "Visual Studio",
                 image: getSkillImage('visualstudio.png'),
             },
             {
-                id: 24,
+                id: 25,
                 name: "Canva",
                 image: getSkillImage('canva.jpg'),
             },
             {
-                id: 25,
+                id: 26,
                 name: "CapCut",
                 image: getSkillImage('capcut.png'),
+            },
+            {
+                id: 27,
+                name: "Notepad++",
+                image: getSkillImage('notepadplusplus.jpg'),
             },
         ],
     },
@@ -176,52 +186,52 @@ export const skillCategories: SkillCategory[] = [
         title: "AI & Productivity",
         skills: [
             {
-                id: 26,
+                id: 28,
                 name: "OpenAI",
                 image: getSkillImage('openai.jpg'),
             },
             {
-                id: 27,
+                id: 29,
                 name: "Claude",
                 image: getSkillImage('claude.png'),
             },
             {
-                id: 28,
+                id: 30,
                 name: "Cursor",
                 image: getSkillImage('cursor.jpg'),
             },
             {
-                id: 29,
+                id: 31,
                 name: "Replit",
                 image: getSkillImage('replit.webp'),
             },
             {
-                id: 30,
+                id: 32,
                 name: "Antigravity",
                 image: getSkillImage('antigravity.jpg'),
             },
             {
-                id: 31,
+                id: 33,
                 name: "Notion",
                 image: getSkillImage('notion.webp'),
             },
             {
-                id: 32,
+                id: 34,
                 name: "ClickUp",
                 image: getSkillImage('clickup.png'),
             },
             {
-                id: 33,
+                id: 35,
                 name: "Slack",
                 image: getSkillImage('slack.png'),
             },
             {
-                id: 34,
+                id: 36,
                 name: "Codex",
                 image: getSkillImage('codex.png'),
             },
             {
-                id: 35,
+                id: 37,
                 name: "Windsurf",
                 image: getSkillImage('windsurf.jpg'),
             },
