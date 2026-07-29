@@ -20,7 +20,7 @@ const aboutHighlights = [
 	},
 	{
 		label: 'Təcrübə ili',
-		value: '1+',
+		value: '2+',
 		icon: GraduationCap,
 	},
 	{

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
-import Lightfall from "./Lightfall";
+import { useEffect, useState } from "react";
+import fmLogo from "../assets/fm_logo.png";
 
 interface LoadingAnimationProps {
     onComplete: () => void;
@@ -9,164 +9,76 @@ interface LoadingAnimationProps {
 export default function LoadingAnimation({
     onComplete,
 }: LoadingAnimationProps) {
+    const [progress, setProgress] = useState(0);
+
     useEffect(() => {
-        const timer = setTimeout(() => {
-            onComplete();
-        }, 3000);
+        const interval = setInterval(() => {
+            setProgress((prev) => {
+                if (prev >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        onComplete();
+                    }, 300);
+                    return 100;
+                }
+                return prev + 1;
+            });
+        }, 25);
 
-        return () => clearTimeout(timer);
+        return () => clearInterval(interval);
     }, [onComplete]);
-
-    const name = "Firudin Maniyev".split("");
 
     return (
         <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="fixed inset-0 z-[999] overflow-hidden bg-[#09090B]"
+            transition={{ duration: 0.6 }}
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-[#09090B]"
         >
-            {/* Lightfall Background */}
-            <div className="absolute inset-0">
-                <Lightfall
-                    colors={['#EAB308', '#84CC16', '#F97316']}
-                    backgroundColor="#09090B"
-                    speed={0.5}
-                    streakCount={2}
-                    streakWidth={1}
-                    streakLength={1.2}
-                    glow={0.9}
-                    density={0.6}
-                    twinkle={1}
-                    zoom={3}
-                    backgroundGlow={0.2}
-                    opacity={1}
-                    mouseInteraction
-                    mouseStrength={0.6}
-                    mouseRadius={1}
-                />
-            </div>
-
-            {/* Content */}
-            <div className="relative flex h-full flex-col items-center justify-center px-6">
-                {/* Logo */}
+            {/* Pulsing Background Glow */}
+            <div className="absolute inset-0 overflow-hidden">
                 <motion.div
-                    initial={{
-                        opacity: 0,
-                        scale: 0.8,
-                    }}
                     animate={{
-                        opacity: 1,
-                        scale: 1,
-                    }}
-                    transition={{
-                        duration: 0.8,
-                    }}
-                    className="mb-10"
-                >
-                    <motion.div
-                        animate={{
-                            rotate: 360,
-                        }}
-                        transition={{
-                            duration: 18,
-                            repeat: Infinity,
-                            ease: "linear",
-                        }}
-                        className="flex h-28 w-28 items-center justify-center rounded-full border border-yellow-400/20"
-                    >
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.08, 1],
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                            }}
-                            className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 shadow-[0_0_70px_rgba(250,204,21,0.35)]"
-                        >
-                            <span className="text-3xl font-bold text-black">
-                                FM
-                            </span>
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
-
-                {/* Name */}
-                <div className="flex flex-wrap justify-center text-center text-4xl font-bold sm:text-6xl">
-                    {name.map((char, index) => (
-                        <motion.span
-                            key={index}
-                            initial={{
-                                opacity: 0,
-                                y: 20,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            transition={{
-                                delay: index * 0.05,
-                                duration: 0.4,
-                            }}
-                            className={
-                                char === " "
-                                    ? "mx-2"
-                                    : char === "F"
-                                        ? "text-yellow-400"
-                                        : "text-white"
-                            }
-                        >
-                            {char}
-                        </motion.span>
-                    ))}
-                </div>
-
-                {/* Subtitle */}
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                        delay: 0.8,
-                    }}
-                    className="mt-5 text-lg tracking-wide text-zinc-400"
-                >
-                    Full Stack Developer
-                </motion.p>
-
-                {/* Loading Dots */}
-                <div className="mt-12 flex gap-3">
-                    {[0, 1, 2].map((dot) => (
-                        <motion.div
-                            key={dot}
-                            animate={{
-                                y: [0, -8, 0],
-                                opacity: [0.4, 1, 0.4],
-                                scale: [1, 1.2, 1],
-                            }}
-                            transition={{
-                                duration: 0.8,
-                                repeat: Infinity,
-                                delay: dot * 0.2,
-                            }}
-                            className="h-2.5 w-2.5 rounded-full bg-yellow-400"
-                        />
-                    ))}
-                </div>
-
-                {/* Bottom Text */}
-                <motion.p
-                    animate={{
-                        opacity: [0.3, 1, 0.3],
+                        opacity: [0.3, 0.6, 0.3],
                     }}
                     transition={{
                         duration: 2,
                         repeat: Infinity,
+                        ease: "easeInOut",
                     }}
-                    className="mt-10 text-xs uppercase tracking-[6px] text-zinc-600"
+                    className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400/20 blur-[120px]"
+                />
+            </div>
+
+            <div className="relative flex flex-col items-center px-6">
+                <motion.img
+                    src={fmLogo}
+                    alt="FM Logo"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-8 h-40 w-40 object-contain sm:h-48 sm:w-48"
+                />
+
+                {/* Progress Bar */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mt-4 w-full max-w-xs"
                 >
-                    Hazırlanır...
-                </motion.p>
+                    <div className="mb-2 flex justify-between text-sm text-zinc-400">
+                        <span>Yüklənir...</span>
+                        <span>{progress}%</span>
+                    </div>
+                    <div className="h-2 overflow-hidden rounded-full bg-zinc-800">
+                        <motion.div
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 0.1 }}
+                            className="h-full rounded-full bg-gradient-to-r from-yellow-400 to-orange-400"
+                        />
+                    </div>
+                </motion.div>
             </div>
         </motion.div>
     );
