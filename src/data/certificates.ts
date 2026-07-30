@@ -86,7 +86,7 @@ export const certificates: Certificate[] = [
         id: 7,
         title: "DizaynX Seminar",
         issuer: "DizaynX",
-        date: "2025",
+        date: "01-03-2025",
         image: dizaynxSeminarImage,
         description:
             "Dizayn, istifadəçi təcrübəsi və müasir rəqəmsal məhsul yanaşmaları ilə bağlı seminarda iştirak etmişəm.",
@@ -104,7 +104,7 @@ export const certificates: Certificate[] = [
         id: 9,
         title: "Microsoft Excel Training",
         issuer: "DataPrime Academy",
-        date: "2024",
+        date: "10-09-2025",
         image: excelDataPrimeImage,
         description:
             "Microsoft Excel üzrə praktiki təlim proqramında iştirak edərək məlumatların emalı və analizi bacarıqlarımı inkişaf etdirmişəm.",
@@ -113,7 +113,7 @@ export const certificates: Certificate[] = [
         id: 10,
         title: "AI4CYBER Hackathon",
         issuer: "Holberton School Azerbaijan",
-        date: "2026",
+        date: "24-01-2026",
         image: holbertonHackathonImage,
         description:
             "Holberton School tərəfindən təşkil olunan hackathon tədbirində iştirak etmişəm.",
@@ -122,7 +122,7 @@ export const certificates: Certificate[] = [
         id: 11,
         title: "GSMF Program",
         issuer: "GSMF",
-        date: "2025",
+        date: "19-04-2025",
         image: gsmfImage,
         description:
             "Peşəkar inkişaf və texnologiya yönümlü proqram çərçivəsində müxtəlif fəaliyyətlərdə iştirak etmişəm.",
@@ -131,7 +131,7 @@ export const certificates: Certificate[] = [
         id: 12,
         title: "Frontend Development Course",
         issuer: "Udemy",
-        date: "2024",
+        date: "04-07-2025",
         image: frontendUdemyImage,
         description:
             "Frontend Development kursunu tamamlayaraq HTML, CSS, JavaScript və müasir frontend texnologiyalarını öyrənmişəm.",
@@ -140,7 +140,7 @@ export const certificates: Certificate[] = [
         id: 13,
         title: "Git & GitHub Course",
         issuer: "Udemy",
-        date: "2024",
+        date: "26-08-2025",
         image: gitUdemyImage,
         description:
             "Git və GitHub üzrə versiya nəzarəti, branch idarəetməsi və komanda işi prinsiplərini öyrənmişəm.",
@@ -149,7 +149,7 @@ export const certificates: Certificate[] = [
         id: 14,
         title: "IT Essentials",
         issuer: "Uğur IT Academy",
-        date: "2025",
+        date: "07-09-2025",
         image: itEssentialsImage,
         description:
             "Kompüter avadanlıqları, əməliyyat sistemləri və İT əsasları üzrə təlim proqramını tamamlamışam.",
@@ -158,7 +158,7 @@ export const certificates: Certificate[] = [
         id: 15,
         title: "IT Webinar",
         issuer: "CodeKloud Academy",
-        date: "2025",
+        date: "22-12-2024",
         image: codeKloudWebinarImage,
         description:
             "İnformasiya texnologiyaları sahəsində keçirilən vebinarda iştirak etmişəm.",
@@ -167,7 +167,7 @@ export const certificates: Certificate[] = [
         id: 16,
         title: "Oracle SQL Training",
         issuer: "DataPrime Academy",
-        date: "2025",
+        date: "12-02-2025",
         image: oracleSqlImage,
         description:
             "Oracle SQL üzrə verilənlər bazası sorğuları, məlumatların idarə olunması və optimizasiya mövzularını öyrənmişəm.",
@@ -176,7 +176,7 @@ export const certificates: Certificate[] = [
         id: 17,
         title: "PHP Conference",
         issuer: "PHP Azerbaijan",
-        date: "2025",
+        date: "26-10-2025",
         image: phpConferenceImage,
         description:
             "PHP və backend texnologiyaları üzrə keçirilən konfransda iştirak etmişəm.",
@@ -185,7 +185,7 @@ export const certificates: Certificate[] = [
         id: 18,
         title: "Şəhər Mobilliyi Təlimi",
         issuer: "Təlim Proqramı",
-        date: "2025",
+        date: "15-08-2024",
         image: seherMobilliyiImage,
         description:
             "Şəhər mobilliyi və dayanıqlı inkişaf mövzularında keçirilən təlim proqramında iştirak etmişəm.",
@@ -194,7 +194,7 @@ export const certificates: Certificate[] = [
         id: 19,
         title: "Skill Up Program",
         issuer: "Secret Academy",
-        date: "2025",
+        date: "24-07-2024",
         image: skillUpImage,
         description:
             "Peşəkar və şəxsi inkişaf bacarıqlarının artırılmasına yönəlmiş Skill Up proqramını tamamlamışam.",

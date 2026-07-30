@@ -105,7 +105,7 @@ function Home() {
 										className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20"
 									>
 										<Download className="w-5 h-5" />
-										CV Yüklə
+										CV-ə bax
 									</a>
 								</motion.div>
 
@@ -246,7 +246,7 @@ function Home() {
 										className="inline-flex items-center gap-2 rounded-xl border border-yellow-300/30 bg-yellow-400 px-5 py-3 text-sm font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(250,204,21,0.28)]"
 									>
 										<Download className="h-4 w-4" />
-										CV Yüklə
+										CV-ə bax
 									</a>
 									<Link
 										to="/about"

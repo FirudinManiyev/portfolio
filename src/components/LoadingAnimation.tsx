@@ -57,7 +57,7 @@ export default function LoadingAnimation({
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="mb-8 h-40 w-40 object-contain sm:h-48 sm:w-48"
+                    className="mb-2 h-40 w-40 object-contain sm:h-48 sm:w-48"
                 />
 
                 {/* Progress Bar */}
@@ -65,7 +65,7 @@ export default function LoadingAnimation({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mt-4 w-full max-w-xs"
+                    className="mt-1 w-full max-w-xs"
                 >
                     <div className="mb-2 flex justify-between text-sm text-zinc-400">
                         <span>Yüklənir...</span>

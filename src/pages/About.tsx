@@ -183,7 +183,7 @@ function About() {
                     >
                         <h3 className="text-2xl sm:text-3xl font-bold text-[#F4F4F5] mb-6 flex items-center gap-3">
                             <span className="w-2 h-8 bg-yellow-400 rounded-full"></span>
-                            CV Yüklə
+                            CV-ə baxın
                         </h3>
                         <p className="text-[#A1A1AA] mb-6">
                             Mənim CV-ni yükləyərək ətraflı məlumat əldə edə bilərsiniz.
@@ -195,7 +195,7 @@ function About() {
                             className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-all duration-300 font-medium"
                         >
                             <Download className="w-5 h-5" />
-                            CV Yüklə
+                            CV-ə bax
                         </a>
                     </motion.div>
 

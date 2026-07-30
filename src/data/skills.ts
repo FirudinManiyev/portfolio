@@ -179,6 +179,11 @@ export const skillCategories: SkillCategory[] = [
                 name: "Notepad++",
                 image: getSkillImage('notepadplusplus.jpg'),
             },
+            {
+                id: 28,
+                name: "Stitch AI",
+                image: getSkillImage('stitch_ai.webp'),
+            },
         ],
     },
     {
@@ -186,52 +191,52 @@ export const skillCategories: SkillCategory[] = [
         title: "AI & Productivity",
         skills: [
             {
-                id: 28,
+                id: 29,
                 name: "OpenAI",
                 image: getSkillImage('openai.jpg'),
             },
             {
-                id: 29,
+                id: 30,
                 name: "Claude",
                 image: getSkillImage('claude.png'),
             },
             {
-                id: 30,
+                id: 31,
                 name: "Cursor",
                 image: getSkillImage('cursor.jpg'),
             },
             {
-                id: 31,
+                id: 32,
                 name: "Replit",
                 image: getSkillImage('replit.webp'),
             },
             {
-                id: 32,
+                id: 33,
                 name: "Antigravity",
                 image: getSkillImage('antigravity.jpg'),
             },
             {
-                id: 33,
+                id: 34,
                 name: "Notion",
                 image: getSkillImage('notion.webp'),
             },
             {
-                id: 34,
+                id: 35,
                 name: "ClickUp",
                 image: getSkillImage('clickup.png'),
             },
             {
-                id: 35,
+                id: 36,
                 name: "Slack",
                 image: getSkillImage('slack.png'),
             },
             {
-                id: 36,
+                id: 37,
                 name: "Codex",
                 image: getSkillImage('codex.png'),
             },
             {
-                id: 37,
+                id: 38,
                 name: "Windsurf",
                 image: getSkillImage('windsurf.jpg'),
             },
