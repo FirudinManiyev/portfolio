@@ -62,17 +62,29 @@ function HomeProjectsSection() {
 										<p className="text-sm leading-7 text-neutral-400 sm:text-[15px]">{project.description}</p>
 									</div>
 
-									<div className="mt-auto flex items-end justify-between gap-3 pt-6">
+								<div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-6">
+									<div className="flex flex-wrap items-center gap-3">
 										<a
 											href={project.link}
 											target="_blank"
 											rel="noopener noreferrer"
 											className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
 										>
-												<FaGithub className="h-4 w-4" />
+											<FaGithub className="h-4 w-4" />
 											Kod
 										</a>
-										<p className="text-xs font-medium uppercase tracking-[0.18em] text-yellow-300/90">SEÇİLMİŞ LAYİHƏ</p>
+										{project.liveDemo && (
+												<a
+													href={project.liveDemo}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2.5 text-sm font-semibold text-yellow-300 transition duration-300 hover:-translate-y-0.5 hover:bg-yellow-300/20 hover:text-white"
+												>
+													Canlı
+													<ArrowRight className="h-4 w-4" />
+												</a>
+											)}
+									</div>
 									</div>
 								</div>
 							</motion.article>

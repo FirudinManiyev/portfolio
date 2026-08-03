@@ -100,18 +100,35 @@ function Projects() {
                                     {project.description}
                                 </motion.p>
 
-                                <motion.a
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.2 }}
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 font-medium text-sm"
-                                >
-                                    GitHub
-                                    <ExternalLink className="w-4 h-4" />
-                                </motion.a>
+                                <div className="flex flex-wrap items-center gap-3">
+                                    <motion.a
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.2 }}
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 font-medium text-sm"
+                                    >
+                                        GitHub
+                                        <ExternalLink className="w-4 h-4" />
+                                    </motion.a>
+
+                                    {project.liveDemo && (
+                                        <motion.a
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.25 }}
+                                            href={project.liveDemo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition duration-300 hover:border-yellow-300 hover:bg-white/10 hover:text-white"
+                                        >
+                                            Canlı
+                                            <ExternalLink className="w-4 h-4" />
+                                        </motion.a>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     ))}

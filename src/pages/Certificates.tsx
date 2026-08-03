@@ -5,6 +5,7 @@ import { X, ZoomIn } from 'lucide-react';
 
 function Certificates() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [selectedCategory, setSelectedCategory] = useState<'Hamısı' | 'IT' | 'Şəxsi İnkişaf' | 'Digər'>('Hamısı');
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -15,6 +16,18 @@ function Certificates() {
             },
         },
     };
+
+    const categories: Array<'Hamısı' | 'IT' | 'Şəxsi İnkişaf' | 'Digər'> = [
+        'Hamısı',
+        'IT',
+        'Şəxsi İnkişaf',
+        'Digər',
+    ];
+
+    const filteredCertificates =
+        selectedCategory === 'Hamısı'
+            ? certificates
+            : certificates.filter((cert) => cert.category === selectedCategory);
 
     const cardVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -70,13 +83,30 @@ function Certificates() {
                     </motion.p>
                 </div>
 
+                <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
+                    {categories.map((category) => (
+                        <button
+                            key={category}
+                            type="button"
+                            onClick={() => setSelectedCategory(category)}
+                            className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
+                                selectedCategory === category
+                                    ? 'border-yellow-300 bg-yellow-300/15 text-yellow-300'
+                                    : 'border-white/10 bg-white/5 text-white/80 hover:border-yellow-300 hover:text-white'
+                            }`}
+                        >
+                            {category}
+                        </button>
+                    ))}
+                </div>
+
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
-                    {certificates.map((cert) => (
+                    {filteredCertificates.map((cert) => (
                         <motion.div
                             key={cert.id}
                             variants={cardVariants}

@@ -5,6 +5,7 @@ export interface Project {
     image: string;
     date: string;
     link: string;
+    liveDemo?: string;
 }
 
 const projectImageModules = import.meta.glob<string>('../assets/images/projects/*', {
@@ -27,6 +28,7 @@ export const projects: Project[] = [
         image: getProjectImage('worldtelecom.png'),
         date: "2025",
         link: "https://github.com/FirudinManiyev/worldtelecom",
+        liveDemo: "https://worldtelecomclone.vercel.app",
     },
     {
         id: 2,
@@ -39,21 +41,23 @@ export const projects: Project[] = [
     },
     {
         id: 3,
-        title: "QR Kod Generator",
+        title: "ManiQR Studio",
         description:
             "İstifadəçilərin istədikləri məlumatları daxil edərək QR kodlar yaratmalarına imkan verən web tətbiqi.",
         image: getProjectImage('qrkodgenerator.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/qr_kod_app",
+        liveDemo: "https://qr-kod-app-firudin.vercel.app",
     },
     {
         id: 4,
-        title: "Image Converter",
+        title: "ManiConvert",
         description:
-            "Bu web tətbiqi istifadəçilərə şəkilləri müxtəlif formatlara çevirməyə imkan verir. İstifadəçilər şəkilləri yükləyərək istədikləri formatı seçə və çevrilmiş şəkli yükləyə bilərlər.",
+            "Image Convertor olan bu web tətbiqi istifadəçilərə müxtəlif fayl formatlarını çevirməyə imkan verir. İstifadəçilər şəkilləri, sənədləri və digər faylları fərqli formatlara çevirə bilərlər.",
         image: getProjectImage('imageconverter.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/image_converter_firudin",
+        liveDemo: "https://image-converter-firudin.vercel.app",
     },
     {
         id: 5,
@@ -63,6 +67,7 @@ export const projects: Project[] = [
         image: getProjectImage('masterschool.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/masterschool",
+        liveDemo: "https://masterschoolfirudin.vercel.app",
     },
     {
         id: 6,
@@ -81,6 +86,7 @@ export const projects: Project[] = [
         image: getProjectImage('portfolio.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/portfolio",
+        liveDemo: "https://firudinmaniyev.vercel.app",
     },
     {
         id: 8,
@@ -99,5 +105,26 @@ export const projects: Project[] = [
         image: getProjectImage('parkcinema.png'),
         date: "2025",
         link: "https://github.com/FirudinManiyev/park_cinema",
+        liveDemo: "https://park-cinema-seven.vercel.app",
+    },
+    {
+        id: 10,
+        title: "ManiPalette",
+        description:
+            "Bu layihə gradient generator tətbiqidir və react ilə hazırlanmışdır. İstifadəçilərə müxtəlif gradientlər yaratmaq imkanı verir.",
+        image: getProjectImage('manipalette.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/gradient_generator",
+        liveDemo: "https://manipalette-gradient.vercel.app",
+    },
+    {
+        id: 11,
+        title: "ManiWheel",
+        description:
+            "Bu layihə çarx fırlatmaq üçün istifadə edilən bir web tətbiqidir. İstifadəçilər çarxı fırladaraq müxtəlif nəticələr əldə edə bilərlər.",
+        image: getProjectImage('maniwheel.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/mani_wheel",
+        liveDemo: "https://maniwheel.vercel.app/",
     },
 ];

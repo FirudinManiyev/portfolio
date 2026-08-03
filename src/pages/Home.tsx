@@ -19,8 +19,8 @@ const aboutHighlights = [
 		icon: BriefcaseBusiness,
 	},
 	{
-		label: 'Təcrübə ili',
-		value: '2+',
+		label: 'Təcrübəm',
+		value: '2+ il',
 		icon: GraduationCap,
 	},
 	{

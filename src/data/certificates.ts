@@ -1,3 +1,8 @@
+export type CertificateCategory =
+    | "IT"
+    | "Şəxsi İnkişaf"
+    | "Digər";
+
 export interface Certificate {
     id: number;
     title: string;
@@ -5,6 +10,7 @@ export interface Certificate {
     date: string;
     image: string;
     description: string;
+    category: CertificateCategory;
 }
 
 import azconHackathonImage from "../assets/images/sertifikatlar/azcon_holding_hackathon.png";
@@ -26,6 +32,9 @@ import oracleSqlImage from "../assets/images/sertifikatlar/oracle_sql_dataprime.
 import phpConferenceImage from "../assets/images/sertifikatlar/php_konf.jpg";
 import seherMobilliyiImage from "../assets/images/sertifikatlar/seher_mobilliyi_telim.jpg";
 import skillUpImage from "../assets/images/sertifikatlar/skill_up_secret_academy.png";
+import dusuncedeyisİmage from "../assets/images/sertifikatlar/dusunceni_heyatini_deyis.jpeg";
+import esasheyatImage from "../assets/images/sertifikatlar/esas_heyat_bacariqlari.jpeg";
+import sexsibacariqImage from "../assets/images/sertifikatlar/sexsi_bacariqlarini_kesfet.jpeg";
 
 export const certificates: Certificate[] = [
     {
@@ -34,6 +43,7 @@ export const certificates: Certificate[] = [
         issuer: "Div Academy",
         date: "14-07-2025",
         image: divAcademyDiplomaImage,
+        category: "IT",
         description:
             "Frontend Development proqramını uğurla tamamlayaraq HTML, CSS, JavaScript, React və müasir veb texnologiyaları üzrə biliklər əldə etmişəm.",
     },
@@ -43,6 +53,7 @@ export const certificates: Certificate[] = [
         issuer: "Azcon Holding & Holberton School",
         date: "27-04-2026",
         image: azconHackathonImage,
+        category: "IT",
         description:
             "AZCON Future Tech Hackathon tədbirində iştirak edərək komanda işi, innovativ düşüncə və problem həll etmə bacarıqlarımı inkişaf etdirmişəm.",
     },
@@ -52,6 +63,7 @@ export const certificates: Certificate[] = [
         issuer: "Code Academy",
         date: "19-05-2026",
         image: codeAcademyDiplomaImage,
+        category: "IT",
         description:
             "Software Development proqramını uğurla tamamlayaraq proqramlaşdırma və proqram təminatının hazırlanması üzrə praktiki biliklər qazanmışam.",
     },
@@ -61,6 +73,7 @@ export const certificates: Certificate[] = [
         issuer: "CyberBridge",
         date: "10-12-2025",
         image: cyberBridgeImage,
+        category: "IT",
         description:
             "Kibertəhlükəsizlik sahəsində əsas anlayışlar, təhlükəsizlik prinsipləri və praktiki yanaşmalar üzrə təlim proqramını tamamlamışam.",
     },
@@ -70,6 +83,7 @@ export const certificates: Certificate[] = [
         issuer: "Code Academy",
         date: "16-05-2026",
         image: cffHackathonImage,
+        category: "IT",
         description:
             "Hackathon çərçivəsində komanda ilə birlikdə layihə hazırlayaraq texniki və analitik bacarıqlarımı inkişaf etdirmişəm.",
     },
@@ -79,6 +93,7 @@ export const certificates: Certificate[] = [
         issuer: "AWS Training",
         date: "17-07-2024",
         image: awsTrainingImage,
+        category: "IT",
         description:
             "Bulud təhlükəsizliyi, AWS xidmətləri və təhlükəsizlik yanaşmaları üzrə əsas biliklər əldə etmişəm.",
     },
@@ -88,6 +103,7 @@ export const certificates: Certificate[] = [
         issuer: "DizaynX",
         date: "01-03-2025",
         image: dizaynxSeminarImage,
+        category: "Digər",
         description:
             "Dizayn, istifadəçi təcrübəsi və müasir rəqəmsal məhsul yanaşmaları ilə bağlı seminarda iştirak etmişəm.",
     },
@@ -97,6 +113,7 @@ export const certificates: Certificate[] = [
         issuer: "Code Academy",
         date: "19-05-2026",
         image: codeAcademyCertificateImage,
+        category: "IT",
         description:
             "Software Development proqramı üzrə əldə etdiyim bilik və bacarıqları təsdiq edən sertifikat.",
     },
@@ -106,6 +123,7 @@ export const certificates: Certificate[] = [
         issuer: "DataPrime Academy",
         date: "10-09-2025",
         image: excelDataPrimeImage,
+        category: "IT",
         description:
             "Microsoft Excel üzrə praktiki təlim proqramında iştirak edərək məlumatların emalı və analizi bacarıqlarımı inkişaf etdirmişəm.",
     },
@@ -115,6 +133,7 @@ export const certificates: Certificate[] = [
         issuer: "Holberton School Azerbaijan",
         date: "24-01-2026",
         image: holbertonHackathonImage,
+        category: "IT",
         description:
             "Holberton School tərəfindən təşkil olunan hackathon tədbirində iştirak etmişəm.",
     },
@@ -124,6 +143,7 @@ export const certificates: Certificate[] = [
         issuer: "GSMF",
         date: "19-04-2025",
         image: gsmfImage,
+        category: "Digər",
         description:
             "Peşəkar inkişaf və texnologiya yönümlü proqram çərçivəsində müxtəlif fəaliyyətlərdə iştirak etmişəm.",
     },
@@ -133,6 +153,7 @@ export const certificates: Certificate[] = [
         issuer: "Udemy",
         date: "04-07-2025",
         image: frontendUdemyImage,
+        category: "IT",
         description:
             "Frontend Development kursunu tamamlayaraq HTML, CSS, JavaScript və müasir frontend texnologiyalarını öyrənmişəm.",
     },
@@ -142,6 +163,7 @@ export const certificates: Certificate[] = [
         issuer: "Udemy",
         date: "26-08-2025",
         image: gitUdemyImage,
+        category: "IT",
         description:
             "Git və GitHub üzrə versiya nəzarəti, branch idarəetməsi və komanda işi prinsiplərini öyrənmişəm.",
     },
@@ -151,6 +173,7 @@ export const certificates: Certificate[] = [
         issuer: "Uğur IT Academy",
         date: "07-09-2025",
         image: itEssentialsImage,
+        category: "IT",
         description:
             "Kompüter avadanlıqları, əməliyyat sistemləri və İT əsasları üzrə təlim proqramını tamamlamışam.",
     },
@@ -160,6 +183,7 @@ export const certificates: Certificate[] = [
         issuer: "CodeKloud Academy",
         date: "22-12-2024",
         image: codeKloudWebinarImage,
+        category: "IT",
         description:
             "İnformasiya texnologiyaları sahəsində keçirilən vebinarda iştirak etmişəm.",
     },
@@ -169,6 +193,7 @@ export const certificates: Certificate[] = [
         issuer: "DataPrime Academy",
         date: "12-02-2025",
         image: oracleSqlImage,
+        category: "IT",
         description:
             "Oracle SQL üzrə verilənlər bazası sorğuları, məlumatların idarə olunması və optimizasiya mövzularını öyrənmişəm.",
     },
@@ -178,6 +203,7 @@ export const certificates: Certificate[] = [
         issuer: "PHP Azerbaijan",
         date: "26-10-2025",
         image: phpConferenceImage,
+        category: "IT",
         description:
             "PHP və backend texnologiyaları üzrə keçirilən konfransda iştirak etmişəm.",
     },
@@ -187,6 +213,7 @@ export const certificates: Certificate[] = [
         issuer: "Təlim Proqramı",
         date: "15-08-2024",
         image: seherMobilliyiImage,
+        category: "Digər",
         description:
             "Şəhər mobilliyi və dayanıqlı inkişaf mövzularında keçirilən təlim proqramında iştirak etmişəm.",
     },
@@ -196,7 +223,38 @@ export const certificates: Certificate[] = [
         issuer: "Secret Academy",
         date: "24-07-2024",
         image: skillUpImage,
+        category: "Şəxsi İnkişaf",
         description:
             "Peşəkar və şəxsi inkişaf bacarıqlarının artırılmasına yönəlmiş Skill Up proqramını tamamlamışam.",
+    },
+    {
+        id: 20,
+        title: "Düşüncəni dəyiş, Həyatını dəyiş",
+        issuer: "CAT and YUVA Center",
+        date: "18-08-2019",
+        image: dusuncedeyisİmage,
+        category: "Şəxsi İnkişaf",
+        description:
+            "Düşüncə tərzini dəyişərək şəxsi və peşəkar inkişafı təşviq edən təlim proqramında iştirak etmişəm.",
+    },
+    {
+        id: 21,
+        title: "Əsas Həyat Bacarıqları",
+        issuer: "UNICEF və XGE",
+        date: "30-09-2022",
+        image: esasheyatImage,
+        category: "Şəxsi İnkişaf",
+        description:
+            "Əsas həyat bacarıqları üzrə təlim proqramını tamamlayaraq şəxsi inkişaf və sosial bacarıqlarımı artırmışam.",
+    },
+    {
+        id: 22,
+        title: "Şəxsi Bacarıqlarını Kəşf Et",
+        issuer: "AIESEC və XGE",
+        date: "20-08-2018",
+        image: sexsibacariqImage,
+        category: "Şəxsi İnkişaf",
+        description:
+            "Şəxsi bacarıqların kəşfi və inkişafı üzrə təlim proqramında iştirak edərək öz potensialımı daha yaxşı anlamışam.",
     },
 ];

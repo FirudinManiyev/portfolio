@@ -71,8 +71,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
     };
 
     return (
-        <section id="contact" className={`relative ${className}`}>
-            <div className="container relative z-10 mx-auto px-6">
+        <section id="contact" className={`relative ${className} w-full`}>
+            <div className="container relative z-10 mx-auto px-6 sm:px-8 lg:px-10">
                 <div className="mx-auto max-w-6xl mb-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                     );
 
                                     return isExternalLink ? (
-                                        <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
+                                        <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="block">
                                             {content}
                                         </a>
                                     ) : (
@@ -234,7 +234,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-yellow-300/25 bg-gradient-to-r from-yellow-300 to-amber-400 px-6 py-3 text-sm font-semibold text-black shadow-[0_16px_34px_rgba(250,204,21,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_42px_rgba(250,204,21,0.28)] disabled:cursor-not-allowed disabled:opacity-70"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-yellow-300/25 bg-gradient-to-r from-yellow-300 to-amber-400 px-6 py-3 text-sm font-semibold text-black shadow-[0_16px_34px_rgba(250,204,21,0.2)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_42px_rgba(250,204,21,0.28)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
                                 >
                                     <span>{isSubmitting ? 'Göndərilir...' : 'Göndər'}</span>
                                     <Send className="h-4 w-4" />

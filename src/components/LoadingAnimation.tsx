@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import fmLogo from "../assets/fm_logo.png";
+import fmLogo from "../assets/modern_fm_logo2.png";
 
 interface LoadingAnimationProps {
     onComplete: () => void;
