@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa6';
 
 export default function WhatsAppButton() {
   const phoneNumber = '+994507693654';
@@ -26,22 +26,17 @@ export default function WhatsAppButton() {
       <motion.div
         whileHover={{ rotate: 15, scale: 1.15 }}
         transition={{ duration: 0.25 }}
+        className="relative z-10"
       >
         <FaWhatsapp className="h-7 w-7" />
       </motion.div>
 
       {/* Hidden Text */}
-      <motion.span
-        initial={{ width: 0, opacity: 0 }}
-        whileHover={{
-          width: 'auto',
-          opacity: 1,
-        }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden whitespace-nowrap font-medium"
+      <span
+        className="relative z-10 max-w-0 overflow-hidden whitespace-nowrap font-medium opacity-0 transition-all duration-300 group-hover:max-w-28 group-hover:opacity-100"
       >
         <span className="ml-3">WhatsApp</span>
-      </motion.span>
+      </span>
 
       {/* Glow */}
       <div className="absolute inset-0 rounded-full opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-60 bg-green-400" />
@@ -49,18 +44,6 @@ export default function WhatsAppButton() {
       {/* Shine */}
       <span className="absolute -left-16 top-0 h-full w-12 -skew-x-12 bg-white/30 transition-all duration-700 group-hover:left-[130%]" />
 
-      {/* Pulse */}
-      <motion.span
-        className="absolute inset-0 rounded-full bg-green-500"
-        animate={{
-          scale: [1, 1.7],
-          opacity: [0.4, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
-      />
     </motion.a>
   );
 }

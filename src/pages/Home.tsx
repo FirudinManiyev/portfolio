@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, BriefcaseBusiness, GraduationCap, Mail, Download, Sparkles, ZoomIn } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles, ZoomIn } from 'lucide-react';
+import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
-import Lanyard from '../components/Lanyard';
 import ContactSection from '../components/ContactSection';
 import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
+import ImageLightbox from '../components/ImageLightbox';
 import { about } from '../data/about';
 import { certificates } from '../data/certificates';
 import { education } from '../data/education';
+import { useMediaQuery } from '../hooks/useMediaQuery';
+
+const Lanyard = lazy(() => import('../components/Lanyard'));
 
 const aboutHighlights = [
 	{
@@ -37,6 +40,7 @@ const aboutHighlights = [
 
 function Home() {
 	const [selectedCertificateImage, setSelectedCertificateImage] = useState<string | null>(null);
+	const showLanyard = useMediaQuery('(min-width: 640px)');
 
 	return (
 		<div className="space-y-4 sm:space-y-6 lg:space-y-8">
@@ -131,7 +135,7 @@ function Home() {
 										className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 group"
 										aria-label="LinkedIn"
 									>
-										<FaLinkedin className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
+										<FaLinkedinIn className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
 									</a>
 									<a
 										href="https://instagram.com/firudin.coder"
@@ -154,14 +158,24 @@ function Home() {
 						</div>
 
 						{/* Right side - Lanyard 3D Card */}
-						<div className="order-2 lg:order-2 hidden sm:block">
+						<div className="order-2 hidden sm:block lg:order-2">
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.3 }}
 								className="relative h-[350px] sm:h-[450px] lg:h-[680px]"
 							>
-								<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
+								{showLanyard ? (
+									<Suspense
+										fallback={(
+											<div aria-hidden="true" className="flex h-full items-center justify-center">
+												<div className="h-44 w-32 animate-pulse rounded-[1.5rem] border border-yellow-300/15 bg-yellow-300/5 shadow-[0_0_70px_rgba(250,204,21,0.08)]" />
+											</div>
+										)}
+									>
+										<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
+									</Suspense>
+								) : null}
 							</motion.div>
 						</div>
 					</div>
@@ -304,6 +318,8 @@ function Home() {
 											<img
 												src={item.image}
 												alt={item.institution}
+												loading="lazy"
+												decoding="async"
 												className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-105"
 											/>
 										</div>
@@ -378,6 +394,8 @@ function Home() {
 											<img
 												src={item.image}
 												alt={item.title}
+												loading="lazy"
+												decoding="async"
 												className="h-full w-full object-cover object-center cursor-pointer transition duration-500 group-hover:scale-110"
 											/>
 											<div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -415,30 +433,11 @@ function Home() {
 
 			<ContactSection />
 
-			{selectedCertificateImage ? (
-				<div
-					className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4 backdrop-blur-md"
-					onClick={() => setSelectedCertificateImage(null)}
-				>
-					<div
-						className="relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-950 shadow-[0_30px_90px_rgba(0,0,0,0.55)]"
-						onClick={(event) => event.stopPropagation()}
-					>
-						<button
-							type="button"
-							onClick={() => setSelectedCertificateImage(null)}
-							className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-sm text-white transition hover:bg-black/70"
-						>
-							Bağla
-						</button>
-						<img
-							src={selectedCertificateImage}
-							alt="Seçilmiş sertifikat"
-							className="max-h-[90vh] w-full object-contain"
-						/>
-					</div>
-				</div>
-			) : null}
+			<ImageLightbox
+				src={selectedCertificateImage}
+				alt="Seçilmiş sertifikat"
+				onClose={() => setSelectedCertificateImage(null)}
+			/>
 		</div>
 	);
 }

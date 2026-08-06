@@ -10,7 +10,7 @@ export default function ScrollToTop() {
       setIsVisible(window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
@@ -52,18 +52,6 @@ export default function ScrollToTop() {
           {/* Shine */}
           <span className="absolute -left-16 top-0 h-full w-12 -skew-x-12 bg-white/40 transition-all duration-700 group-hover:left-[140%]" />
 
-          {/* Pulse */}
-          <motion.span
-            className="absolute inset-0 rounded-full bg-yellow-400"
-            animate={{
-              scale: [1, 1.7],
-              opacity: [0.35, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          />
         </motion.button>
       )}
     </AnimatePresence>

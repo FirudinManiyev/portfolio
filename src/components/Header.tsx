@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6"
-import { Link, NavLink, useLocation } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import fmLogo from "../assets/fm_logo.png"
 
 const navLinks = [
@@ -23,11 +23,6 @@ const socialLinks = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const location = useLocation()
-
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [location.pathname])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +33,17 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false)
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isMenuOpen])
 
   return (
     <motion.header
@@ -62,10 +68,12 @@ const Header = () => {
       >
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <Link to="/" className="group block">
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className="group block" aria-label="Ana səhifə">
               <img
                 src={fmLogo}
                 alt="FM logo"
+                width={64}
+                height={64}
                 className="h-16 w-16 object-contain drop-shadow-[0_0_20px_rgba(250,204,21,0.35)] transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]"
               />
             </Link>
@@ -95,6 +103,7 @@ const Header = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
+                end={link.to === "/"}
                 className={({ isActive }) =>
                   [
                     "rounded-full px-3.5 py-2 text-sm transition duration-300",
@@ -121,7 +130,9 @@ const Header = () => {
 
           <button
             type="button"
-            aria-label="Menyunu aç"
+            aria-label={isMenuOpen ? "Menyunu bağla" : "Menyunu aç"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="inline-flex items-center justify-center rounded-xl border border-yellow-300/35 bg-black/30 p-2.5 text-yellow-200 transition duration-300 hover:scale-105 hover:bg-yellow-400/10 hover:shadow-[0_0_16px_rgba(250,204,21,0.35)] lg:hidden"
           >
@@ -136,6 +147,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.24, ease: "easeOut" }}
+              id="mobile-navigation"
               className="mt-4 rounded-2xl border border-yellow-300/25 bg-neutral-950/90 p-4 shadow-[0_20px_35px_rgba(0,0,0,0.45)] lg:hidden"
             >
               <nav className="flex flex-col gap-2">
@@ -143,6 +155,8 @@ const Header = () => {
                   <NavLink
                     key={link.to}
                     to={link.to}
+                    end={link.to === "/"}
+                    onClick={() => setIsMenuOpen(false)}
                     className={({ isActive }) =>
                       [
                         "rounded-xl px-3 py-2.5 text-sm transition",
@@ -158,6 +172,7 @@ const Header = () => {
 
                 <NavLink
                   to="/contact"
+                  onClick={() => setIsMenuOpen(false)}
                   className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl border border-yellow-200/90 bg-linear-to-r from-yellow-100 via-yellow-300 to-yellow-500 px-4 py-3 text-sm font-semibold text-black shadow-[0_10px_24px_rgba(250,204,21,0.36)]"
                 >
                   Əlaqə

@@ -8,7 +8,7 @@ import {
     Phone,
     Send,
 } from 'lucide-react';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { contacts } from '../data/contact';
 import { sendContactEmail } from '../services/emailjs';
 import toast from 'react-hot-toast';
@@ -24,7 +24,7 @@ const contactIconMap: Record<string, ComponentType<{ className?: string }>> = {
     Email: Mail,
     Location: MapPin,
     GitHub: FaGithub,
-    LinkedIn: FaLinkedin,
+    LinkedIn: FaLinkedinIn,
     Instagram: FaInstagram,
 };
 
@@ -62,9 +62,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
             await sendContactEmail(formData);
             toast.success('Mesajınız göndərildi.');
             setFormData(initialFormState);
-        } catch (error) {
-            const message = error instanceof Error ? error.message : 'Mesaj göndərilmədi.';
-            toast.error(message);
+        } catch {
+            toast.error('Mesaj göndərilmədi. Zəhmət olmasa yenidən cəhd edin.');
         } finally {
             setIsSubmitting(false);
         }
@@ -119,7 +118,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                             <div className="mt-6 grid gap-4 sm:grid-cols-2">
                                 {contacts.map((item) => {
                                     const Icon = getContactIcon(item.label);
-                                    const isExternalLink = item.href !== '#';
+                                    const hasLink = item.href !== '#';
+                                    const opensNewTab = item.href.startsWith('http');
 
                                     const content = (
                                         <div className="flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-black/25 p-4 transition duration-300 hover:border-yellow-300/25 hover:bg-black/35">
@@ -138,8 +138,14 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                         </div>
                                     );
 
-                                    return isExternalLink ? (
-                                        <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="block">
+                                    return hasLink ? (
+                                        <a
+                                            key={item.label}
+                                            href={item.href}
+                                            target={opensNewTab ? '_blank' : undefined}
+                                            rel={opensNewTab ? 'noopener noreferrer' : undefined}
+                                            className="block"
+                                        >
                                             {content}
                                         </a>
                                     ) : (
@@ -180,6 +186,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
+                                            autoComplete="name"
                                             className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                             placeholder="Adınız"
                                         />
@@ -193,6 +200,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
+                                            autoComplete="email"
                                             className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                             placeholder="email@example.com"
                                         />
@@ -207,6 +215,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
+                                        autoComplete="off"
                                         className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                         placeholder="Layihə və ya əməkdaşlıq mövzusu"
                                     />
@@ -220,7 +229,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                         onChange={handleChange}
                                         required
                                         rows={6}
-                                        className="rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
+                                        className="resize-y rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                         placeholder="Mesajınızı yazın..."
                                     />
                                 </label>
@@ -228,7 +237,7 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
 
                             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                                 <p className="text-xs leading-6 text-neutral-400 sm:max-w-sm">
-                                    Mesaj göndər ən qısa zamanda cavablandırım
+                                    Mesajınızı göndərin, ən qısa zamanda cavablandırım.
                                 </p>
 
                                 <button

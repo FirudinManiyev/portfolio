@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { BrowserRouter } from "react-router-dom"
 import { Toaster } from 'react-hot-toast'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
 import AppRoutes from "./routes/AppRoutes"
 import PortfolioBackground from "./components/PortfolioBackground"
 import ScrollToTop from "./components/ScrollToTop"
@@ -10,35 +10,41 @@ import LoadingAnimation from "./components/LoadingAnimation"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
+  const finishLoading = useCallback(() => setIsLoading(false), [])
 
   return (
-    <div className="relative isolate min-h-screen bg-neutral-950 text-white">
-      <PortfolioBackground />
+    <MotionConfig reducedMotion="user">
+      <div
+        aria-busy={isLoading}
+        className="relative isolate min-h-screen bg-neutral-950 text-white"
+      >
+        <PortfolioBackground />
 
-      <AnimatePresence>
-        {isLoading && (
-          <LoadingAnimation onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
+        <AnimatePresence mode="wait">
+          {isLoading && (
+            <LoadingAnimation onComplete={finishLoading} />
+          )}
+        </AnimatePresence>
 
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+        <div inert={isLoading ? true : undefined} aria-hidden={isLoading}>
+          <BrowserRouter>
+            <AppRoutes />
+            <ScrollToTop />
+          </BrowserRouter>
 
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: '#111827',
-            color: '#fff',
-            border: '1px solid rgba(255,255,255,0.12)',
-          },
-        }}
-      />
+          <WhatsAppButton />
+        </div>
 
-      <ScrollToTop />
-      <WhatsAppButton />
-    </div>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            className: '!border !border-white/10 !bg-neutral-900 !text-white shadow-2xl',
+            duration: 4000,
+          }}
+        />
+
+      </div>
+    </MotionConfig>
   )
 }
 

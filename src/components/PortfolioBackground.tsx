@@ -2,7 +2,7 @@ import ShapeGrid from './ShapeGrid'
 
 const PortfolioBackground = () => {
   return (
-    <div aria-hidden="true" className="pointer-events-auto fixed inset-0 z-0 overflow-hidden">
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <ShapeGrid
         speed={0.7}
         squareSize={40}

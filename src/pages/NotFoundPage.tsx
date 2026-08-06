@@ -10,16 +10,7 @@ const NotFoundPage = () => {
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <div className="relative mb-8">
-          <div
-            className="text-8xl font-black text-white sm:text-9xl"
-            style={{
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundImage: "linear-gradient(135deg, #f0f9ff 0%, #fef08a 50%, #fef08a 100%)",
-              textShadow: "0 0 30px rgba(250, 204, 21, 0.3)",
-              filter: "drop-shadow(0 0 20px rgba(250, 204, 21, 0.2))",
-            }}
-          >
+          <div className="bg-linear-to-br from-sky-50 via-yellow-200 to-yellow-200 bg-clip-text text-8xl font-black text-transparent drop-shadow-[0_0_20px_rgba(250,204,21,0.22)] sm:text-9xl">
             404
           </div>
           <div className="absolute inset-0 -z-10 h-full w-full rounded-lg bg-yellow-400/10 blur-2xl" />
@@ -30,7 +21,7 @@ const NotFoundPage = () => {
         </h1>
 
         <p className="mb-2 text-sm font-medium uppercase tracking-widest text-yellow-400">
-          Hövsələ EDİN
+          Ünvanı yoxlayın
         </p>
 
         <p className="mx-auto mb-12 max-w-lg text-base text-neutral-400 sm:text-lg">

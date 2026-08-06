@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { about } from '../data/about';
 import { MapPin, Mail, Download, Code, Zap, Target, Award } from 'lucide-react';
+import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import profileImage from '../assets/firudin_komphoto.jpg';
 import ContactSection from '../components/ContactSection';
 
@@ -110,6 +111,7 @@ function About() {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
                                 >
+                                    <FaGithub className="h-4 w-4" />
                                     GitHub
                                 </a>
                                 <a
@@ -118,6 +120,7 @@ function About() {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
                                 >
+                                    <FaLinkedinIn className="h-4 w-4" />
                                     LinkedIn
                                 </a>
                                 <a
@@ -126,6 +129,7 @@ function About() {
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
                                 >
+                                    <FaInstagram className="h-4 w-4" />
                                     Instagram
                                 </a>
                             </motion.div>

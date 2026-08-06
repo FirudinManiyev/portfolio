@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { certificates } from '../data/certificates';
-import { X, ZoomIn } from 'lucide-react';
+import { ZoomIn } from 'lucide-react';
+import ImageLightbox from '../components/ImageLightbox';
 
 function Certificates() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -36,22 +37,6 @@ function Certificates() {
             y: 0,
             transition: {
                 duration: 0.5,
-            },
-        },
-    };
-
-    const modalVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                duration: 0.3,
-            },
-        },
-        exit: {
-            opacity: 0,
-            transition: {
-                duration: 0.3,
             },
         },
     };
@@ -107,11 +92,13 @@ function Certificates() {
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                     {filteredCertificates.map((cert) => (
-                        <motion.div
+                        <motion.button
                             key={cert.id}
+                            type="button"
                             variants={cardVariants}
                             whileHover={{ y: -8 }}
-                            className="bg-[#18181B]/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#27272A] hover:border-yellow-400/50 transition-all duration-300 group cursor-pointer"
+                            aria-label={`${cert.title} sertifikatını tam ölçüdə aç`}
+                            className="group overflow-hidden rounded-2xl border border-[#27272A] bg-[#18181B]/50 text-left backdrop-blur-sm transition-all duration-300 hover:border-yellow-400/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300"
                             onClick={() => setSelectedImage(cert.image)}
                         >
                             <div className="relative overflow-hidden aspect-[4/3]">
@@ -165,7 +152,7 @@ function Certificates() {
                                     {cert.description}
                                 </motion.p>
                             </div>
-                        </motion.div>
+                        </motion.button>
                     ))}
                 </motion.div>
 
@@ -181,46 +168,11 @@ function Certificates() {
                 </motion.div>
             </motion.div>
 
-            <AnimatePresence>
-                {selectedImage && (
-                    <motion.div
-                        variants={modalVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
-                        onClick={() => setSelectedImage(null)}
-                    >
-                        <motion.button
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedImage(null);
-                            }}
-                            className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-[#18181B] hover:bg-yellow-400 hover:text-black text-[#F4F4F5] p-3 rounded-full transition-all duration-300 z-10"
-                        >
-                            <X className="w-6 h-6" />
-                        </motion.button>
-
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ duration: 0.3 }}
-                            className="max-w-6xl max-h-[90vh] w-full flex items-center justify-center"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <img
-                                src={selectedImage}
-                                alt="Sertifikat"
-                                className="max-w-full max-h-[90vh] object-contain rounded-lg"
-                            />
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <ImageLightbox
+                src={selectedImage}
+                alt="Seçilmiş sertifikat"
+                onClose={() => setSelectedImage(null)}
+            />
         </div>
     );
 }

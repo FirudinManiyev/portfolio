@@ -63,7 +63,7 @@ export const projects: Project[] = [
         id: 5,
         title: "MasterSchool redesign",
         description:
-        "Bu layihə MasterSchool.az üçün hazırlanmış tək səhifəli landing page saytıdır. Sayt modern dizayn prinsiplərinə uyğun hazırlanıb və tam responsivedir.",
+            "Bu layihə MasterSchool.az üçün hazırlanmış tək səhifəli landing page saytıdır. Sayt modern dizayn prinsiplərinə uyğun hazırlanıb və tam responsivedir.",
         image: getProjectImage('masterschool.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/masterschool",
@@ -71,18 +71,19 @@ export const projects: Project[] = [
     },
     {
         id: 6,
-        title: "CampusConnect Hackaton",
+        title: "ParkCinema clone",
         description:
-        "CampusConnect Hackaton layihəsi. Bu layihə Code Academy tərəfindən təşkil olunmuş müəyyən bir məqsəd üçün tələbələr tərəfindən hazırlanan bir layihədir.",
-        image: getProjectImage('smartcampus.png'),
-        date: "2026",
-        link: "https://github.com/JavadShukurlu/CampusConnectHackaton",
+            "ParkCinema saytının clone versiyası. Div Academy tərəfindən verilən aylıq imtahan işidir.",
+        image: getProjectImage('parkcinema.png'),
+        date: "2025",
+        link: "https://github.com/FirudinManiyev/park_cinema",
+        liveDemo: "https://park-cinema-seven.vercel.app",
     },
     {
         id: 7,
         title: "Firudin Maniyev portfolio",
         description:
-        "Mənim portfolyo saytım. Bu layihə mən tərəfindən hazırlanmışdır və bu sayt mənim haqqımda məlumatları və layihələrimi göstərir.",
+            "Mənim portfolyo saytım. Bu layihə mən tərəfindən hazırlanmışdır və bu sayt mənim haqqımda məlumatları və layihələrimi göstərir.",
         image: getProjectImage('portfolio.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/portfolio",
@@ -92,20 +93,19 @@ export const projects: Project[] = [
         id: 8,
         title: "Manitation app",
         description:
-        "Bu mobil app react native ilə hazırlanmışdır və dəvətnamələri düzəldib paylaşmaq üçün istifadə edilən bir tətbiqdır.",
+            "Bu mobil app react native ilə hazırlanmışdır və dəvətnamələri düzəldib paylaşmaq üçün istifadə edilən bir tətbiqdır.",
         image: getProjectImage('manitation.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/Manitation_app",
     },
     {
         id: 9,
-        title: "ParkCinema clone",
+        title: "CampusConnect Hackaton",
         description:
-            "ParkCinema saytının clone versiyası. Div Academy tərəfindən verilən aylıq imtahan işidir.",
-        image: getProjectImage('parkcinema.png'),
-        date: "2025",
-        link: "https://github.com/FirudinManiyev/park_cinema",
-        liveDemo: "https://park-cinema-seven.vercel.app",
+            "CampusConnect Hackaton layihəsi. Bu layihə Code Academy tərəfindən təşkil olunmuş müəyyən bir məqsəd üçün tələbələr tərəfindən hazırlanan bir layihədir.",
+        image: getProjectImage('smartcampus.png'),
+        date: "2026",
+        link: "https://github.com/JavadShukurlu/CampusConnectHackaton",
     },
     {
         id: 10,
@@ -125,6 +125,16 @@ export const projects: Project[] = [
         image: getProjectImage('maniwheel.png'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/mani_wheel",
-        liveDemo: "https://maniwheel.vercel.app/",
+        liveDemo: "https://maniwheel.vercel.app",
+    },
+    {
+        id: 12,
+        title: "ManiBarcode",
+        description:
+            "Bu layihə istifadəçilərə müxtəlif məlumatları daxil edərək barkodlar yaratmaq imkanı verən bir web tətbiqidir. İstifadəçilər barkodları yaradaraq onları yükləyə və paylaşa bilərlər.",
+        image: getProjectImage('manibarcode.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/mani_barcode",
+        liveDemo: "https://manibarcode.vercel.app",
     },
 ];

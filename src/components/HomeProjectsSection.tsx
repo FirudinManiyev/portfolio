@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 
@@ -48,6 +48,7 @@ function HomeProjectsSection() {
 										src={project.image}
 										alt={project.title}
 										loading="lazy"
+										decoding="async"
 										className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />

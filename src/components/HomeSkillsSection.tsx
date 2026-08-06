@@ -63,6 +63,7 @@ function HomeSkillsSection() {
 												src={skill.image}
 												alt={skill.name}
 												loading="lazy"
+												decoding="async"
 												className="h-10 w-10 rounded-xl border border-white/15 bg-white/95 p-1 object-contain"
 											/>
 											<p className="text-sm font-medium text-neutral-200">{skill.name}</p>

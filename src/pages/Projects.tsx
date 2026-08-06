@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { ExternalLink } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa6';
 
 function Projects() {
     const containerVariants = {
@@ -111,7 +112,7 @@ function Projects() {
                                         className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400/10 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 font-medium text-sm"
                                     >
                                         GitHub
-                                        <ExternalLink className="w-4 h-4" />
+                                        <FaGithub className="w-4 h-4" />
                                     </motion.a>
 
                                     {project.liveDemo && (
