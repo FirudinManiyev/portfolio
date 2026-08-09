@@ -9,8 +9,8 @@ const navLinks = [
   { to: "/", label: "Ana səhifə" },
   { to: "/about", label: "Haqqımda" },
   { to: "/education", label: "Təhsil" },
-  { to: "/skills", label: "Skills" },
-  { to: "/projects", label: "Proyektlər" },
+  { to: "/skills", label: "Bacarıqlar" },
+  { to: "/projects", label: "Layihələr" },
   { to: "/certificates", label: "Sertifikatlar" },
 ]
 

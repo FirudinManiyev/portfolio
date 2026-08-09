@@ -7,8 +7,8 @@ import fmLogo from "../assets/fm_logo.png"
 const quickLinks = [
   { to: "/", label: "Ana səhifə" },
   { to: "/about", label: "Haqqımda" },
-  { to: "/skills", label: "Skills" },
-  { to: "/projects", label: "Proyektlər" },
+  { to: "/skills", label: "Bacarıqlar" },
+  { to: "/projects", label: "Layihələr" },
   { to: "/certificates", label: "Sertifikatlar" },
   { to: "/education", label: "Təhsil" },
 ]

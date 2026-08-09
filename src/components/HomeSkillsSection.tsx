@@ -43,6 +43,7 @@ function HomeSkillsSection() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true, amount: 0.2 }}
 								transition={{ duration: 0.45, delay: categoryIndex * 0.08 }}
+								whileHover={{ y: -6, scale: 1.005 }}
 								className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-5 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 sm:p-6"
 							>
 								<div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-yellow-300/10 blur-2xl" />
@@ -92,7 +93,7 @@ function HomeSkillsSection() {
 								to="/skills"
 								className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
 							>
-								Bütün skillərə bax
+								Bütün bacarıqlara bax
 								<ArrowRight className="h-4 w-4" />
 							</Link>
 						</div>

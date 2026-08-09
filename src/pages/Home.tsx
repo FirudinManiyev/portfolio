@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles, ZoomIn } from 'lucide-react';
+import type { Variants } from 'framer-motion';
+import { ArrowRight, Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles, ZoomIn } from 'lucide-react';
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
@@ -14,6 +15,35 @@ import { education } from '../data/education';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const Lanyard = lazy(() => import('../components/Lanyard'));
+
+const heroContainerVariants: Variants = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			delayChildren: 0.08,
+			staggerChildren: 0.1,
+		},
+	},
+};
+
+const heroItemVariants: Variants = {
+	hidden: { opacity: 0, y: 22 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.55,
+			ease: [0.22, 1, 0.36, 1],
+		},
+	},
+};
+
+const heroStats = [
+	{ value: '10+', label: 'Layihə' },
+	{ value: '2+ il', label: 'Təcrübə' },
+	{ value: '100%', label: 'Məsuliyyət' },
+];
 
 const aboutHighlights = [
 	{
@@ -47,118 +77,118 @@ function Home() {
 
 			{/* Hero section */}
 
-			<section className="relative flex min-h-[calc(100vh-5rem)] items-start justify-center overflow-hidden pt-6 sm:pt-8 lg:pt-10">
+			<section
+				id="hero"
+				aria-labelledby="hero-title"
+				className="relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden py-10 sm:py-12 lg:py-6"
+			>
+				<div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+					<div className="absolute left-[8%] top-[16%] h-44 w-44 rounded-full bg-yellow-300/8 blur-3xl sm:h-64 sm:w-64" />
+					<div className="absolute bottom-[8%] right-[10%] h-56 w-56 rounded-full bg-amber-500/8 blur-3xl sm:h-80 sm:w-80" />
+					<div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-neutral-950/65 to-transparent" />
+				</div>
 
-				<div className="container relative z-10 mx-auto px-6 py-2 sm:py-4">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-center lg:items-center lg:-translate-y-18">
-						{/* Left side - Text content */}
-						<div className="order-1 md:order-1">
-							<motion.div
-								initial={{ opacity: 0, x: -50 }}
-								animate={{ opacity: 1, x: 0 }}
-								transition={{ duration: 0.6 }}
-								className="max-w-lg space-y-6 lg:ml-20 xl:ml-28"
+				<div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+					<div className="grid items-center gap-10 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-6 xl:gap-12">
+						<motion.div
+							variants={heroContainerVariants}
+							initial="hidden"
+							animate="visible"
+							className="relative z-20 mx-auto w-full max-w-2xl md:mx-0"
+						>
+							<motion.h1
+								id="hero-title"
+								variants={heroItemVariants}
+								className="text-balance text-4xl font-black leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
 							>
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.2 }}
-								>
-									<h2 className="text-base md:text-lg text-yellow-400 font-medium mb-2">
-										Salam, mən
-									</h2>
-									<h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white">
-										Firudin Maniyev
-									</h1>
-								</motion.div>
+								<span className="block text-lg font-medium tracking-normal text-neutral-400 sm:text-xl">Salam, mən</span>
+								<span className="mt-1 block pb-2 leading-[1.12] bg-linear-to-r from-white via-yellow-100 to-yellow-300 bg-clip-text text-transparent">
+									Firudin Maniyev
+								</span>
+								<span className="mt-1 block text-[0.5em] font-semibold leading-[1.24] tracking-[-0.025em] text-neutral-200">
+									İdeyaları funksional rəqəmsal məhsullara çevirirəm.
+								</span>
+							</motion.h1>
 
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.4 }}
-									className="text-xl md:text-3xl lg:text-4xl font-semibold"
-								>
-									<span className="text-gray-400">Mən bir </span>
-									<TypewriterAnimation
-										words={['Frontend Developer', 'Backend Developer', 'Fullstack Developer']}
-										className="text-yellow-400"
-									/>
-								</motion.div>
+							<motion.div
+								variants={heroItemVariants}
+								className="mt-4 flex min-h-12 w-fit max-w-full items-center gap-2 rounded-2xl border border-white/10 bg-black/25 px-4 py-1 text-base font-semibold shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:text-lg"
+							>
+								<span className="shrink-0 text-neutral-400">Əsas sahəm:</span>
+								<TypewriterAnimation
+									words={['Frontend Development', 'Backend Development', 'Full-stack Development']}
+									className="text-yellow-300"
+								/>
+							</motion.div>
 
-								<motion.p
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.6 }}
-									className="text-gray-400 text-base md:text-lg max-w-lg leading-relaxed"
-								>
-									Müasir və istifadəçi dostu veb tətbiqləri hazırlayan
-									Fullstack Developer. React, TypeScript və müasir texnologiyalarla
-									layihələr inkişaf etdirirəm.
-								</motion.p>
+							<motion.p
+								variants={heroItemVariants}
+								className="mt-3 max-w-xl text-base leading-7 text-neutral-400 sm:text-lg sm:leading-8"
+							>
+								React, TypeScript və müasir backend texnologiyaları ilə sürətli,
+								responsiv və istifadəçi yönümlü veb məhsullar hazırlayıram.
+							</motion.p>
 
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.8 }}
-									className="flex flex-wrap gap-4 pt-4"
+							<motion.div variants={heroItemVariants} className="mt-5 flex flex-wrap gap-3">
+								<Link
+									to="/projects"
+									className="group inline-flex items-center gap-2 rounded-2xl border border-yellow-200/70 bg-linear-to-r from-yellow-200 via-yellow-300 to-amber-400 px-6 py-3.5 text-sm font-bold text-neutral-950 shadow-[0_16px_38px_rgba(250,204,21,0.24)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_46px_rgba(250,204,21,0.36)]"
 								>
-									<a
-										href="https://flowcv.com/resume/i4nksq7e64a1"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20"
-									>
-										<Download className="w-5 h-5" />
-										CV-ə bax
-									</a>
-								</motion.div>
+									Layihələrə bax
+									<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+								</Link>
+								<a
+									href="https://flowcv.com/resume/i4nksq7e64a1"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="inline-flex items-center gap-2 rounded-2xl border border-white/12 bg-white/6 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-300/30 hover:bg-white/10"
+								>
+									<Download className="h-4 w-4" />
+									CV-ə bax
+								</a>
+							</motion.div>
 
-								<motion.div
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 1 }}
-									className="flex gap-4 pt-4"
-								>
-									<a
-										href="https://github.com/FirudinManiyev"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 group"
-										aria-label="GitHub"
-									>
-										<FaGithub className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
-									</a>
-									<a
-										href="https://linkedin.com/in/firudin-maniyev-4843242b7"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 group"
-										aria-label="LinkedIn"
-									>
-										<FaLinkedinIn className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
-									</a>
-									<a
-										href="https://instagram.com/firudin.coder"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 group"
-										aria-label="Instagram"
-									>
-										<FaInstagram className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
-									</a>
+							<motion.div variants={heroItemVariants} className="mt-4 flex flex-col gap-5 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
+								<div className="grid grid-cols-3 gap-5">
+									{heroStats.map((stat) => (
+										<div key={stat.label}>
+											<p className="text-lg font-bold text-white sm:text-xl">{stat.value}</p>
+											<p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-neutral-500">{stat.label}</p>
+										</div>
+									))}
+								</div>
+
+								<div className="flex items-center gap-2">
+									{[
+										{ href: 'https://github.com/FirudinManiyev', label: 'GitHub', icon: FaGithub },
+										{ href: 'https://linkedin.com/in/firudin-maniyev-4843242b7', label: 'LinkedIn', icon: FaLinkedinIn },
+										{ href: 'https://instagram.com/firudin.coder', label: 'Instagram', icon: FaInstagram },
+									].map(({ href, label, icon: Icon }) => (
+										<motion.a
+											key={label}
+											href={href}
+											target="_blank"
+											rel="noopener noreferrer"
+											aria-label={label}
+											whileHover={{ y: -3, scale: 1.06 }}
+											whileTap={{ scale: 0.94 }}
+											className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-colors duration-300 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
+										>
+											<Icon className="h-4 w-4" />
+										</motion.a>
+									))}
 									<a
 										href="mailto:firudinmaniyev@gmail.com"
-										className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all duration-300 hover:scale-110 border border-white/20 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-400/20 group"
 										aria-label="Email"
+										className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
 									>
-										<Mail className="w-6 h-6 text-white group-hover:text-yellow-400 transition-colors duration-300" />
+										<Mail className="h-4 w-4" />
 									</a>
-								</motion.div>
+								</div>
 							</motion.div>
-						</div>
+						</motion.div>
 
-						{/* Right side - Lanyard 3D Card */}
-						<div className="order-2 hidden sm:block lg:order-2">
+						<div className="order-2 hidden sm:block">
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
@@ -184,7 +214,7 @@ function Home() {
 
 			{/* About section */}
 
-			<section className="relative -mt-4 sm:-mt-6 lg:-mt-20">
+			<section id="about" className="relative mt-4 scroll-mt-28 sm:mt-8 lg:-mt-4">
 				<div className="container relative z-10 mx-auto px-6">
 					<div className="mx-auto max-w-6xl">
 						<motion.div
@@ -207,12 +237,17 @@ function Home() {
 								transition={{ duration: 0.5 }}
 								className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 lg:h-full"
 							>
-								{aboutHighlights.map((item) => {
+								{aboutHighlights.map((item, index) => {
 									const Icon = item.icon;
 
 									return (
-										<div
+										<motion.div
 											key={item.label}
+											initial={{ opacity: 0, x: -14 }}
+											whileInView={{ opacity: 1, x: 0 }}
+											viewport={{ once: true, amount: 0.45 }}
+											transition={{ duration: 0.4, delay: index * 0.06 }}
+											whileHover={{ y: -5, scale: 1.01 }}
 											className="flex min-h-[96px] items-center justify-between gap-4 rounded-[1.75rem] border border-white/10 bg-white/5 px-5 py-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
 										>
 											<div className="flex min-w-0 items-center gap-3">
@@ -223,7 +258,7 @@ function Home() {
 											</div>
 
 											<p className="shrink-0 text-right text-lg font-semibold text-white sm:text-xl lg:text-2xl">{item.value}</p>
-										</div>
+										</motion.div>
 									)
 								})}
 							</motion.div>
@@ -309,9 +344,14 @@ function Home() {
 								transition={{ duration: 0.5 }}
 								className="grid w-full max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-2"
 							>
-								{education.map((item) => (
-									<article
+								{education.map((item, index) => (
+									<motion.article
 										key={item.id}
+										initial={{ opacity: 0, y: 18 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true, amount: 0.25 }}
+										transition={{ duration: 0.45, delay: index * 0.07 }}
+										whileHover={{ y: -6 }}
 										className="group flex min-h-[170px] items-stretch gap-4 rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20 hover:bg-white/7"
 									>
 										<div className="w-28 shrink-0 overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/20 sm:w-30">
@@ -340,7 +380,7 @@ function Home() {
 												</Link>
 											</div>
 										</div>
-									</article>
+									</motion.article>
 								))}
 							</motion.div>
 						</div>

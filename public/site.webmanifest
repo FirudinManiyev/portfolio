@@ -1,0 +1,18 @@
+{
+  "name": "Firudin Maniyev Portfolio",
+  "short_name": "Firudin",
+  "description": "Firudin Maniyevin full-stack developer portfoliosu.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#0a0a0a",
+  "lang": "az",
+  "icons": [
+    {
+      "src": "/modern_fm_logo2.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

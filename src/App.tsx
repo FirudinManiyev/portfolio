@@ -7,6 +7,7 @@ import PortfolioBackground from "./components/PortfolioBackground"
 import ScrollToTop from "./components/ScrollToTop"
 import WhatsAppButton from "./components/WhatsAppButton"
 import LoadingAnimation from "./components/LoadingAnimation"
+import SeoManager from "./components/SeoManager"
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -28,6 +29,7 @@ function App() {
 
         <div inert={isLoading ? true : undefined} aria-hidden={isLoading}>
           <BrowserRouter>
+            <SeoManager />
             <AppRoutes />
             <ScrollToTop />
           </BrowserRouter>

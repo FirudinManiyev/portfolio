@@ -1,15 +1,19 @@
 import { Suspense } from "react"
-import { Outlet, useLocation } from "react-router-dom"
+import { useLocation, useOutlet } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import RouteLoading from "../components/RouteLoading"
+import PageTransition from "../components/PageTransition"
+import ScrollProgress from "../components/ScrollProgress"
 
 const MainLayout = () => {
   const location = useLocation()
+  const outlet = useOutlet()
   const isHomePage = location.pathname === "/"
 
   return (
     <div className="relative z-10 flex min-h-screen flex-col text-white">
+      <ScrollProgress />
       <Header />
 
       <main
@@ -19,7 +23,7 @@ const MainLayout = () => {
         ].join(" ")}
       >
         <Suspense fallback={<RouteLoading />}>
-          <Outlet />
+          <PageTransition>{outlet}</PageTransition>
         </Suspense>
       </main>
 

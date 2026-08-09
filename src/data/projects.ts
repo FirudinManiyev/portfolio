@@ -102,7 +102,7 @@ export const projects: Project[] = [
         id: 9,
         title: "CampusConnect Hackaton",
         description:
-            "CampusConnect Hackaton layihəsi. Bu layihə Code Academy tərəfindən təşkil olunmuş müəyyən bir məqsəd üçün tələbələr tərəfindən hazırlanan bir layihədir.",
+            "CampusConnect layihəsi Code Academy tərəfindən təşkil olunmuş müəyyən bir məqsəd üçün tələbələr tərəfindən hazırlanan bir layihədir.",
         image: getProjectImage('smartcampus.png'),
         date: "2026",
         link: "https://github.com/JavadShukurlu/CampusConnectHackaton",
@@ -119,6 +119,15 @@ export const projects: Project[] = [
     },
     {
         id: 11,
+        title: "SuperTraders",
+        description:
+            "AI-dəstəkli ticarət platforması: məhsul tövsiyəsi, iş elanları, CV analizi və maliyyə analitikası.",
+        image: getProjectImage('supertraders.png'),
+        date: "2026",
+        link: "https://github.com/FirudinManiyev/business_ai_buildathon",
+    },
+    {
+        id: 12,
         title: "ManiWheel",
         description:
             "Bu layihə çarx fırlatmaq üçün istifadə edilən bir web tətbiqidir. İstifadəçilər çarxı fırladaraq müxtəlif nəticələr əldə edə bilərlər.",
@@ -128,7 +137,7 @@ export const projects: Project[] = [
         liveDemo: "https://maniwheel.vercel.app",
     },
     {
-        id: 12,
+        id: 13,
         title: "ManiBarcode",
         description:
             "Bu layihə istifadəçilərə müxtəlif məlumatları daxil edərək barkodlar yaratmaq imkanı verən bir web tətbiqidir. İstifadəçilər barkodları yaradaraq onları yükləyə və paylaşa bilərlər.",

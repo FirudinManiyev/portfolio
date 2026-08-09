@@ -19,7 +19,7 @@ function HomeProjectsSection() {
 						className="flex justify-center"
 					>
 						<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
-							LAYİHƏLƏRİM & PROYEKTLƏRİM
+							SEÇİLMİŞ LAYİHƏLƏR
 						</div>
 					</motion.div>
 
@@ -30,7 +30,7 @@ function HomeProjectsSection() {
 						transition={{ duration: 0.45, delay: 0.08 }}
 						className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
 					>
-						Hazırladığım seçilmiş layihələrdən 3 nümunə. Əgər daha çox layihə görmək istəyirsinizsə, aşağıdakı linkdən bütün proyektlərə baxa bilərsiniz.
+					Hazırladığım seçilmiş layihələrdən 3 nümunə. Daha çox iş görmək üçün aşağıdakı keçiddən bütün layihələrə baxa bilərsiniz.
 					</motion.p>
 
 					<div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-7">
@@ -41,6 +41,7 @@ function HomeProjectsSection() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true, amount: 0.2 }}
 								transition={{ duration: 0.45, delay: index * 0.08 }}
+								whileHover={{ y: -8, scale: 1.01 }}
 								className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20"
 							>
 								<div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-black/25">
@@ -97,7 +98,7 @@ function HomeProjectsSection() {
 							to="/projects"
 							className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
 						>
-							Bütün proyektlərə bax
+						Bütün layihələrə bax
 							<ArrowRight className="h-4 w-4" />
 						</Link>
 					</div>
