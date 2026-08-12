@@ -29,9 +29,7 @@ Bu layihə şəxsi portfolio saytım kimi hazırlanıb. Məqsədim:
 * 🎬 Framer Motion
 * 🧩 Lucide React
 * 🔔 React Hot Toast
-* 📱 Swiper
 * 📧 EmailJS
-* 👁️ React Intersection Observer
 * 🎮 @react-three/fiber (3D)
 * 🎮 @react-three/drei (3D)
 * 🎮 Three.js (3D)
@@ -45,10 +43,13 @@ src/
 │
 ├── components/       # Reusable komponentlər
 │   ├── ContactSection.tsx
+│   ├── CarouselControls.tsx
 │   ├── Footer.tsx
 │   ├── Header.tsx
+│   ├── HomeCertificatesSection.tsx
 │   ├── HomeProjectsSection.tsx
 │   ├── HomeSkillsSection.tsx
+│   ├── ProjectCard.tsx
 │   ├── Lanyard.tsx (3D)
 │   ├── LoadingAnimation.tsx
 │   ├── PageTransition.tsx
@@ -63,6 +64,7 @@ src/
 │   ├── About.tsx
 │   ├── Skills.tsx
 │   ├── Projects.tsx
+│   ├── ProjectDetails.tsx
 │   ├── Certificates.tsx
 │   ├── Education.tsx
 │   ├── Contact.tsx
@@ -72,6 +74,8 @@ src/
 │   ├── about.ts
 │   ├── skills.ts
 │   ├── projects.ts
+│   ├── projectRoutes.ts
+│   ├── seo.ts
 │   ├── certificates.ts
 │   ├── education.ts
 │   └── contact.ts
@@ -95,7 +99,7 @@ src/
 * 🏠 **Home** - Hero section, About preview, Skills preview, Projects preview, Education preview, Certificates preview
 * 👤 **About** - Şəxsi məlumatlar, Bio, Xüsusiyyətlər, CV yükləmə, Əlaqə
 * 🧠 **Skills** - Texniki bacarıqların təqdimi
-* 💼 **Projects** - Layihələrin təqdimi (responsive grid, GitHub linkləri)
+* 💼 **Projects** - Layihələrin təqdimi, GitHub/canlı demo keçidləri və hər layihə üçün ayrıca detail səhifəsi
 * 📜 **Certificates** - Sertifikatların təqdimi (modal preview)
 * 📝 **Education** - Təhsil tarixçəsi
 * 📩 **Contact** - Əlaqə formu və məlumatları
@@ -117,6 +121,9 @@ src/
 * 📧 EmailJS inteqrasiyası
 * 🎨 Glassmorphism effektləri
 * 🌟 Parallax background
+* 🎠 Autoplay, touch və klaviatura dəstəkli layihə/sertifikat sliderləri
+* 🔍 Route əsaslı SEO, Open Graph, JSON-LD və sitemap
+* 🛡️ CSP və digər təhlükəsizlik header-ləri, təhlükəsiz əlaqə formu validation-u
 
 ---
 
@@ -160,7 +167,7 @@ Layihə Vercel üzərindən deploy olunub.
 ## 📬 Əlaqə
 
 * 📧 Email: [firudinmaniyev@gmail.com](mailto:firudinmaniyev@gmail.com)
-* � Instagram: https://www.instagram.com/firudin.coder/
+* 📷 Instagram: https://www.instagram.com/firudin.coder/
 * 💼 LinkedIn: https://www.linkedin.com/in/firudin-maniyev-4843242b7/
 * 🐙 GitHub: https://github.com/FirudinManiyev
 * 📱 Phone: +994 50 769 36 54

@@ -5,6 +5,7 @@ import type { Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { routeSeo, SITE_NAME, SITE_URL, SOCIAL_IMAGE_URL } from './src/data/seo.ts'
+import { getProjectPath, projectRouteList } from './src/data/projectRoutes.ts'
 
 const escapeHtml = (value: string) => value
   .replaceAll('&', '&amp;')
@@ -30,7 +31,22 @@ function staticSeoPagesPlugin(): Plugin {
       const outputDirectory = resolve('dist')
       const rootHtml = await readFile(resolve(outputDirectory, 'index.html'), 'utf8')
 
-      await Promise.all(Object.entries(routeSeo).map(async ([pathname, seo]) => {
+      const staticPages = Object.entries(routeSeo).map(([pathname, seo]) => ({
+        pathname,
+        seo,
+        type: 'website',
+      }))
+      const projectPages = projectRouteList.map((project) => ({
+        pathname: getProjectPath(project.slug),
+        seo: {
+          title: `${project.title} | Firudin Maniyev`,
+          description: project.description,
+          keywords: `${project.title}, Firudin Maniyev layihə, React portfolio, web development, layihə detalları`,
+        },
+        type: 'article',
+      }))
+
+      await Promise.all([...staticPages, ...projectPages].map(async ({ pathname, seo, type }) => {
         if (pathname === '/') return
 
         const canonicalUrl = new URL(pathname, `${SITE_URL}/`).toString()
@@ -45,7 +61,7 @@ function staticSeoPagesPlugin(): Plugin {
         pageHtml = replaceMeta(pageHtml, 'name', 'keywords', seo.keywords)
         pageHtml = replaceMeta(pageHtml, 'property', 'og:title', seo.title)
         pageHtml = replaceMeta(pageHtml, 'property', 'og:description', seo.description)
-        pageHtml = replaceMeta(pageHtml, 'property', 'og:type', 'website')
+        pageHtml = replaceMeta(pageHtml, 'property', 'og:type', type)
         pageHtml = replaceMeta(pageHtml, 'property', 'og:url', canonicalUrl)
         pageHtml = replaceMeta(pageHtml, 'property', 'og:site_name', SITE_NAME)
         pageHtml = replaceMeta(pageHtml, 'property', 'og:image', SOCIAL_IMAGE_URL)

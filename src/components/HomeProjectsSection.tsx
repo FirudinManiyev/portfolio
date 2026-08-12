@@ -1,111 +1,122 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
-import { projects } from '../data/projects';
+import type { FocusEvent } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Layers3 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { projects } from '../data/projects'
+import { useCarousel } from '../hooks/useCarousel'
+import CarouselControls from './CarouselControls'
+import ProjectCard from './ProjectCard'
 
-const featuredProjects = projects.slice(0, 3);
+const featuredProjects = projects.slice(0, 5)
 
 function HomeProjectsSection() {
-	return (
-		<section className="relative mt-20 sm:mt-24 lg:mt-28">
-			<div className="container relative z-10 mx-auto px-6">
-				<div className="mx-auto max-w-6xl">
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.35 }}
-						transition={{ duration: 0.5 }}
-						className="flex justify-center"
-					>
-						<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
-							SEÇİLMİŞ LAYİHƏLƏR
-						</div>
-					</motion.div>
+  const {
+    activeIndex,
+    containerRef,
+    goNext,
+    goPrevious,
+    handleScroll,
+    isManuallyPaused,
+    pages,
+    pause,
+    pauseInteraction,
+    resume,
+    resumeInteraction,
+    scrollToIndex,
+  } = useCarousel({ itemCount: featuredProjects.length, autoplayDelay: 5200 })
 
-					<motion.p
-						initial={{ opacity: 0, y: 16 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.35 }}
-						transition={{ duration: 0.45, delay: 0.08 }}
-						className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
-					>
-					Hazırladığım seçilmiş layihələrdən 3 nümunə. Daha çox iş görmək üçün aşağıdakı keçiddən bütün layihələrə baxa bilərsiniz.
-					</motion.p>
+  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) resumeInteraction()
+  }
 
-					<div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-7">
-						{featuredProjects.map((project, index) => (
-							<motion.article
-								key={project.id}
-								initial={{ opacity: 0, y: 18 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true, amount: 0.2 }}
-								transition={{ duration: 0.45, delay: index * 0.08 }}
-								whileHover={{ y: -8, scale: 1.01 }}
-								className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/20"
-							>
-								<div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-black/25">
-									<img
-										src={project.image}
-										alt={project.title}
-										loading="lazy"
-										decoding="async"
-										className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
-									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-									<div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
-										{project.date}
-									</div>
-								</div>
+  return (
+    <section className="relative mt-20 sm:mt-24 lg:mt-28" aria-labelledby="featured-projects-title">
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center"
+          >
+            <h2
+              id="featured-projects-title"
+              className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.2em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl"
+            >
+              <Layers3 className="h-5 w-5" />
+              Seçilmiş layihələr
+            </h2>
+          </motion.div>
 
-								<div className="flex flex-1 flex-col p-5 sm:p-6">
-									<div className="space-y-3">
-										<h3 className="text-lg font-semibold text-white sm:text-xl">{project.title}</h3>
-										<p className="text-sm leading-7 text-neutral-400 sm:text-[15px]">{project.description}</p>
-									</div>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
+          >
+            Hazırladığım işlərdən seçilmiş 5 layihə. Kartın üzərinə klikləyərək texnologiyalar və layihə haqqında ətraflı məlumat ala bilərsiniz.
+          </motion.p>
 
-								<div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-6">
-									<div className="flex flex-wrap items-center gap-3">
-										<a
-											href={project.link}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
-										>
-											<FaGithub className="h-4 w-4" />
-											Kod
-										</a>
-										{project.liveDemo && (
-												<a
-													href={project.liveDemo}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2.5 text-sm font-semibold text-yellow-300 transition duration-300 hover:-translate-y-0.5 hover:bg-yellow-300/20 hover:text-white"
-												>
-													Canlı
-													<ArrowRight className="h-4 w-4" />
-												</a>
-											)}
-									</div>
-									</div>
-								</div>
-							</motion.article>
-						))}
-					</div>
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.18 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="mt-12"
+            onMouseEnter={pauseInteraction}
+            onMouseLeave={resumeInteraction}
+            onFocusCapture={pauseInteraction}
+            onBlurCapture={handleBlur}
+          >
+            <div
+              ref={containerRef}
+              onScroll={handleScroll}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Seçilmiş layihələr"
+              className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {featuredProjects.map((project, index) => (
+                <div
+                  key={project.id}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${index + 1} / ${featuredProjects.length}`}
+                  className="shrink-0 basis-full snap-start pr-4 sm:basis-1/2 lg:basis-1/3"
+                >
+                  <ProjectCard project={project} compact />
+                </div>
+              ))}
+            </div>
 
-					<div className="mt-8 flex justify-end">
-						<Link
-							to="/projects"
-							className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
-						>
-						Bütün layihələrə bax
-							<ArrowRight className="h-4 w-4" />
-						</Link>
-					</div>
-				</div>
-			</div>
-		</section>
-	);
+            <CarouselControls
+              activeIndex={activeIndex}
+              ariaLabel="Layihə slideri"
+              isPaused={isManuallyPaused}
+              pages={pages}
+              onNext={goNext}
+              onPause={pause}
+              onPlay={resume}
+              onPrevious={goPrevious}
+              onSelect={scrollToIndex}
+            />
+          </motion.div>
+
+          <div className="mt-7 flex justify-end">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
+            >
+              Bütün layihələrə bax
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
-export default HomeProjectsSection;
+export default HomeProjectsSection

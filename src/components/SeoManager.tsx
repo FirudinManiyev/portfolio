@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import type { Project } from '../data/projects'
+import { getProjectBySlug } from '../data/projects'
 import {
+  getProjectSeo,
   notFoundSeo,
   routeSeo,
   SITE_NAME,
@@ -32,8 +35,10 @@ function setCanonical(url: string) {
   element.href = url
 }
 
-function setStructuredData(pathname: string, canonicalUrl: string) {
-  const pageName = routeSeo[pathname]?.title ?? notFoundSeo.title
+function setStructuredData(pathname: string, canonicalUrl: string, project?: Project) {
+  const pageName = project
+    ? getProjectSeo(project).title
+    : routeSeo[pathname]?.title ?? notFoundSeo.title
   let script = document.head.querySelector<HTMLScriptElement>('#portfolio-structured-data')
 
   if (!script) {
@@ -82,7 +87,21 @@ function setStructuredData(pathname: string, canonicalUrl: string) {
         isPartOf: { '@id': `${SITE_URL}/#website` },
         about: { '@id': `${SITE_URL}/#person` },
         inLanguage: 'az',
+        ...(project ? { mainEntity: { '@id': `${canonicalUrl}#project` } } : {}),
       },
+      ...(project ? [{
+        '@type': 'CreativeWork',
+        '@id': `${canonicalUrl}#project`,
+        name: project.title,
+        description: project.description,
+        image: new URL(project.image, `${SITE_URL}/`).toString(),
+        dateCreated: project.date,
+        url: canonicalUrl,
+        codeRepository: project.link,
+        sameAs: project.liveDemo ? [project.liveDemo] : undefined,
+        keywords: project.technologies.join(', '),
+        creator: { '@id': `${SITE_URL}/#person` },
+      }] : []),
     ],
   })
 }
@@ -91,8 +110,14 @@ function SeoManager() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const pageSeo = routeSeo[pathname] ?? notFoundSeo
-    const canonicalUrl = new URL(pathname, `${SITE_URL}/`).toString()
+    const normalizedPath = pathname === '/' ? pathname : pathname.replace(/\/+$/, '')
+    const projectSlug = normalizedPath.match(/^\/projects\/([^/]+)$/)?.[1]
+    const project = projectSlug ? getProjectBySlug(projectSlug) : undefined
+    const pageSeo = project ? getProjectSeo(project) : routeSeo[normalizedPath] ?? notFoundSeo
+    const canonicalUrl = new URL(normalizedPath, `${SITE_URL}/`).toString()
+    const socialImageUrl = project
+      ? new URL(project.image, `${SITE_URL}/`).toString()
+      : SOCIAL_IMAGE_URL
 
     document.title = pageSeo.title
     setCanonical(canonicalUrl)
@@ -102,17 +127,17 @@ function SeoManager() {
     setMeta('name', 'robots', pageSeo.noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
     setMeta('property', 'og:title', pageSeo.title)
     setMeta('property', 'og:description', pageSeo.description)
-    setMeta('property', 'og:type', pathname === '/' ? 'profile' : 'website')
+    setMeta('property', 'og:type', project ? 'article' : normalizedPath === '/' ? 'profile' : 'website')
     setMeta('property', 'og:url', canonicalUrl)
     setMeta('property', 'og:site_name', SITE_NAME)
     setMeta('property', 'og:locale', 'az_AZ')
-    setMeta('property', 'og:image', SOCIAL_IMAGE_URL)
-    setMeta('property', 'og:image:alt', 'Firudin Maniyev — Full-stack Developer')
+    setMeta('property', 'og:image', socialImageUrl)
+    setMeta('property', 'og:image:alt', project ? `${project.title} layihəsi` : 'Firudin Maniyev — Full-stack Developer')
     setMeta('name', 'twitter:card', 'summary_large_image')
     setMeta('name', 'twitter:title', pageSeo.title)
     setMeta('name', 'twitter:description', pageSeo.description)
-    setMeta('name', 'twitter:image', SOCIAL_IMAGE_URL)
-    setStructuredData(pathname, canonicalUrl)
+    setMeta('name', 'twitter:image', socialImageUrl)
+    setStructuredData(normalizedPath, canonicalUrl, project)
   }, [pathname])
 
   return null

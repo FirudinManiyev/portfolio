@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type { ChangeEvent, ComponentType, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -11,6 +11,11 @@ import {
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { contacts } from '../data/contact';
 import { sendContactEmail } from '../services/emailjs';
+import {
+    CONTACT_LIMITS,
+    validateContactForm,
+} from '../utils/contactValidation';
+import type { ContactField, ContactFormPayload } from '../utils/contactValidation';
 import toast from 'react-hot-toast';
 
 type ContactSectionProps = {
@@ -28,7 +33,7 @@ const contactIconMap: Record<string, ComponentType<{ className?: string }>> = {
     Instagram: FaInstagram,
 };
 
-const initialFormState = {
+const initialFormState: ContactFormPayload = {
     name: '',
     email: '',
     subject: '',
@@ -42,26 +47,45 @@ function getContactIcon(label: ContactItem['label']) {
 function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectionProps) {
     const [formData, setFormData] = useState(initialFormState);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const lastSubmissionAt = useRef(0);
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
         const { name, value } = event.target;
+        if (!(name in initialFormState)) return;
+
+        const field = name as ContactField;
 
         setFormData((current) => ({
             ...current,
-            [name]: value,
+            [field]: value.slice(0, CONTACT_LIMITS[field].max),
         }));
     };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const honeypot = new FormData(event.currentTarget).get('website');
+        if (typeof honeypot === 'string' && honeypot.trim()) return;
+
+        const validation = validateContactForm(formData);
+        if (!validation.success) {
+            toast.error(validation.message);
+            return;
+        }
+
+        if (Date.now() - lastSubmissionAt.current < 15_000) {
+            toast.error('Yeni mesaj göndərməzdən əvvəl bir qədər gözləyin.');
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
-            await sendContactEmail(formData);
+            await sendContactEmail(validation.data);
             toast.success('Mesajınız göndərildi.');
             setFormData(initialFormState);
+            lastSubmissionAt.current = Date.now();
         } catch {
             toast.error('Mesaj göndərilmədi. Zəhmət olmasa yenidən cəhd edin.');
         } finally {
@@ -164,6 +188,10 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                             onSubmit={handleSubmit}
                             className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl sm:p-6 lg:p-7"
                         >
+                            <label className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                                Website
+                                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                            </label>
                             <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-yellow-300/10 blur-3xl" />
                             <div className="flex items-start justify-between gap-4">
                                 <div className="space-y-2">
@@ -186,6 +214,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
+                                            minLength={CONTACT_LIMITS.name.min}
+                                            maxLength={CONTACT_LIMITS.name.max}
                                             autoComplete="name"
                                             className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                             placeholder="Adınız"
@@ -200,6 +230,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
+                                            minLength={CONTACT_LIMITS.email.min}
+                                            maxLength={CONTACT_LIMITS.email.max}
                                             autoComplete="email"
                                             className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                             placeholder="email@example.com"
@@ -215,6 +247,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
+                                        minLength={CONTACT_LIMITS.subject.min}
+                                        maxLength={CONTACT_LIMITS.subject.max}
                                         autoComplete="off"
                                         className="h-12 rounded-2xl border border-white/10 bg-black/25 px-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                         placeholder="Layihə və ya əməkdaşlıq mövzusu"
@@ -228,6 +262,8 @@ function ContactSection({ className = 'mt-20 sm:mt-24 lg:mt-28' }: ContactSectio
                                         value={formData.message}
                                         onChange={handleChange}
                                         required
+                                        minLength={CONTACT_LIMITS.message.min}
+                                        maxLength={CONTACT_LIMITS.message.max}
                                         rows={6}
                                         className="resize-y rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-yellow-300/30 focus:bg-black/35"
                                         placeholder="Mesajınızı yazın..."

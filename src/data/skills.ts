@@ -73,8 +73,8 @@ export const skillCategories: SkillCategory[] = [
             },
             {
                 id: 10,
-                name: "EmailJS",
-                image: getSkillImage('emailjs.jpg'),
+                name: "NextJS",
+                image: getSkillImage('nextjs.jpg'),
             },
         ],
     },

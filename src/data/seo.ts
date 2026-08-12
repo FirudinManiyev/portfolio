@@ -9,6 +9,12 @@ export interface PageSeo {
   noIndex?: boolean
 }
 
+export const getProjectSeo = (project: { title: string; description: string }): PageSeo => ({
+  title: `${project.title} | Firudin Maniyev`,
+  description: project.description,
+  keywords: `${project.title}, Firudin Maniyev layihə, React portfolio, web development, layihə detalları`,
+})
+
 export const routeSeo: Record<string, PageSeo> = {
   '/': {
     title: 'Firudin Maniyev — Full-stack Developer',

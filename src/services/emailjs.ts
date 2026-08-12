@@ -1,11 +1,11 @@
 import emailjs from '@emailjs/browser';
+import {
+	escapeContactPayload,
+	validateContactForm,
+} from '../utils/contactValidation';
+import type { ContactFormPayload } from '../utils/contactValidation';
 
-export interface ContactFormPayload {
-	name: string;
-	email: string;
-	subject: string;
-	message: string;
-}
+export type { ContactFormPayload } from '../utils/contactValidation';
 
 const getEmailJsConfig = () => {
 	const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
@@ -38,18 +38,25 @@ const ensureEmailJsInitialized = () => {
 export async function sendContactEmail(payload: ContactFormPayload) {
 	const { serviceId, templateId } = getEmailJsConfig();
 	ensureEmailJsInitialized();
+	const validation = validateContactForm(payload);
+
+	if (!validation.success) {
+		throw new Error(validation.message);
+	}
+
+	const safePayload = escapeContactPayload(validation.data);
 
 	return emailjs.send(
 		serviceId,
 		templateId,
 		{
-			name: payload.name,
-			email: payload.email,
-			subject: payload.subject,
-			message: payload.message,
-			from_name: payload.name,
-			from_email: payload.email,
-			reply_to: payload.email,
+			name: safePayload.name,
+			email: validation.data.email,
+			subject: safePayload.subject,
+			message: safePayload.message,
+			from_name: safePayload.name,
+			from_email: validation.data.email,
+			reply_to: validation.data.email,
 		},
 	);
 }

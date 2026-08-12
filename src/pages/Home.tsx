@@ -1,16 +1,15 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { ArrowRight, Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles, ZoomIn } from 'lucide-react';
+import { ArrowRight, Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles } from 'lucide-react';
 import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
 import ContactSection from '../components/ContactSection';
 import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
-import ImageLightbox from '../components/ImageLightbox';
+import HomeCertificatesSection from '../components/HomeCertificatesSection';
 import { about } from '../data/about';
-import { certificates } from '../data/certificates';
 import { education } from '../data/education';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
@@ -63,13 +62,12 @@ const aboutHighlights = [
 	},
 	{
 		label: 'İş tərzi',
-		value: 'Performance First',
+		value: 'Problem-solving',
 		icon: Award,
 	},
 ];
 
 function Home() {
-	const [selectedCertificateImage, setSelectedCertificateImage] = useState<string | null>(null);
 	const showLanyard = useMediaQuery('(min-width: 640px)');
 
 	return (
@@ -388,84 +386,7 @@ function Home() {
 				</div>
 			</section>
 
-			{/* Certificates section */}
-			<section className="relative mt-20 sm:mt-24 lg:mt-28">
-				<div className="container relative z-10 mx-auto px-6">
-					<div className="mx-auto max-w-6xl">
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, amount: 0.35 }}
-							transition={{ duration: 0.5 }}
-							className="flex justify-center"
-						>
-							<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
-								SERTİFİKATLARIM
-							</div>
-						</motion.div>
-
-						<motion.p
-							initial={{ opacity: 0, y: 16 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, amount: 0.35 }}
-							transition={{ duration: 0.45, delay: 0.08 }}
-							className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-neutral-400 sm:text-base"
-						>
-							Əldə etdiyim sertifikatları və təlimləri burada görə bilərsiniz. Hər bir sertifikat mənim bilik və bacarıqlarımı artırmaq üçün keçdiyim kursların nəticəsidir.
-						</motion.p>
-
-						<div className="mt-16 grid gap-6 md:grid-cols-3 xl:mt-14 xl:gap-8">
-							{certificates.slice(0, 3).map((item, index) => (
-								<motion.article
-									key={item.id}
-									initial={{ opacity: 0, y: 18 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true, amount: 0.25 }}
-									transition={{ duration: 0.45, delay: index * 0.08 }}
-									className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:bg-white/7"
-								>
-									<button
-										type="button"
-										onClick={() => setSelectedCertificateImage(item.image)}
-										className="block w-full text-left"
-										aria-label={`${item.title} sertifikatını tam ölçüdə aç`}
-									>
-										<div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20">
-											<img
-												src={item.image}
-												alt={item.title}
-												loading="lazy"
-												decoding="async"
-												className="h-full w-full object-cover object-center cursor-pointer transition duration-500 group-hover:scale-110"
-											/>
-											<div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-												<div className="flex h-16 w-16 items-center justify-center rounded-full bg-yellow-400/90 text-black transition-transform duration-300 group-hover:scale-110">
-													<ZoomIn className="h-8 w-8" />
-												</div>
-											</div>
-										</div>
-
-										<div className="mt-4 space-y-3">
-											<h3 className="text-lg font-semibold text-white sm:text-xl group-hover:text-yellow-400 transition-colors duration-300">{item.title}</h3>
-											<p className="text-sm font-medium text-neutral-400">{item.issuer}</p>
-											<p className="text-xs font-medium uppercase tracking-[0.18em] text-yellow-300/90">{item.date}</p>
-										</div>
-									</button>
-								</motion.article>
-							))}
-						</div>
-
-						<div className="mt-8 flex justify-end">
-							<Link
-								to="/certificates"
-								className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
-							>
-								Bütün sertifikatlara bax →
-							</Link>
-						</div>
-					</div>
-				</div>
-			</section>
+			<HomeCertificatesSection />
 
 			<HomeSkillsSection />
 
@@ -473,11 +394,6 @@ function Home() {
 
 			<ContactSection />
 
-			<ImageLightbox
-				src={selectedCertificateImage}
-				alt="Seçilmiş sertifikat"
-				onClose={() => setSelectedCertificateImage(null)}
-			/>
 		</div>
 	);
 }
