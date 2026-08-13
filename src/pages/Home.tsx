@@ -9,6 +9,7 @@ import ContactSection from '../components/ContactSection';
 import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
 import HomeCertificatesSection from '../components/HomeCertificatesSection';
+import LanyardErrorBoundary from '../components/LanyardErrorBoundary';
 import { about } from '../data/about';
 import { education } from '../data/education';
 import { useMediaQuery } from '../hooks/useMediaQuery';
@@ -194,15 +195,17 @@ function Home() {
 								className="relative h-[350px] sm:h-[450px] lg:h-[680px]"
 							>
 								{showLanyard ? (
-									<Suspense
-										fallback={(
-											<div aria-hidden="true" className="flex h-full items-center justify-center">
-												<div className="h-44 w-32 animate-pulse rounded-[1.5rem] border border-yellow-300/15 bg-yellow-300/5 shadow-[0_0_70px_rgba(250,204,21,0.08)]" />
-											</div>
-										)}
-									>
-										<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
-									</Suspense>
+									<LanyardErrorBoundary>
+										<Suspense
+											fallback={(
+												<div aria-hidden="true" className="flex h-full items-center justify-center">
+													<div className="h-44 w-32 animate-pulse rounded-[1.5rem] border border-yellow-300/15 bg-yellow-300/5 shadow-[0_0_70px_rgba(250,204,21,0.08)]" />
+												</div>
+											)}
+										>
+											<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
+										</Suspense>
+									</LanyardErrorBoundary>
 								) : null}
 							</motion.div>
 						</div>
