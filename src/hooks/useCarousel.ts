@@ -13,7 +13,6 @@ export function useCarousel({ itemCount, autoplayDelay = 4500 }: UseCarouselOpti
   const isDesktop = useMediaQuery('(min-width: 1024px)')
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isManuallyPaused, setIsManuallyPaused] = useState(false)
   const [isInteractionPaused, setIsInteractionPaused] = useState(false)
 
   const visibleItems = isDesktop ? 3 : isTablet ? 2 : 1
@@ -76,11 +75,11 @@ export function useCarousel({ itemCount, autoplayDelay = 4500 }: UseCarouselOpti
   }, [])
 
   useEffect(() => {
-    if (isManuallyPaused || isInteractionPaused || prefersReducedMotion || maxIndex === 0) return
+    if (isInteractionPaused || prefersReducedMotion || maxIndex === 0) return
 
     const timer = window.setTimeout(goNext, autoplayDelay)
     return () => window.clearTimeout(timer)
-  }, [activeIndex, autoplayDelay, goNext, isInteractionPaused, isManuallyPaused, maxIndex, prefersReducedMotion])
+  }, [activeIndex, autoplayDelay, goNext, isInteractionPaused, maxIndex, prefersReducedMotion])
 
   const pages = useMemo(
     () => Array.from({ length: maxIndex + 1 }, (_, index) => index),
@@ -93,11 +92,8 @@ export function useCarousel({ itemCount, autoplayDelay = 4500 }: UseCarouselOpti
     goNext,
     goPrevious,
     handleScroll,
-    isManuallyPaused,
     pages,
-    pause: () => setIsManuallyPaused(true),
     pauseInteraction: () => setIsInteractionPaused(true),
-    resume: () => setIsManuallyPaused(false),
     resumeInteraction: () => setIsInteractionPaused(false),
     scrollToIndex,
   }

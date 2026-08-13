@@ -1,13 +1,10 @@
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface CarouselControlsProps {
   activeIndex: number
   ariaLabel: string
-  isPaused: boolean
   pages: number[]
   onNext: () => void
-  onPause: () => void
-  onPlay: () => void
   onPrevious: () => void
   onSelect: (index: number) => void
 }
@@ -15,17 +12,42 @@ interface CarouselControlsProps {
 function CarouselControls({
   activeIndex,
   ariaLabel,
-  isPaused,
   pages,
   onNext,
-  onPause,
-  onPlay,
   onPrevious,
   onSelect,
 }: CarouselControlsProps) {
   return (
-    <div className="mt-7 flex flex-col items-center justify-between gap-5 sm:flex-row">
-      <div className="flex items-center gap-2" role="group" aria-label={`${ariaLabel} səhifələri`}>
+    <>
+      <div
+        data-testid="carousel-side-controls"
+        className="pointer-events-none absolute inset-y-0 -left-3 -right-3 z-20 flex items-center justify-between sm:-left-5 sm:-right-5 lg:-left-6 lg:-right-6"
+        role="group"
+        aria-label={`${ariaLabel} istiqamət idarəetməsi`}
+      >
+        <button
+          type="button"
+          onClick={onPrevious}
+          aria-label="Əvvəlki slayd"
+          className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-neutral-950/90 text-white shadow-[0_12px_34px_rgba(0,0,0,0.5)] backdrop-blur-xl transition duration-300 hover:-translate-x-0.5 hover:border-yellow-300/50 hover:bg-yellow-300 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300 sm:h-12 sm:w-12"
+        >
+          <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+        </button>
+        <button
+          type="button"
+          onClick={onNext}
+          aria-label="Növbəti slayd"
+          className="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full border border-yellow-200/70 bg-yellow-300 text-black shadow-[0_12px_34px_rgba(250,204,21,0.24)] transition duration-300 hover:translate-x-0.5 hover:bg-yellow-200 hover:shadow-[0_16px_40px_rgba(250,204,21,0.34)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300 sm:h-12 sm:w-12"
+        >
+          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+        </button>
+      </div>
+
+      <div
+        className="absolute left-1/2 top-full mt-6 flex -translate-x-1/2 items-center justify-center gap-2"
+        role="group"
+        aria-label={`${ariaLabel} səhifələri`}
+      >
         {pages.map((page) => (
           <button
             key={page}
@@ -42,34 +64,7 @@ function CarouselControls({
           />
         ))}
       </div>
-
-      <div className="flex items-center gap-2" role="group" aria-label={`${ariaLabel} idarəetməsi`}>
-        <button
-          type="button"
-          onClick={isPaused ? onPlay : onPause}
-          aria-label={isPaused ? 'Avtomatik keçidi başladın' : 'Avtomatik keçidi dayandırın'}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-neutral-300 transition hover:border-yellow-300/35 hover:bg-yellow-300/10 hover:text-yellow-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
-        >
-          {isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
-        </button>
-        <button
-          type="button"
-          onClick={onPrevious}
-          aria-label="Əvvəlki slayd"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:-translate-x-0.5 hover:border-yellow-300/35 hover:bg-yellow-300 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={onNext}
-          aria-label="Növbəti slayd"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/35 bg-yellow-300 text-black shadow-[0_10px_28px_rgba(250,204,21,0.18)] transition hover:translate-x-0.5 hover:bg-yellow-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      </div>
-    </div>
+    </>
   )
 }
 

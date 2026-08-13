@@ -16,11 +16,8 @@ function HomeProjectsSection() {
     goNext,
     goPrevious,
     handleScroll,
-    isManuallyPaused,
     pages,
-    pause,
     pauseInteraction,
-    resume,
     resumeInteraction,
     scrollToIndex,
   } = useCarousel({ itemCount: featuredProjects.length, autoplayDelay: 5200 })
@@ -70,38 +67,37 @@ function HomeProjectsSection() {
             onFocusCapture={pauseInteraction}
             onBlurCapture={handleBlur}
           >
-            <div
-              ref={containerRef}
-              onScroll={handleScroll}
-              role="region"
-              aria-roledescription="carousel"
-              aria-label="Seçilmiş layihələr"
-              className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {featuredProjects.map((project, index) => (
-                <div
-                  key={project.id}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`${index + 1} / ${featuredProjects.length}`}
-                  className="shrink-0 basis-full snap-start pr-4 sm:basis-1/2 lg:basis-1/3"
-                >
-                  <ProjectCard project={project} compact />
-                </div>
-              ))}
-            </div>
+            <div className="relative mb-12">
+              <div
+                ref={containerRef}
+                onScroll={handleScroll}
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Seçilmiş layihələr"
+                className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {featuredProjects.map((project, index) => (
+                  <div
+                    key={project.id}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`${index + 1} / ${featuredProjects.length}`}
+                    className="shrink-0 basis-full snap-start px-1.5 sm:basis-1/2 sm:px-2 lg:basis-1/3"
+                  >
+                    <ProjectCard project={project} compact />
+                  </div>
+                ))}
+              </div>
 
-            <CarouselControls
-              activeIndex={activeIndex}
-              ariaLabel="Layihə slideri"
-              isPaused={isManuallyPaused}
-              pages={pages}
-              onNext={goNext}
-              onPause={pause}
-              onPlay={resume}
-              onPrevious={goPrevious}
-              onSelect={scrollToIndex}
-            />
+              <CarouselControls
+                activeIndex={activeIndex}
+                ariaLabel="Layihə slideri"
+                pages={pages}
+                onNext={goNext}
+                onPrevious={goPrevious}
+                onSelect={scrollToIndex}
+              />
+            </div>
           </motion.div>
 
           <div className="mt-7 flex justify-end">

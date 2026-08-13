@@ -18,11 +18,8 @@ function HomeCertificatesSection() {
     goNext,
     goPrevious,
     handleScroll,
-    isManuallyPaused,
     pages,
-    pause,
     pauseInteraction,
-    resume,
     resumeInteraction,
     scrollToIndex,
   } = useCarousel({ itemCount: featuredCertificates.length, autoplayDelay: 4800 })
@@ -72,23 +69,24 @@ function HomeCertificatesSection() {
             onFocusCapture={pauseInteraction}
             onBlurCapture={handleBlur}
           >
-            <div
-              ref={containerRef}
-              onScroll={handleScroll}
-              role="region"
-              aria-roledescription="carousel"
-              aria-label="Seçilmiş sertifikatlar"
-              className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {featuredCertificates.map((certificate, index) => (
-                <div
-                  key={certificate.id}
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label={`${index + 1} / ${featuredCertificates.length}`}
-                  className="shrink-0 basis-full snap-start pr-4 sm:basis-1/2 lg:basis-1/3"
-                >
-                  <motion.button
+            <div className="relative mb-12">
+              <div
+                ref={containerRef}
+                onScroll={handleScroll}
+                role="region"
+                aria-roledescription="carousel"
+                aria-label="Seçilmiş sertifikatlar"
+                className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {featuredCertificates.map((certificate, index) => (
+                  <div
+                    key={certificate.id}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`${index + 1} / ${featuredCertificates.length}`}
+                    className="shrink-0 basis-full snap-start px-1.5 sm:basis-1/2 sm:px-2 lg:basis-1/3"
+                  >
+                    <motion.button
                     type="button"
                     whileHover={{ y: -6 }}
                     onClick={() => setSelectedCertificate(certificate)}
@@ -119,22 +117,20 @@ function HomeCertificatesSection() {
                       <p className="mt-2 text-sm font-medium text-neutral-400">{certificate.issuer}</p>
                       <p className="mt-3 line-clamp-3 text-sm leading-6 text-neutral-500">{certificate.description}</p>
                     </div>
-                  </motion.button>
-                </div>
-              ))}
-            </div>
+                    </motion.button>
+                  </div>
+                ))}
+              </div>
 
-            <CarouselControls
-              activeIndex={activeIndex}
-              ariaLabel="Sertifikat slideri"
-              isPaused={isManuallyPaused}
-              pages={pages}
-              onNext={goNext}
-              onPause={pause}
-              onPlay={resume}
-              onPrevious={goPrevious}
-              onSelect={scrollToIndex}
-            />
+              <CarouselControls
+                activeIndex={activeIndex}
+                ariaLabel="Sertifikat slideri"
+                pages={pages}
+                onNext={goNext}
+                onPrevious={goPrevious}
+                onSelect={scrollToIndex}
+              />
+            </div>
           </motion.div>
 
           <div className="mt-7 flex justify-end">
