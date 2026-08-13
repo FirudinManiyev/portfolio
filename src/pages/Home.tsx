@@ -197,7 +197,7 @@ function Home() {
 									name="Firudin Maniyev"
 									title="Full-stack Developer"
 									handle="firudincoder"
-									status="Əlaqə üçün açıq"
+									status="Əlaqə üçün yaz"
 									contactText="Əlaqə saxla"
 									contactTo="/contact"
 									showUserInfo

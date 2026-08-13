@@ -146,7 +146,7 @@ function ProfileCardComponent({
 
         <div className="absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 p-5 sm:p-6">
           <div className="min-w-0">
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-yellow-200/80">Portfolio profile</p>
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-yellow-200/80">Portfolio profili</p>
             <h2 className="mt-2 text-2xl font-black leading-tight tracking-[-0.035em] text-white drop-shadow-lg sm:text-3xl">
               {name}
             </h2>

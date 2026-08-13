@@ -13,7 +13,7 @@ describe('ProfileCard', () => {
           name="Firudin Maniyev"
           title="Full-stack Developer"
           handle="firudincoder"
-          status="Əlaqə üçün açıq"
+          status="Əlaqə üçün yaz"
           contactText="Əlaqə saxla"
           contactTo="/contact"
           showUserInfo
@@ -27,7 +27,7 @@ describe('ProfileCard', () => {
     expect(screen.getByRole('img', { name: 'Firudin Maniyev profil şəkli' })).not.toBeNull()
     expect(screen.getByText('Full-stack Developer')).not.toBeNull()
     expect(screen.getByText('@firudincoder')).not.toBeNull()
-    expect(screen.getByText('Əlaqə üçün açıq')).not.toBeNull()
+    expect(screen.getByText('Əlaqə üçün yaz')).not.toBeNull()
     expect(screen.getByRole('link', { name: 'Əlaqə saxla' }).getAttribute('href')).toBe('/contact')
   })
 })
