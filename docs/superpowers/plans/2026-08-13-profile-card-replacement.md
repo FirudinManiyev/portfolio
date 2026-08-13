@@ -252,7 +252,7 @@ Start `vite preview` on `127.0.0.1:4173`, request `/`, `/contact/`, and `/projec
 
 - [ ] **Step 4: Verify repository cleanup**
 
-Run `rg -n "Lanyard|@react-three|meshline|from 'three'|wasm-unsafe-eval" src package.json vite.config.ts vercel.json` and inspect every remaining match. The only acceptable references are historical design/plan documentation; no production or test match may remain.
+Run `rg -n "Lanyard|@react-three|meshline|from 'three'|wasm-unsafe-eval" src package.json vite.config.ts vercel.json` and inspect every remaining match. References are acceptable only inside regression tests that enforce the removed dependencies and CSP permission; no production match may remain.
 
 - [ ] **Step 5: Commit repository hygiene**
 
