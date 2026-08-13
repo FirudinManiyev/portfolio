@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import LanyardErrorBoundary from '../components/LanyardErrorBoundary'
 
-function BrokenLanyard() {
+function BrokenLanyard(): never {
   throw new Error('WebAssembly compile failed')
 }
 
