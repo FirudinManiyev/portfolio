@@ -13,6 +13,18 @@ dist-ssr
 *.local
 .env
 
+# Test and build caches
+coverage
+.vite
+*.tsbuildinfo
+
+# Deployment tooling
+.vercel
+
+# Local environment variants
+.env.*
+!.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
