@@ -80,5 +80,4 @@ function staticSeoPagesPlugin(): Plugin {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), staticSeoPagesPlugin()],
-  assetsInclude: ['**/*.glb'],
 })
