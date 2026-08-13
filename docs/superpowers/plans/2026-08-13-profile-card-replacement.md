@@ -157,7 +157,7 @@ import { describe, expect, it } from 'vitest'
 import packageJson from '../../package.json'
 
 describe('browser runtime dependencies', () => {
-  it.each(['@react-three/drei', '@react-three/fiber', '@react-three/rapier', 'three'])(
+  it.each(['@react-three/drei', '@react-three/fiber', '@react-three/rapier', 'meshline', 'three'])(
     'does not ship the removed Lanyard dependency %s',
     (dependency) => {
       expect(packageJson.dependencies).not.toHaveProperty(dependency)
@@ -177,7 +177,7 @@ Expected: FAIL because the CSP still permits WASM evaluation and package depende
 Run:
 
 ```bash
-npm uninstall @react-three/drei @react-three/fiber @react-three/rapier three
+npm uninstall @react-three/drei @react-three/fiber @react-three/rapier meshline three
 npm uninstall -D @types/three
 ```
 
@@ -252,7 +252,7 @@ Start `vite preview` on `127.0.0.1:4173`, request `/`, `/contact/`, and `/projec
 
 - [ ] **Step 4: Verify repository cleanup**
 
-Run `rg -n "Lanyard|@react-three|from 'three'|wasm-unsafe-eval" src package.json vite.config.ts vercel.json` and inspect every remaining match. The only acceptable references are historical design/plan documentation; no production or test match may remain.
+Run `rg -n "Lanyard|@react-three|meshline|from 'three'|wasm-unsafe-eval" src package.json vite.config.ts vercel.json` and inspect every remaining match. The only acceptable references are historical design/plan documentation; no production or test match may remain.
 
 - [ ] **Step 5: Commit repository hygiene**
 

@@ -54,6 +54,7 @@ After ProfileCard is integrated, remove:
 - `@react-three/fiber`
 - `@react-three/drei`
 - `@react-three/rapier`
+- `meshline`
 - `three`
 - `@types/three`
 
