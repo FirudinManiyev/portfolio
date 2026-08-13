@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { ArrowRight, Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles } from 'lucide-react';
@@ -9,12 +8,11 @@ import ContactSection from '../components/ContactSection';
 import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
 import HomeCertificatesSection from '../components/HomeCertificatesSection';
-import LanyardErrorBoundary from '../components/LanyardErrorBoundary';
+import ProfileCard from '../components/ProfileCard';
+import firudinProfileImage from '../assets/firudinmaniyev.jpeg';
+import fmLogo from '../assets/fm_logo.png';
 import { about } from '../data/about';
 import { education } from '../data/education';
-import { useMediaQuery } from '../hooks/useMediaQuery';
-
-const Lanyard = lazy(() => import('../components/Lanyard'));
 
 const heroContainerVariants: Variants = {
 	hidden: { opacity: 0 },
@@ -69,8 +67,6 @@ const aboutHighlights = [
 ];
 
 function Home() {
-	const showLanyard = useMediaQuery('(min-width: 640px)');
-
 	return (
 		<div className="space-y-4 sm:space-y-6 lg:space-y-8">
 
@@ -187,26 +183,28 @@ function Home() {
 							</motion.div>
 						</motion.div>
 
-						<div className="order-2 hidden sm:block">
+						<div className="order-2 flex justify-center md:justify-end">
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ duration: 0.6, delay: 0.3 }}
-								className="relative h-[350px] sm:h-[450px] lg:h-[680px]"
+								className="relative flex w-full items-center justify-center py-2 md:justify-end lg:min-h-[560px]"
 							>
-								{showLanyard ? (
-									<LanyardErrorBoundary>
-										<Suspense
-											fallback={(
-												<div aria-hidden="true" className="flex h-full items-center justify-center">
-													<div className="h-44 w-32 animate-pulse rounded-[1.5rem] border border-yellow-300/15 bg-yellow-300/5 shadow-[0_0_70px_rgba(250,204,21,0.08)]" />
-												</div>
-											)}
-										>
-											<Lanyard position={[0, 5, 15]} gravity={[0, -40, 0]} fov={15} />
-										</Suspense>
-									</LanyardErrorBoundary>
-								) : null}
+								<ProfileCard
+									avatarUrl={firudinProfileImage}
+									miniAvatarUrl={firudinProfileImage}
+									iconUrl={fmLogo}
+									name="Firudin Maniyev"
+									title="Full-stack Developer"
+									handle="firudincoder"
+									status="Əlaqə üçün açıq"
+									contactText="Əlaqə saxla"
+									contactTo="/contact"
+									showUserInfo
+									enableTilt
+									enableMobileTilt={false}
+									behindGlowEnabled
+								/>
 							</motion.div>
 						</div>
 					</div>
