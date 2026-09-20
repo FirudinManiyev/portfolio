@@ -89,16 +89,18 @@ function ProjectDetails() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
-              >
-                <FaGithub className="h-4 w-4" />
-                GitHub kodu
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+              {project.link ? (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
+                >
+                  <FaGithub className="h-4 w-4" />
+                  GitHub kodu
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              ) : null}
               {project.liveDemo ? (
                 <a
                   href={project.liveDemo}

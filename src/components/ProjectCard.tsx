@@ -64,16 +64,18 @@ function ProjectCard({ project, compact = false }: ProjectCardProps) {
         </div>
 
         <div className="relative z-20 mt-auto flex flex-wrap gap-2 pt-6">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${project.title} GitHub kodunu aç`}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-yellow-300/30 hover:bg-white/10"
-          >
-            <FaGithub className="h-4 w-4" />
-            Kod
-          </a>
+          {project.link ? (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} GitHub kodunu aç`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-yellow-300/30 hover:bg-white/10"
+            >
+              <FaGithub className="h-4 w-4" />
+              Kod
+            </a>
+          ) : null}
           {project.liveDemo ? (
             <a
               href={project.liveDemo}

@@ -5,6 +5,11 @@ export interface ProjectRouteMetadata {
 }
 
 export const projectRouteMetadata = {
+  kiberEduAz: {
+    slug: 'kibereduaz',
+    title: 'KiberEduAz',
+    description: 'Məktəb və kolleclər üçün real ssenarilər, interaktiv tapşırıqlar və oyunlaşdırılmış öyrənmə təqdim edən kibertəhlükəsizlik təlim platforması.',
+  },
   worldTelecom: {
     slug: 'worldtelecom-clone',
     title: 'WorldTelecom Clone',

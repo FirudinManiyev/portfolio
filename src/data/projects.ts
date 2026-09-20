@@ -9,7 +9,7 @@ export interface Project {
     technologies: string[];
     image: string;
     date: string;
-    link: string;
+    link?: string;
     liveDemo?: string;
 }
 
@@ -24,6 +24,14 @@ const getProjectImage = (fileName: string) => {
 };
 
 export const projects: Project[] = [
+    {
+        id: 14,
+        ...projectRouteMetadata.kiberEduAz,
+        longDescription: "KiberEduAz məktəb və kolleclərdə İT və kibertəhlükəsizlik təlimlərini rəqəmsal şəkildə təşkil etmək üçün hazırlanmış müasir təhsil platformasıdır. Şagirdlər mövzuları qısa və fokuslanmış dərslərlə öyrənir, real hadisələrə əsaslanan ssenariləri analiz edir və cavablarını dərhal yoxlayaraq xal qazanırlar. Platformanın məqsədi kibertəhlükələri təhlükəsiz, interaktiv və oyunlaşdırılmış mühitdə tanıma bacarığını inkişaf etdirməkdir.",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Responsive Design"],
+        image: getProjectImage('kibereduaz.png'),
+        date: "2026",
+    },
     {
         id: 1,
         ...projectRouteMetadata.worldTelecom,
