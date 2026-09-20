@@ -35,6 +35,7 @@ import skillUpImage from "../assets/images/sertifikatlar/skill_up_secret_academy
 import dusuncedeyisİmage from "../assets/images/sertifikatlar/dusunceni_heyatini_deyis.jpeg";
 import esasheyatImage from "../assets/images/sertifikatlar/esas_heyat_bacariqlari.jpeg";
 import sexsibacariqImage from "../assets/images/sertifikatlar/sexsi_bacariqlarini_kesfet.jpeg";
+import devjointImage from "../assets/images/sertifikatlar/devjoint.png";
 
 export const certificates: Certificate[] = [
     {
@@ -256,5 +257,15 @@ export const certificates: Certificate[] = [
         category: "Şəxsi İnkişaf",
         description:
             "Şəxsi bacarıqların kəşfi və inkişafı üzrə təlim proqramında iştirak edərək öz potensialımı daha yaxşı anlamışam.",
+    },
+    {
+        id: 23,
+        title: "DevJoint Frontend Development",
+        issuer: "DevJoint",
+        date: "20-08-2026",
+        image: devjointImage,
+        category: "IT",
+        description:
+            "DevJoint tərəfindən təşkil olunan Frontend Development Internship proqramını uğurla tamamlayaraq frontend texnologiyaları üzrə praktiki biliklər əldə etmişəm.",
     },
 ];
