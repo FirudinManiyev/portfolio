@@ -25,14 +25,6 @@ const getProjectImage = (fileName: string) => {
 
 export const projects: Project[] = [
     {
-        id: 14,
-        ...projectRouteMetadata.kiberEduAz,
-        longDescription: "KiberEduAz məktəb və kolleclərdə İT və kibertəhlükəsizlik təlimlərini rəqəmsal şəkildə təşkil etmək üçün hazırlanmış müasir təhsil platformasıdır. Şagirdlər mövzuları qısa və fokuslanmış dərslərlə öyrənir, real hadisələrə əsaslanan ssenariləri analiz edir və cavablarını dərhal yoxlayaraq xal qazanırlar. Platformanın məqsədi kibertəhlükələri təhlükəsiz, interaktiv və oyunlaşdırılmış mühitdə tanıma bacarığını inkişaf etdirməkdir.",
-        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Responsive Design"],
-        image: getProjectImage('kibereduaz.png'),
-        date: "2026",
-    },
-    {
         id: 1,
         ...projectRouteMetadata.worldTelecom,
         longDescription: "WorldTelecom Clone real bir ecommerce şirkətinin saytının klonu əsasında hazırlanmışdır. Layihənin əsas məqsədi real bir şirkət saytının əsas UI elementlərini və istifadəçi təcrübəsini frontend texnologiyalarından istifadə edərək yenidən yaratmaq idi. Saytda məhsulların təqdimatı, xidmətlər, naviqasiya və müxtəlif kontent bölmələri hazırlanmışdır. Bu layihəni mən Div Academy tərəfindən verilmiş final tapşırıq çərçivəsində hazırlamışam. ",
@@ -157,6 +149,16 @@ export const projects: Project[] = [
         date: "2026",
         link: "https://github.com/FirudinManiyev/mani_barcode",
         liveDemo: "https://manibarcode.vercel.app",
+    },
+    {
+        id: 14,
+        ...projectRouteMetadata.kiberEduAz,
+        longDescription: "KiberEduAz məktəb və kolleclərdə İT və kibertəhlükəsizlik təlimlərini rəqəmsal şəkildə təşkil etmək üçün hazırlanmış müasir təhsil platformasıdır. Şagirdlər mövzuları qısa və fokuslanmış dərslərlə öyrənir, real hadisələrə əsaslanan ssenariləri analiz edir və cavablarını dərhal yoxlayaraq xal qazanırlar. Platformanın məqsədi kibertəhlükələri təhlükəsiz, interaktiv və oyunlaşdırılmış mühitdə tanıma bacarığını inkişaf etdirməkdir.",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "React Router", "Responsive Design"],
+        image: getProjectImage('kibereduaz.png'),
+        date: "2026",
+        link: "https://github.com/1brah1m0f/KiberEduAz",
+        liveDemo: "https://kiber-edu-az-one.vercel.app/",
     },
 ];
 

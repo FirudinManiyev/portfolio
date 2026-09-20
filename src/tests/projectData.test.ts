@@ -9,6 +9,8 @@ describe('KiberEduAz project data', () => {
     expect(project?.title).toBe('KiberEduAz')
     expect(project?.image).toContain('kibereduaz.png')
     expect(project?.technologies).toContain('React')
+    expect(project?.link).toBe('https://github.com/1brah1m0f/KiberEduAz')
+    expect(project?.liveDemo).toBe('https://kiber-edu-az-one.vercel.app/')
     expect(getProjectRoute('kibereduaz')?.title).toBe('KiberEduAz')
   })
 })
