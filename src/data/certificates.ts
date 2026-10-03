@@ -1,4 +1,4 @@
-export type CertificateCategory =
+type CertificateCategory =
     | "IT"
     | "Şəxsi İnkişaf"
     | "Digər";

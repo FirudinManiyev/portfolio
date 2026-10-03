@@ -16,12 +16,10 @@ function HomeProjectsSection() {
     goNext,
     goPrevious,
     handleScroll,
-    isAutoplayPaused,
     pages,
     pauseInteraction,
     resumeInteraction,
     scrollToIndex,
-    toggleAutoplay,
   } = useCarousel({ itemCount: featuredProjects.length, autoplayDelay: 5200 })
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -94,12 +92,10 @@ function HomeProjectsSection() {
               <CarouselControls
                 activeIndex={activeIndex}
                 ariaLabel="Layihə slideri"
-                isAutoplayPaused={isAutoplayPaused}
                 pages={pages}
                 onNext={goNext}
                 onPrevious={goPrevious}
                 onSelect={scrollToIndex}
-                onToggleAutoplay={toggleAutoplay}
               />
             </div>
           </motion.div>

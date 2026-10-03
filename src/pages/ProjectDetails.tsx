@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, CalendarDays, Code2, ExternalLink, Layers3 } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, CalendarDays, ExternalLink, Layers3 } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
+import SocialIcon from '../components/SocialIcon'
 import { getProjectBySlug } from '../data/projects'
 import NotFoundPage from './NotFoundPage'
 
@@ -95,7 +96,7 @@ function ProjectDetails() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
                 >
-                  <Code2 aria-hidden="true" className="h-4 w-4" />
+                  <SocialIcon name="github" className="h-4 w-4" />
                   GitHub kodu
                   <ArrowUpRight className="h-4 w-4" />
                 </a>

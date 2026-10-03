@@ -28,6 +28,7 @@ Bu layihə şəxsi portfolio saytım kimi hazırlanıb. Məqsədim:
 * 🌐 React Router DOM
 * 🎬 Framer Motion
 * 🧩 Lucide React
+* 🔗 React Icons (platforma loqoları)
 * 🔔 React Hot Toast
 * 📧 EmailJS
 

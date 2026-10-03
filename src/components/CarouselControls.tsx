@@ -1,25 +1,21 @@
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface CarouselControlsProps {
   activeIndex: number
   ariaLabel: string
-  isAutoplayPaused: boolean
   pages: number[]
   onNext: () => void
   onPrevious: () => void
   onSelect: (index: number) => void
-  onToggleAutoplay: () => void
 }
 
 function CarouselControls({
   activeIndex,
   ariaLabel,
-  isAutoplayPaused,
   pages,
   onNext,
   onPrevious,
   onSelect,
-  onToggleAutoplay,
 }: CarouselControlsProps) {
   return (
     <>
@@ -48,7 +44,7 @@ function CarouselControls({
       </div>
 
       <div
-        className="absolute left-1/2 top-full mt-4 flex -translate-x-1/2 items-center justify-center gap-1 sm:mt-5 sm:gap-2"
+        className="absolute left-1/2 top-full mt-4 flex -translate-x-1/2 items-center justify-center gap-0.5 rounded-full border border-white/10 bg-neutral-950/80 px-1 py-0.5 shadow-[0_10px_30px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:mt-5 sm:gap-1"
         role="group"
         aria-label={`${ariaLabel} səhifələri`}
       >
@@ -72,15 +68,6 @@ function CarouselControls({
             />
           </button>
         ))}
-        <button
-          type="button"
-          onClick={onToggleAutoplay}
-          aria-label={isAutoplayPaused ? 'Avtomatik keçidi başlat' : 'Avtomatik keçidi dayandır'}
-          aria-pressed={isAutoplayPaused}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-neutral-950/90 text-neutral-200 transition hover:border-yellow-300/40 hover:text-yellow-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
-        >
-          {isAutoplayPaused ? <Play aria-hidden="true" className="h-4 w-4" /> : <Pause aria-hidden="true" className="h-4 w-4" />}
-        </button>
       </div>
     </>
   )

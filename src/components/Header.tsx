@@ -64,9 +64,9 @@ const Header = () => {
               />
             </Link>
 
-            <span className="hidden h-9 w-px bg-yellow-300/35 md:block" />
+            <span className="hidden h-9 w-px bg-yellow-300/35 xl:block" />
 
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 xl:flex">
               {socialLinks.map(({ href, label, icon }) => (
                 <motion.a
                   whileHover={{ y: -3, scale: 1.03 }}
@@ -76,7 +76,7 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="rounded-full border border-yellow-300/25 bg-black/30 p-2.5 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:scale-105 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_12px_26px_rgba(250,204,21,0.3)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/25 bg-black/30 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_12px_26px_rgba(250,204,21,0.3)]"
                 >
                   <SocialIcon name={icon} className="h-4 w-4" />
                 </motion.a>
@@ -108,7 +108,7 @@ const Header = () => {
 
             <NavLink
               to="/contact"
-              className="ml-2 inline-flex items-center gap-2 rounded-[14px] border-2 border-yellow-200/90 bg-linear-to-r from-yellow-100 via-yellow-300 to-yellow-500 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_10px_26px_rgba(250,204,21,0.4)] transition duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:-rotate-1 hover:from-yellow-50 hover:via-yellow-200 hover:to-yellow-400 hover:shadow-[0_16px_34px_rgba(250,204,21,0.6)]"
+              className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-[14px] border-2 border-yellow-200/90 bg-linear-to-r from-yellow-100 via-yellow-300 to-yellow-500 px-5 py-2.5 text-sm font-semibold text-black shadow-[0_10px_26px_rgba(250,204,21,0.4)] transition duration-300 hover:-translate-y-0.5 hover:from-yellow-50 hover:via-yellow-200 hover:to-yellow-400 hover:shadow-[0_14px_30px_rgba(250,204,21,0.52)]"
             >
               Əlaqə
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-black/15 text-[12px] leading-none">
@@ -123,7 +123,7 @@ const Header = () => {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="inline-flex items-center justify-center rounded-xl border border-yellow-300/35 bg-black/30 p-2.5 text-yellow-200 transition duration-300 hover:scale-105 hover:bg-yellow-400/10 hover:shadow-[0_0_16px_rgba(250,204,21,0.35)] lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-yellow-300/35 bg-black/30 text-yellow-200 transition duration-300 hover:bg-yellow-400/10 hover:shadow-[0_0_16px_rgba(250,204,21,0.35)] lg:hidden"
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -179,7 +179,7 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="rounded-full border border-yellow-300/25 bg-black/20 p-2.5 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:scale-105 hover:border-yellow-300/60 hover:bg-yellow-400/10 hover:text-yellow-200 hover:shadow-[0_10px_22px_rgba(250,204,21,0.25)]"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/25 bg-black/20 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:border-yellow-300/60 hover:bg-yellow-400/10 hover:text-yellow-200 hover:shadow-[0_10px_22px_rgba(250,204,21,0.25)]"
                   >
                     <SocialIcon name={icon} className="h-4 w-4" />
                   </a>

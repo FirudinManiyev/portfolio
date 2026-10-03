@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Code2, ExternalLink } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { Project } from '../data/projects'
 import { getProjectPath } from '../data/projectRoutes'
+import SocialIcon from './SocialIcon'
 
 interface ProjectCardProps {
   project: Project
@@ -71,9 +72,9 @@ function ProjectCard({ project, compact = false, headingLevel = 'h2' }: ProjectC
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${project.title} GitHub kodunu aç`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-yellow-300/30 hover:bg-white/10"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-yellow-300/30 hover:bg-white/10"
             >
-              <Code2 aria-hidden="true" className="h-4 w-4" />
+              <SocialIcon name="github" className="h-4 w-4" />
               Kod
             </a>
           ) : null}
@@ -83,7 +84,7 @@ function ProjectCard({ project, compact = false, headingLevel = 'h2' }: ProjectC
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${project.title} canlı demosunu aç`}
-              className="inline-flex items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2.5 text-sm font-semibold text-yellow-200 transition hover:bg-yellow-300 hover:text-black"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-yellow-300/30 bg-yellow-300/10 px-4 py-2.5 text-sm font-semibold text-yellow-200 transition hover:bg-yellow-300 hover:text-black"
             >
               Canlı demo
               <ExternalLink className="h-4 w-4" />

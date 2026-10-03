@@ -1,7 +1,6 @@
-import { lazy, Suspense } from "react"
+import { lazy } from "react"
 import { Routes, Route } from "react-router-dom"
 import MainLayout from "../layouts/MainLayout"
-import RouteLoading from "../components/RouteLoading"
 
 const Home = lazy(() => import("../pages/Home"))
 const About = lazy(() => import("../pages/About"))
@@ -15,21 +14,19 @@ const NotFoundPage = lazy(() => import("../pages/NotFoundPage"))
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<RouteLoading />}>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<ProjectDetails />} />
-          <Route path="/certificates" element={<Certificates />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:slug" element={<ProjectDetails />} />
+        <Route path="/certificates" element={<Certificates />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   )
 }
 

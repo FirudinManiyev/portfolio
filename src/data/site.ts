@@ -17,7 +17,7 @@ export const navigationLinks = [
   { to: '/certificates', label: 'Sertifikatlar' },
 ] as const
 
-export type SocialIconName = 'github' | 'instagram' | 'linkedin'
+export type SocialIconName = 'github' | 'instagram' | 'linkedin' | 'whatsapp'
 
 export const socialLinks: ReadonlyArray<{
   href: string

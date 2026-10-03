@@ -2,7 +2,7 @@ import { memo, useCallback, useRef, type PointerEvent as ReactPointerEvent } fro
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-export interface ProfileCardProps {
+interface ProfileCardProps {
   avatarUrl: string
   miniAvatarUrl?: string
   iconUrl?: string

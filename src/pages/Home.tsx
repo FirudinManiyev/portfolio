@@ -144,7 +144,7 @@ function Home() {
 								</a>
 							</motion.div>
 
-							<motion.div variants={heroItemVariants} className="mt-4 flex flex-col gap-5 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
+							<motion.div variants={heroItemVariants} className="mt-4 flex flex-col gap-5 border-t border-white/10 pt-4 lg:flex-row lg:items-center lg:justify-between">
 								<div className="grid grid-cols-3 gap-5">
 									{heroStats.map((stat) => (
 										<div key={stat.label}>
@@ -164,7 +164,7 @@ function Home() {
 											aria-label={label}
 											whileHover={{ y: -3, scale: 1.06 }}
 											whileTap={{ scale: 0.94 }}
-											className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-colors duration-300 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
+											className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-colors duration-300 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
 										>
 											<SocialIcon name={icon} className="h-4 w-4" />
 										</motion.a>
@@ -172,7 +172,7 @@ function Home() {
 									<a
 										href={`mailto:${siteProfile.email}`}
 										aria-label="Email"
-										className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
+										className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
 									>
 										<Mail className="h-4 w-4" />
 									</a>

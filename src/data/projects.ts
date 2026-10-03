@@ -87,7 +87,7 @@ export const projects: Project[] = [
         id: 7,
         ...projectRouteMetadata.portfolio,
         longDescription: "Bu portfolio saytı mənim frontend developer kimi bacarıqlarımı, hazırladığım layihələri və öyrəndiyim texnologiyaları nümayiş etdirmək məqsədilə hazırlanmışdır. Saytın əsas məqsədi şəxsi brendimi formalaşdırmaq və real layihələr üzərindən frontend development bacarıqlarımı göstərməkdir. Dizayn responsiv şəkildə hazırlanıb və müasir UI yanaşmalarından istifadə edilmişdir.",
-        technologies: ["React", "TypeScript", "Tailwind CSS", "Git", "@emailjs/browser", "Vite", "framer-motion", "Vercel", "react-hot-toast"],
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Git", "@emailjs/browser", "Vite", "framer-motion", "react-icons", "Vercel", "react-hot-toast"],
         image: getProjectImage('portfolio.webp'),
         date: "2026",
         link: "https://github.com/FirudinManiyev/portfolio",

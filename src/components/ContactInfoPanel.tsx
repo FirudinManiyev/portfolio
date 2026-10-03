@@ -1,13 +1,23 @@
 import type { ComponentType } from 'react';
 import { motion } from 'framer-motion';
-import { Camera, Code2, Mail, MapPin, MessageSquareText, Network, Phone } from 'lucide-react';
+import { Mail, MapPin, MessageSquareText, Phone } from 'lucide-react';
 import { contacts } from '../data/contact';
+import type { SocialIconName } from '../data/site';
+import SocialIcon from './SocialIcon';
 
 type ContactInfoPanelProps = { headingLevel: 'h2' | 'h3' };
 type ContactItem = (typeof contacts)[number];
 
 const contactIconMap: Record<string, ComponentType<{ className?: string; 'aria-hidden'?: boolean }>> = {
-    Phone, Email: Mail, Location: MapPin, GitHub: Code2, LinkedIn: Network, Instagram: Camera,
+    Phone,
+    Email: Mail,
+    Location: MapPin,
+};
+
+const contactBrandIconMap: Record<string, SocialIconName> = {
+    GitHub: 'github',
+    LinkedIn: 'linkedin',
+    Instagram: 'instagram',
 };
 
 function ContactInfoPanel({ headingLevel }: ContactInfoPanelProps) {
@@ -30,12 +40,17 @@ function ContactInfoPanel({ headingLevel }: ContactInfoPanelProps) {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {contacts.map((item: ContactItem) => {
                     const Icon = contactIconMap[item.label] ?? MessageSquareText;
+                    const brandIcon = contactBrandIconMap[item.label];
                     const hasLink = item.href !== '#';
                     const opensNewTab = item.href.startsWith('http');
                     const content = (
                         <div className="flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-black/25 p-4 transition duration-300 hover:border-yellow-300/25 hover:bg-black/35">
                             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-yellow-300/10 text-yellow-300">
-                                <Icon aria-hidden={true} className="h-5 w-5" />
+                                {brandIcon ? (
+                                    <SocialIcon name={brandIcon} className="h-5 w-5" />
+                                ) : (
+                                    <Icon aria-hidden={true} className="h-5 w-5" />
+                                )}
                             </div>
                             <div className="min-w-0 space-y-1">
                                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-yellow-300/90">{item.label}</p>

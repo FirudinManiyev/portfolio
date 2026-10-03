@@ -40,7 +40,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="rounded-full border border-yellow-300/30 bg-black/40 p-2.5 text-neutral-400 transition duration-300 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_10px_22px_rgba(250,204,21,0.28)]"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-yellow-300/30 bg-black/40 text-neutral-400 transition duration-300 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_10px_22px_rgba(250,204,21,0.28)]"
                 >
                   <SocialIcon name={icon} className="h-4 w-4" />
                 </motion.a>
