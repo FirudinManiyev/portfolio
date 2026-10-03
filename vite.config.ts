@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import type { Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { routeSeo, SITE_NAME, SITE_URL, SOCIAL_IMAGE_URL } from './src/data/seo.ts'
+import { notFoundSeo, routeSeo, SITE_NAME, SITE_URL, SOCIAL_IMAGE_URL } from './src/data/seo.ts'
 import { getProjectPath, projectRouteList } from './src/data/projectRoutes.ts'
 
 const escapeHtml = (value: string) => value
@@ -12,6 +12,8 @@ const escapeHtml = (value: string) => value
   .replaceAll('"', '&quot;')
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;')
+
+const escapeXml = (value: string) => escapeHtml(value).replaceAll("'", '&apos;')
 
 const replaceMeta = (
   html: string,
@@ -73,6 +75,41 @@ function staticSeoPagesPlugin(): Plugin {
         await mkdir(routeDirectory, { recursive: true })
         await writeFile(resolve(routeDirectory, 'index.html'), pageHtml, 'utf8')
       }))
+
+      const sitemapPaths = [
+        ...Object.keys(routeSeo),
+        ...projectRouteList.map((project) => getProjectPath(project.slug)),
+      ]
+      const sitemap = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        ...sitemapPaths.map((pathname) => (
+          `  <url><loc>${escapeXml(new URL(pathname, `${SITE_URL}/`).toString())}</loc></url>`
+        )),
+        '</urlset>',
+        '',
+      ].join('\n')
+
+      await writeFile(resolve(outputDirectory, 'sitemap.xml'), sitemap, 'utf8')
+
+      const notFoundUrl = new URL('/404', `${SITE_URL}/`).toString()
+      let notFoundHtml = rootHtml
+        .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(notFoundSeo.title)}</title>`)
+        .replace(
+          /<link rel="canonical" href="[^"]*" \/>/,
+          `<link rel="canonical" href="${notFoundUrl}" />`,
+        )
+
+      notFoundHtml = replaceMeta(notFoundHtml, 'name', 'description', notFoundSeo.description)
+      notFoundHtml = replaceMeta(notFoundHtml, 'name', 'keywords', notFoundSeo.keywords)
+      notFoundHtml = replaceMeta(notFoundHtml, 'name', 'robots', 'noindex, follow')
+      notFoundHtml = replaceMeta(notFoundHtml, 'property', 'og:title', notFoundSeo.title)
+      notFoundHtml = replaceMeta(notFoundHtml, 'property', 'og:description', notFoundSeo.description)
+      notFoundHtml = replaceMeta(notFoundHtml, 'property', 'og:url', notFoundUrl)
+      notFoundHtml = replaceMeta(notFoundHtml, 'name', 'twitter:title', notFoundSeo.title)
+      notFoundHtml = replaceMeta(notFoundHtml, 'name', 'twitter:description', notFoundSeo.description)
+
+      await writeFile(resolve(outputDirectory, '404.html'), notFoundHtml, 'utf8')
     },
   }
 }

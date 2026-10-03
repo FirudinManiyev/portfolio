@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { FaWhatsapp } from 'react-icons/fa6';
+import { MessageCircle } from 'lucide-react';
+import { siteProfile } from '../data/site';
 
 export default function WhatsAppButton() {
-  const phoneNumber = '+994507693654';
-  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\+/g, '')}`;
+  const whatsappUrl = `https://wa.me/${siteProfile.phoneValue.replace(/\+/g, '')}`;
 
   return (
     <motion.a
@@ -28,7 +28,7 @@ export default function WhatsAppButton() {
         transition={{ duration: 0.25 }}
         className="relative z-10"
       >
-        <FaWhatsapp className="h-7 w-7" />
+        <MessageCircle aria-hidden="true" className="h-7 w-7" />
       </motion.div>
 
       {/* Hidden Text */}

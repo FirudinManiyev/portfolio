@@ -1,27 +1,9 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, Phone } from "lucide-react"
-import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6"
 import { NavLink } from "react-router-dom"
 import fmLogo from "../assets/fm_logo.png"
-
-const quickLinks = [
-  { to: "/", label: "Ana səhifə" },
-  { to: "/about", label: "Haqqımda" },
-  { to: "/skills", label: "Bacarıqlar" },
-  { to: "/projects", label: "Layihələr" },
-  { to: "/certificates", label: "Sertifikatlar" },
-  { to: "/education", label: "Təhsil" },
-]
-
-const socialLinks = [
-  {
-    href: "https://www.linkedin.com/in/firudin-maniyev-4843242b7/",
-    label: "LinkedIn",
-    icon: FaLinkedinIn,
-  },
-  { href: "https://github.com/FirudinManiyev", label: "GitHub", icon: FaGithub },
-  { href: "https://www.instagram.com/firudin.coder/", label: "Instagram", icon: FaInstagram },
-]
+import { navigationLinks, siteProfile, socialLinks } from "../data/site"
+import SocialIcon from "./SocialIcon"
 
 const Footer = () => {
   return (
@@ -49,18 +31,18 @@ const Footer = () => {
 
             {/* Social icons */}
             <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start">
-              {socialLinks.map(({ href, label, icon: Icon }) => (
+              {socialLinks.map(({ href, label, icon }) => (
                 <motion.a
                   whileHover={{ y: -4, scale: 1.08 }}
                   whileTap={{ scale: 0.93 }}
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="rounded-full border border-yellow-300/30 bg-black/40 p-2.5 text-neutral-400 transition duration-300 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_10px_22px_rgba(250,204,21,0.28)]"
                 >
-                  <Icon size={15} />
+                  <SocialIcon name={icon} className="h-4 w-4" />
                 </motion.a>
               ))}
             </div>
@@ -72,7 +54,7 @@ const Footer = () => {
               SƏHİFƏLƏR
             </h4>
             <ul className="mt-4 grid grid-cols-2 gap-1 sm:grid-cols-2">
-              {quickLinks.map((link) => (
+              {navigationLinks.map((link) => (
                 <li key={link.to}>
                   <NavLink
                     to={link.to}
@@ -103,18 +85,18 @@ const Footer = () => {
             </h4>
             <div className="mt-4 space-y-3">
               <a
-                href="tel:+994507693654"
+                href={`tel:${siteProfile.phoneValue}`}
                 className="group flex items-center gap-2.5 rounded-xl border border-white/6 bg-white/4 px-4 py-3 text-sm text-neutral-400 transition duration-200 hover:border-yellow-300/25 hover:bg-white/6 hover:text-neutral-200"
               >
                 <Phone size={14} className="shrink-0 text-yellow-400/70 group-hover:text-yellow-300" />
-                +994 50 769 36 54
+                {siteProfile.phoneDisplay}
               </a>
               <a
-                href="mailto:firudinmaniyev@gmail.com"
+                href={`mailto:${siteProfile.email}`}
                 className="group flex items-center gap-2.5 rounded-xl border border-white/6 bg-white/4 px-4 py-3 text-sm text-neutral-400 transition duration-200 hover:border-yellow-300/25 hover:bg-white/6 hover:text-neutral-200"
               >
                 <Mail size={14} className="shrink-0 text-yellow-400/70 group-hover:text-yellow-300" />
-                <span className="truncate">firudinmaniyev@gmail.com</span>
+                <span className="truncate">{siteProfile.email}</span>
               </a>
 
               <motion.div whileHover={{ y: -2 }}>
@@ -134,7 +116,7 @@ const Footer = () => {
         <div className="mt-10 border-t border-yellow-300/10 pt-5">
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <p className="text-xs text-neutral-600">
-              © 2026 Firudin Maniyev. Bütün hüquqlar qorunur.
+              © 2026 {siteProfile.name}. Bütün hüquqlar qorunur.
             </p>
           </div>
         </div>

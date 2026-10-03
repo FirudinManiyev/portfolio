@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
-import { FaGithub } from 'react-icons/fa6'
+import { ArrowRight, Code2, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { Project } from '../data/projects'
 import { getProjectPath } from '../data/projectRoutes'
@@ -8,10 +7,12 @@ import { getProjectPath } from '../data/projectRoutes'
 interface ProjectCardProps {
   project: Project
   compact?: boolean
+  headingLevel?: 'h2' | 'h3'
 }
 
-function ProjectCard({ project, compact = false }: ProjectCardProps) {
+function ProjectCard({ project, compact = false, headingLevel = 'h2' }: ProjectCardProps) {
   const detailsPath = getProjectPath(project.slug)
+  const Heading = headingLevel
 
   return (
     <motion.article
@@ -42,9 +43,9 @@ function ProjectCard({ project, compact = false }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-yellow-200 sm:text-2xl">
+        <Heading className="text-xl font-bold tracking-tight text-white transition-colors group-hover:text-yellow-200 sm:text-2xl">
           {project.title}
-        </h3>
+        </Heading>
         <p className={[
           'mt-3 text-sm leading-7 text-neutral-400 sm:text-[15px]',
           compact ? 'line-clamp-3' : 'line-clamp-4',
@@ -72,7 +73,7 @@ function ProjectCard({ project, compact = false }: ProjectCardProps) {
               aria-label={`${project.title} GitHub kodunu aç`}
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-yellow-300/30 hover:bg-white/10"
             >
-              <FaGithub className="h-4 w-4" />
+              <Code2 aria-hidden="true" className="h-4 w-4" />
               Kod
             </a>
           ) : null}

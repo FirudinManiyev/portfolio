@@ -7,10 +7,10 @@ export interface Education {
     description: string;
 }
 
-import azmiuImage from '../assets/images/education/azmiu.jpg';
-import divAcademyImage from '../assets/images/education/div_academy.jpeg';
-import codeAcademyImage from '../assets/images/education/code_academy.jpg';
-import holbertonSchoolImage from '../assets/images/education/holberton_school.jpg';
+import azmiuImage from '../assets/images/education/azmiu.webp';
+import divAcademyImage from '../assets/images/education/div_academy.webp';
+import codeAcademyImage from '../assets/images/education/code_academy.webp';
+import holbertonSchoolImage from '../assets/images/education/holberton_school.webp';
 
 export const education: Education[] = [
     {

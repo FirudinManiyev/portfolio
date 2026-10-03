@@ -16,10 +16,12 @@ function HomeProjectsSection() {
     goNext,
     goPrevious,
     handleScroll,
+    isAutoplayPaused,
     pages,
     pauseInteraction,
     resumeInteraction,
     scrollToIndex,
+    toggleAutoplay,
   } = useCarousel({ itemCount: featuredProjects.length, autoplayDelay: 5200 })
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -84,7 +86,7 @@ function HomeProjectsSection() {
                     aria-label={`${index + 1} / ${featuredProjects.length}`}
                     className="shrink-0 basis-full snap-start px-1.5 sm:basis-1/2 sm:px-2 lg:basis-1/3"
                   >
-                    <ProjectCard project={project} compact />
+                    <ProjectCard project={project} compact headingLevel="h3" />
                   </div>
                 ))}
               </div>
@@ -92,10 +94,12 @@ function HomeProjectsSection() {
               <CarouselControls
                 activeIndex={activeIndex}
                 ariaLabel="Layihə slideri"
+                isAutoplayPaused={isAutoplayPaused}
                 pages={pages}
                 onNext={goNext}
                 onPrevious={goPrevious}
                 onSelect={scrollToIndex}
+                onToggleAutoplay={toggleAutoplay}
               />
             </div>
           </motion.div>

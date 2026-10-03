@@ -28,7 +28,7 @@ const normalizeText = (value: string) => removeUnsafeControlCharacters(value)
 
 export type ContactValidationResult =
   | { success: true; data: ContactFormPayload }
-  | { success: false; message: string }
+  | { success: false; field: ContactField; message: string }
 
 export function validateContactForm(payload: ContactFormPayload): ContactValidationResult {
   const data: ContactFormPayload = {
@@ -43,17 +43,19 @@ export function validateContactForm(payload: ContactFormPayload): ContactValidat
     if (data[field].length < min || data[field].length > max) {
       return {
         success: false,
+        field,
         message: `${field === 'message' ? 'Mesaj' : field === 'subject' ? 'Mövzu' : field === 'email' ? 'Email' : 'Ad soyad'} ${min}–${max} simvol arasında olmalıdır.`,
       }
     }
   }
 
   if (!emailPattern.test(data.email) || /[\r\n]/u.test(data.email)) {
-    return { success: false, message: 'Düzgün email ünvanı daxil edin.' }
+    return { success: false, field: 'email', message: 'Düzgün email ünvanı daxil edin.' }
   }
 
   if (/[\r\n]/u.test(data.name) || /[\r\n]/u.test(data.subject)) {
-    return { success: false, message: 'Ad və mövzu bir sətirdə yazılmalıdır.' }
+    const field: ContactField = /[\r\n]/u.test(data.name) ? 'name' : 'subject'
+    return { success: false, field, message: 'Ad və mövzu bir sətirdə yazılmalıdır.' }
   }
 
   return { success: true, data }

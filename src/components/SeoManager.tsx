@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import type { Project } from '../data/projects'
 import { getProjectBySlug } from '../data/projects'
+import { siteProfile, socialLinks } from '../data/site'
 import {
   getProjectSeo,
   notFoundSeo,
@@ -54,22 +55,18 @@ function setStructuredData(pathname: string, canonicalUrl: string, project?: Pro
       {
         '@type': 'Person',
         '@id': `${SITE_URL}/#person`,
-        name: 'Firudin Maniyev',
+        name: siteProfile.name,
         url: SITE_URL,
         image: SOCIAL_IMAGE_URL,
-        jobTitle: 'Full-stack Developer',
-        email: 'mailto:firudinmaniyev@gmail.com',
+        jobTitle: siteProfile.role,
+        email: `mailto:${siteProfile.email}`,
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Bakı',
           addressCountry: 'AZ',
         },
         knowsAbout: ['React', 'TypeScript', 'JavaScript', '.NET', 'Web Development', 'Frontend Development', 'Backend Development'],
-        sameAs: [
-          'https://github.com/FirudinManiyev',
-          'https://www.linkedin.com/in/firudin-maniyev-4843242b7/',
-          'https://www.instagram.com/firudin.coder/',
-        ],
+        sameAs: socialLinks.map((link) => link.href),
       },
       {
         '@type': 'WebSite',
@@ -123,7 +120,7 @@ function SeoManager() {
     setCanonical(canonicalUrl)
     setMeta('name', 'description', pageSeo.description)
     setMeta('name', 'keywords', pageSeo.keywords)
-    setMeta('name', 'author', 'Firudin Maniyev')
+    setMeta('name', 'author', siteProfile.name)
     setMeta('name', 'robots', pageSeo.noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large')
     setMeta('property', 'og:title', pageSeo.title)
     setMeta('property', 'og:description', pageSeo.description)

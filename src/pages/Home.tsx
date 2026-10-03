@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { ArrowRight, Award, BriefcaseBusiness, Download, GraduationCap, Mail, Sparkles } from 'lucide-react';
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import TypewriterAnimation from '../components/TypewriterAnimation';
 import ContactSection from '../components/ContactSection';
@@ -9,10 +8,12 @@ import HomeSkillsSection from '../components/HomeSkillsSection';
 import HomeProjectsSection from '../components/HomeProjectsSection';
 import HomeCertificatesSection from '../components/HomeCertificatesSection';
 import ProfileCard from '../components/ProfileCard';
+import SocialIcon from '../components/SocialIcon';
 import firudinProfileImage from '../assets/firudinmaniyev.jpeg';
 import fmLogo from '../assets/fm_logo.png';
 import { about } from '../data/about';
 import { education } from '../data/education';
+import { siteProfile, socialLinks } from '../data/site';
 
 const heroContainerVariants: Variants = {
 	hidden: { opacity: 0 },
@@ -133,7 +134,7 @@ function Home() {
 									<ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
 								</Link>
 								<a
-									href="https://flowcv.com/resume/i4nksq7e64a1"
+									href={siteProfile.cvUrl}
 									target="_blank"
 									rel="noopener noreferrer"
 									className="inline-flex items-center gap-2 rounded-2xl border border-white/12 bg-white/6 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-yellow-300/30 hover:bg-white/10"
@@ -154,11 +155,7 @@ function Home() {
 								</div>
 
 								<div className="flex items-center gap-2">
-									{[
-										{ href: 'https://github.com/FirudinManiyev', label: 'GitHub', icon: FaGithub },
-										{ href: 'https://linkedin.com/in/firudin-maniyev-4843242b7', label: 'LinkedIn', icon: FaLinkedinIn },
-										{ href: 'https://instagram.com/firudin.coder', label: 'Instagram', icon: FaInstagram },
-									].map(({ href, label, icon: Icon }) => (
+									{socialLinks.map(({ href, label, icon }) => (
 										<motion.a
 											key={label}
 											href={href}
@@ -169,11 +166,11 @@ function Home() {
 											whileTap={{ scale: 0.94 }}
 											className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-colors duration-300 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
 										>
-											<Icon className="h-4 w-4" />
+											<SocialIcon name={icon} className="h-4 w-4" />
 										</motion.a>
 									))}
 									<a
-										href="mailto:firudinmaniyev@gmail.com"
+										href={`mailto:${siteProfile.email}`}
 										aria-label="Email"
 										className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-yellow-300/10 hover:text-yellow-200"
 									>
@@ -194,8 +191,8 @@ function Home() {
 									avatarUrl={firudinProfileImage}
 									miniAvatarUrl={firudinProfileImage}
 									iconUrl={fmLogo}
-									name="Firudin Maniyev"
-									title="Full-stack Developer"
+									name={siteProfile.name}
+									title={siteProfile.role}
 									handle="firudincoder"
 									status="Əlaqə üçün yaz"
 									contactText="Əlaqə saxla"
@@ -213,7 +210,7 @@ function Home() {
 
 			{/* About section */}
 
-			<section id="about" className="relative mt-4 scroll-mt-28 sm:mt-8 lg:-mt-4">
+			<section id="about" aria-labelledby="home-about-title" className="relative mt-4 scroll-mt-28 sm:mt-8 lg:-mt-4">
 				<div className="container relative z-10 mx-auto px-6">
 					<div className="mx-auto max-w-6xl">
 						<motion.div
@@ -223,9 +220,9 @@ function Home() {
 							transition={{ duration: 0.5 }}
 							className="flex justify-center"
 						>
-							<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
+							<h2 id="home-about-title" className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
 								Haqqımda
-							</div>
+							</h2>
 						</motion.div>
 
 						<div className="mt-16 grid gap-6 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-stretch xl:mt-20 xl:gap-8">
@@ -288,7 +285,7 @@ function Home() {
 
 								<div className="mt-auto flex flex-wrap items-end justify-between gap-4 pt-8">
 									<a
-										href="https://flowcv.com/resume/i4nksq7e64a1"
+										href={siteProfile.cvUrl}
 										target="_blank"
 										rel="noopener noreferrer"
 										className="inline-flex items-center gap-2 rounded-xl border border-yellow-300/30 bg-yellow-400 px-5 py-3 text-sm font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(250,204,21,0.28)]"
@@ -310,7 +307,7 @@ function Home() {
 			</section>
 
 			{/* Education section */}
-			<section className="relative mt-20 sm:mt-24 lg:mt-28">
+			<section className="relative mt-20 sm:mt-24 lg:mt-28" aria-labelledby="home-education-title">
 				<div className="container relative z-10 mx-auto px-6">
 					<div className="mx-auto max-w-6xl">
 						<motion.div
@@ -320,9 +317,9 @@ function Home() {
 							transition={{ duration: 0.5 }}
 							className="flex justify-center"
 						>
-							<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
+							<h2 id="home-education-title" className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
 								TƏHSİL YOLUM
-							</div>
+							</h2>
 						</motion.div>
 
 						<motion.p

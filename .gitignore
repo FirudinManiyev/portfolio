@@ -25,6 +25,10 @@ coverage
 .env.*
 !.env.example
 
+# Generated Python caches (including project-local skills)
+__pycache__/
+*.pyc
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

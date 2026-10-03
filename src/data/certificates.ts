@@ -13,29 +13,29 @@ export interface Certificate {
     category: CertificateCategory;
 }
 
-import azconHackathonImage from "../assets/images/sertifikatlar/azcon_holding_hackathon.png";
-import cffHackathonImage from "../assets/images/sertifikatlar/cff_hackathon.jpeg";
-import awsTrainingImage from "../assets/images/sertifikatlar/cloud_security_aws.jpg";
-import codeAcademyCertificateImage from "../assets/images/sertifikatlar/codeacademy_certicate.jpeg";
-import codeAcademyDiplomaImage from "../assets/images/sertifikatlar/codeacademy_diploma.jpeg";
-import cyberBridgeImage from "../assets/images/sertifikatlar/cyberbridge_project.jpg";
-import divAcademyDiplomaImage from "../assets/images/sertifikatlar/diploma_div_academy.jpeg";
-import dizaynxSeminarImage from "../assets/images/sertifikatlar/dizaynx_seminar.png";
-import excelDataPrimeImage from "../assets/images/sertifikatlar/excel_dataprime.jpg";
-import frontendUdemyImage from "../assets/images/sertifikatlar/frontend_udemy.jpg";
-import gitUdemyImage from "../assets/images/sertifikatlar/git_udemy.jpg";
-import gsmfImage from "../assets/images/sertifikatlar/gsmf.jpg";
-import holbertonHackathonImage from "../assets/images/sertifikatlar/holberton_school_hackathon.jpeg";
-import itEssentialsImage from "../assets/images/sertifikatlar/it_essentials_ugur_academy.jpg";
-import codeKloudWebinarImage from "../assets/images/sertifikatlar/it_vebinar_codekloud_academy.jpg";
-import oracleSqlImage from "../assets/images/sertifikatlar/oracle_sql_dataprime.jpg";
-import phpConferenceImage from "../assets/images/sertifikatlar/php_konf.jpg";
-import seherMobilliyiImage from "../assets/images/sertifikatlar/seher_mobilliyi_telim.jpg";
-import skillUpImage from "../assets/images/sertifikatlar/skill_up_secret_academy.png";
-import dusuncedeyisİmage from "../assets/images/sertifikatlar/dusunceni_heyatini_deyis.jpeg";
-import esasheyatImage from "../assets/images/sertifikatlar/esas_heyat_bacariqlari.jpeg";
-import sexsibacariqImage from "../assets/images/sertifikatlar/sexsi_bacariqlarini_kesfet.jpeg";
-import devjointImage from "../assets/images/sertifikatlar/devjoint.png";
+import azconHackathonImage from "../assets/images/sertifikatlar/azcon_holding_hackathon.webp";
+import cffHackathonImage from "../assets/images/sertifikatlar/cff_hackathon.webp";
+import awsTrainingImage from "../assets/images/sertifikatlar/cloud_security_aws.webp";
+import codeAcademyCertificateImage from "../assets/images/sertifikatlar/codeacademy_certicate.webp";
+import codeAcademyDiplomaImage from "../assets/images/sertifikatlar/codeacademy_diploma.webp";
+import cyberBridgeImage from "../assets/images/sertifikatlar/cyberbridge_project.webp";
+import divAcademyDiplomaImage from "../assets/images/sertifikatlar/diploma_div_academy.webp";
+import dizaynxSeminarImage from "../assets/images/sertifikatlar/dizaynx_seminar.webp";
+import excelDataPrimeImage from "../assets/images/sertifikatlar/excel_dataprime.webp";
+import frontendUdemyImage from "../assets/images/sertifikatlar/frontend_udemy.webp";
+import gitUdemyImage from "../assets/images/sertifikatlar/git_udemy.webp";
+import gsmfImage from "../assets/images/sertifikatlar/gsmf.webp";
+import holbertonHackathonImage from "../assets/images/sertifikatlar/holberton_school_hackathon.webp";
+import itEssentialsImage from "../assets/images/sertifikatlar/it_essentials_ugur_academy.webp";
+import codeKloudWebinarImage from "../assets/images/sertifikatlar/it_vebinar_codekloud_academy.webp";
+import oracleSqlImage from "../assets/images/sertifikatlar/oracle_sql_dataprime.webp";
+import phpConferenceImage from "../assets/images/sertifikatlar/php_konf.webp";
+import seherMobilliyiImage from "../assets/images/sertifikatlar/seher_mobilliyi_telim.webp";
+import skillUpImage from "../assets/images/sertifikatlar/skill_up_secret_academy.webp";
+import dusuncedeyisİmage from "../assets/images/sertifikatlar/dusunceni_heyatini_deyis.webp";
+import esasheyatImage from "../assets/images/sertifikatlar/esas_heyat_bacariqlari.webp";
+import sexsibacariqImage from "../assets/images/sertifikatlar/sexsi_bacariqlarini_kesfet.webp";
+import devjointImage from "../assets/images/sertifikatlar/devjoint.webp";
 
 export const certificates: Certificate[] = [
     {

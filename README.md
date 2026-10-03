@@ -30,9 +30,6 @@ Bu layihə şəxsi portfolio saytım kimi hazırlanıb. Məqsədim:
 * 🧩 Lucide React
 * 🔔 React Hot Toast
 * 📧 EmailJS
-* 🎮 @react-three/fiber (3D)
-* 🎮 @react-three/drei (3D)
-* 🎮 Three.js (3D)
 
 ---
 
@@ -49,9 +46,8 @@ src/
 │   ├── HomeCertificatesSection.tsx
 │   ├── HomeProjectsSection.tsx
 │   ├── HomeSkillsSection.tsx
+│   ├── PageHeader.tsx
 │   ├── ProjectCard.tsx
-│   ├── Lanyard.tsx (3D)
-│   ├── LoadingAnimation.tsx
 │   ├── PageTransition.tsx
 │   ├── PortfolioBackground.tsx
 │   ├── ScrollToTop.tsx
@@ -76,6 +72,7 @@ src/
 │   ├── projects.ts
 │   ├── projectRoutes.ts
 │   ├── seo.ts
+│   ├── site.ts
 │   ├── certificates.ts
 │   ├── education.ts
 │   └── contact.ts
@@ -111,8 +108,6 @@ src/
 * ⚡ Tam responsive dizayn (mobile, tablet, desktop)
 * 🌙 Dark tema (qara + sarı accent #F59E0B)
 * 🎬 Smooth animasiyalar (Framer Motion)
-* 🎮 3D Lanyard komponenti (Three.js)
-* 🎬 Loading animasiyası (wow effekti)
 * 🔗 SPA routing sistemi
 * 📱 Mobile-first yanaşma
 * 🖼️ Modal image preview
@@ -154,7 +149,13 @@ npm run build
 
 # Preview build
 npm run preview
+
+# Test və lint yoxlamaları
+npm test
+npm run lint
 ```
+
+Əlaqə formasını lokal mühitdə işlətmək üçün `.env.example` faylını `.env` adı ilə köçürün və EmailJS məlumatlarını əlavə edin.
 
 ---
 

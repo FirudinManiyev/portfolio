@@ -7,7 +7,7 @@ describe('KiberEduAz project data', () => {
     const project = getProjectBySlug('kibereduaz')
 
     expect(project?.title).toBe('KiberEduAz')
-    expect(project?.image).toContain('kibereduaz.png')
+    expect(project?.image).toContain('kibereduaz.webp')
     expect(project?.technologies).toContain('React')
     expect(project?.link).toBe('https://github.com/1brah1m0f/KiberEduAz')
     expect(project?.liveDemo).toBe('https://kiber-edu-az-one.vercel.app/')

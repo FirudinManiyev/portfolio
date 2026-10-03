@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
+import PageHeader from '../components/PageHeader'
 import { projects } from '../data/projects'
 
 const containerVariants: Variants = {
@@ -29,32 +30,11 @@ function Projects() {
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-7xl"
       >
-        <header className="mb-14 text-center sm:mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: -14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-xs font-semibold uppercase tracking-[0.24em] text-yellow-300/80"
-          >
-            Portfolio seçimi
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="mt-3 text-4xl font-black tracking-tight text-yellow-300 sm:text-5xl lg:text-6xl"
-          >
-            Layihələrim
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.16 }}
-            className="mx-auto mt-5 max-w-2xl text-base leading-8 text-neutral-400 sm:text-lg"
-          >
-            Hazırladığım veb və mobil məhsullar. Ətraflı məlumat üçün istənilən layihə kartına klikləyin.
-          </motion.p>
-        </header>
+        <PageHeader
+          eyebrow="Portfolio seçimi"
+          title="Layihələrim"
+          description="Hazırladığım veb və mobil məhsullar. Ətraflı məlumat üçün istənilən layihə kartına klikləyin."
+        />
 
         <motion.div
           variants={containerVariants}

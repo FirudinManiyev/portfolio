@@ -38,6 +38,8 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let isReducedMotion = reducedMotionQuery.matches;
 
     const isHex = shape === 'hexagon';
     const isTri = shape === 'triangle';
@@ -200,6 +202,11 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
     };
 
     const updateAnimation = () => {
+      if (document.hidden || isReducedMotion) {
+        requestRef.current = null;
+        return;
+      }
+
       const effectiveSpeed = Math.max(speed, 0.1);
       const wrapX = isHex ? hexHoriz * 2 : squareSize;
       const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize;
@@ -327,11 +334,34 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
     };
 
     window.addEventListener('mousemove', handleWindowMouseMove);
-    requestRef.current = requestAnimationFrame(updateAnimation);
+
+    const startAnimation = () => {
+      if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
+
+      if (document.hidden || isReducedMotion) {
+        requestRef.current = null;
+        drawGrid();
+        return;
+      }
+
+      requestRef.current = requestAnimationFrame(updateAnimation);
+    };
+
+    const handleVisibilityChange = () => startAnimation();
+    const handleReducedMotionChange = (event: MediaQueryListEvent) => {
+      isReducedMotion = event.matches;
+      startAnimation();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
+    startAnimation();
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleWindowMouseMove);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      reducedMotionQuery.removeEventListener('change', handleReducedMotionChange);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
   }, [direction, speed, borderColor, hoverFillColor, squareSize, shape, hoverTrailAmount]);

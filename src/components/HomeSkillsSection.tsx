@@ -10,7 +10,7 @@ const featuredCategories = skillCategories.map((category) => ({
 
 function HomeSkillsSection() {
 	return (
-		<section className="relative mt-20 sm:mt-24 lg:mt-28">
+		<section className="relative mt-20 sm:mt-24 lg:mt-28" aria-labelledby="home-skills-title">
 			<div className="container relative z-10 mx-auto px-6">
 				<div className="mx-auto max-w-6xl">
 					<motion.div
@@ -20,9 +20,9 @@ function HomeSkillsSection() {
 						transition={{ duration: 0.5 }}
 						className="flex justify-center"
 					>
-						<div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
+						<h2 id="home-skills-title" className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-lg font-semibold uppercase tracking-[0.22em] text-yellow-300 shadow-[0_12px_40px_rgba(0,0,0,0.14)] backdrop-blur-xl sm:px-8 sm:py-3.5 sm:text-xl">
 							Bacarıqlarım
-						</div>
+						</h2>
 					</motion.div>
 
 					<motion.p

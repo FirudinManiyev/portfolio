@@ -18,10 +18,12 @@ function HomeCertificatesSection() {
     goNext,
     goPrevious,
     handleScroll,
+    isAutoplayPaused,
     pages,
     pauseInteraction,
     resumeInteraction,
     scrollToIndex,
+    toggleAutoplay,
   } = useCarousel({ itemCount: featuredCertificates.length, autoplayDelay: 4800 })
 
   const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
@@ -125,10 +127,12 @@ function HomeCertificatesSection() {
               <CarouselControls
                 activeIndex={activeIndex}
                 ariaLabel="Sertifikat slideri"
+                isAutoplayPaused={isAutoplayPaused}
                 pages={pages}
                 onNext={goNext}
                 onPrevious={goPrevious}
                 onSelect={scrollToIndex}
+                onToggleAutoplay={toggleAutoplay}
               />
             </div>
           </motion.div>

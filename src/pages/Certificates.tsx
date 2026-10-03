@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { certificates } from '../data/certificates';
 import { ZoomIn } from 'lucide-react';
 import ImageLightbox from '../components/ImageLightbox';
+import PageHeader from '../components/PageHeader';
 
 function Certificates() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -49,24 +50,11 @@ function Certificates() {
                 transition={{ duration: 0.6 }}
                 className="max-w-7xl mx-auto"
             >
-                <div className="text-center mb-16">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] mb-4"
-                    >
-                        <span className="text-yellow-400">Sertifikatlarım</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg sm:text-xl text-[#A1A1AA] max-w-2xl mx-auto"
-                    >
-                        Təhsil və inkişaf yolumda əldə etdiyim sertifikatlar
-                    </motion.p>
-                </div>
+                <PageHeader
+                    eyebrow="Nailiyyətlər"
+                    title="Sertifikatlarım"
+                    description="Təhsil və inkişaf yolumda əldə etdiyim sertifikatlar."
+                />
 
                 <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
                     {categories.map((category) => (
@@ -74,6 +62,7 @@ function Certificates() {
                             key={category}
                             type="button"
                             onClick={() => setSelectedCategory(category)}
+                            aria-pressed={selectedCategory === category}
                             className={`rounded-full border px-4 py-2 text-sm font-semibold transition duration-300 ${
                                 selectedCategory === category
                                     ? 'border-yellow-300 bg-yellow-300/15 text-yellow-300'
@@ -98,7 +87,7 @@ function Certificates() {
                             variants={cardVariants}
                             whileHover={{ y: -8 }}
                             aria-label={`${cert.title} sertifikatını tam ölçüdə aç`}
-                            className="group overflow-hidden rounded-2xl border border-[#27272A] bg-[#18181B]/50 text-left backdrop-blur-sm transition-all duration-300 hover:border-yellow-400/50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300"
+                            className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 text-left shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:border-yellow-300/35 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-300"
                             onClick={() => setSelectedImage(cert.image)}
                         >
                             <div className="relative overflow-hidden aspect-[4/3]">
@@ -126,13 +115,13 @@ function Certificates() {
                                     </span>
                                 </div>
 
-                                <motion.h3
+                                <motion.h2
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     className="text-xl font-bold text-[#F4F4F5] mb-3 group-hover:text-yellow-400 transition-colors duration-300 line-clamp-2"
                                 >
                                     {cert.title}
-                                </motion.h3>
+                                </motion.h2>
 
                                 <motion.p
                                     initial={{ opacity: 0 }}

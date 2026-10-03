@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { education } from '../data/education';
+import PageHeader from '../components/PageHeader';
 
 function Education() {
     const containerVariants = {
@@ -31,24 +32,11 @@ function Education() {
                 transition={{ duration: 0.6 }}
                 className="max-w-7xl mx-auto"
             >
-                <div className="text-center mb-16">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] mb-4"
-                    >
-                        <span className="text-yellow-400">Təhsilim</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg sm:text-xl text-[#A1A1AA] max-w-2xl mx-auto"
-                    >
-                        Təhsil yolculuğum və peşəkar inkişafım üçün keçdiyim mərhələlər
-                    </motion.p>
-                </div>
+                <PageHeader
+                    eyebrow="İnkişaf yolu"
+                    title="Təhsilim"
+                    description="Təhsil yolum və peşəkar inkişafım üçün keçdiyim mərhələlər."
+                />
 
                 <motion.div
                     variants={containerVariants}
@@ -61,7 +49,7 @@ function Education() {
                             key={edu.id}
                             variants={cardVariants}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-[#18181B]/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-[#27272A] hover:border-yellow-400/50 transition-all duration-300"
+                            className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:border-yellow-300/30 sm:p-8"
                         >
                             <div
                                 className={`flex flex-col gap-6 ${

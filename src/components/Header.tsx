@@ -1,24 +1,10 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, Menu, X } from "lucide-react"
-import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6"
 import { Link, NavLink } from "react-router-dom"
 import fmLogo from "../assets/fm_logo.png"
-
-const navLinks = [
-  { to: "/", label: "Ana səhifə" },
-  { to: "/about", label: "Haqqımda" },
-  { to: "/education", label: "Təhsil" },
-  { to: "/skills", label: "Bacarıqlar" },
-  { to: "/projects", label: "Layihələr" },
-  { to: "/certificates", label: "Sertifikatlar" },
-]
-
-const socialLinks = [
-  { href: "https://www.linkedin.com/in/firudin-maniyev-4843242b7/", label: "LinkedIn", icon: FaLinkedinIn },
-  { href: "https://github.com/FirudinManiyev", label: "GitHub", icon: FaGithub },
-  { href: "https://www.instagram.com/firudin.coder/", label: "Instagram", icon: FaInstagram },
-]
+import { navigationLinks, socialLinks } from "../data/site"
+import SocialIcon from "./SocialIcon"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -81,25 +67,28 @@ const Header = () => {
             <span className="hidden h-9 w-px bg-yellow-300/35 md:block" />
 
             <div className="hidden items-center gap-2 md:flex">
-              {socialLinks.map(({ href, label, icon: Icon }) => (
+              {socialLinks.map(({ href, label, icon }) => (
                 <motion.a
                   whileHover={{ y: -3, scale: 1.03 }}
                   whileTap={{ scale: 0.95 }}
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="rounded-full border border-yellow-300/25 bg-black/30 p-2.5 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:scale-105 hover:border-yellow-300/80 hover:bg-yellow-400/15 hover:text-yellow-100 hover:shadow-[0_12px_26px_rgba(250,204,21,0.3)]"
                 >
-                  <Icon size={16} />
+                  <SocialIcon name={icon} className="h-4 w-4" />
                 </motion.a>
               ))}
             </div>
           </div>
 
-          <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/3 px-2 py-1.5 lg:flex">
-            {navLinks.map((link) => (
+          <nav
+            aria-label="Əsas naviqasiya"
+            className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/3 px-2 py-1.5 lg:flex"
+          >
+            {navigationLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
@@ -126,7 +115,7 @@ const Header = () => {
                 <ArrowUpRight size={13} />
               </span>
             </NavLink>
-          </div>
+          </nav>
 
           <button
             type="button"
@@ -151,7 +140,7 @@ const Header = () => {
               className="mt-4 rounded-2xl border border-yellow-300/25 bg-neutral-950/90 p-4 shadow-[0_20px_35px_rgba(0,0,0,0.45)] lg:hidden"
             >
               <nav className="flex flex-col gap-2">
-                {navLinks.map((link) => (
+                {navigationLinks.map((link) => (
                   <NavLink
                     key={link.to}
                     to={link.to}
@@ -183,16 +172,16 @@ const Header = () => {
               </nav>
 
               <div className="mt-4 flex items-center gap-2 border-t border-yellow-300/20 pt-4">
-                {socialLinks.map(({ href, label, icon: Icon }) => (
+                {socialLinks.map(({ href, label, icon }) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="rounded-full border border-yellow-300/25 bg-black/20 p-2.5 text-neutral-300 transition duration-300 hover:-translate-y-1 hover:scale-105 hover:border-yellow-300/60 hover:bg-yellow-400/10 hover:text-yellow-200 hover:shadow-[0_10px_22px_rgba(250,204,21,0.25)]"
                   >
-                    <Icon size={16} />
+                    <SocialIcon name={icon} className="h-4 w-4" />
                   </a>
                 ))}
               </div>

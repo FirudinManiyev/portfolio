@@ -11,6 +11,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
 
     useLayoutEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        document.getElementById('main-content')?.focus({ preventScroll: true });
     }, [location.pathname]);
 
     return (

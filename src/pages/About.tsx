@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { about } from '../data/about';
 import { MapPin, Mail, Download, Code, Zap, Target, Award } from 'lucide-react';
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa6';
 import profileImage from '../assets/firudin_komphoto.jpg';
 import ContactSection from '../components/ContactSection';
+import PageHeader from '../components/PageHeader';
+import SocialIcon from '../components/SocialIcon';
+import { siteProfile, socialLinks } from '../data/site';
 
 function About() {
     const containerVariants = {
@@ -35,24 +37,11 @@ function About() {
                 transition={{ duration: 0.6 }}
                 className="max-w-7xl mx-auto"
             >
-                <div className="text-center mb-16">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F4F4F5] mb-4"
-                    >
-                        <span className="text-yellow-400">Haqqımda</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-lg sm:text-xl text-[#A1A1AA] max-w-2xl mx-auto"
-                    >
-                        Mənim haqqımda məlumatlar
-                    </motion.p>
-                </div>
+                <PageHeader
+                    eyebrow="Profil"
+                    title="Haqqımda"
+                    description="Təcrübəm, iş yanaşmam və davamlı inkişaf yolum haqqında məlumat."
+                />
 
                 <motion.div
                     variants={containerVariants}
@@ -99,39 +88,24 @@ function About() {
                                 className="flex flex-wrap gap-4"
                             >
                                 <a
-                                    href="mailto:firudinmaniyev@gmail.com"
+                                    href={`mailto:${siteProfile.email}`}
                                     className="inline-flex items-center gap-2 px-6 py-2.5 bg-yellow-400/10 text-yellow-400 rounded-lg hover:bg-yellow-400 hover:text-black transition-all duration-300 font-medium border border-yellow-400/20"
                                 >
                                     <Mail className="w-4 h-4" />
                                     Email
                                 </a>
-                                <a
-                                    href="https://github.com/FirudinManiyev"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
-                                >
-                                    <FaGithub className="h-4 w-4" />
-                                    GitHub
-                                </a>
-                                <a
-                                    href="https://linkedin.com/in/firudin-maniyev-4843242b7/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
-                                >
-                                    <FaLinkedinIn className="h-4 w-4" />
-                                    LinkedIn
-                                </a>
-                                <a
-                                    href="https://instagram.com/firudin.coder/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#18181B] text-[#F4F4F5] rounded-lg hover:bg-[#27272A] transition-all duration-300 font-medium border border-[#27272A]"
-                                >
-                                    <FaInstagram className="h-4 w-4" />
-                                    Instagram
-                                </a>
+                                {socialLinks.map(({ href, label, icon }) => (
+                                    <a
+                                        key={label}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-2.5 font-medium text-neutral-100 transition duration-300 hover:-translate-y-0.5 hover:border-yellow-300/30 hover:bg-white/10"
+                                    >
+                                        <SocialIcon name={icon} className="h-4 w-4" />
+                                        {label}
+                                    </a>
+                                ))}
                             </motion.div>
                         </div>
 
@@ -190,10 +164,10 @@ function About() {
                             CV-ə baxın
                         </h3>
                         <p className="text-[#A1A1AA] mb-6">
-                            Mənim CV-ni yükləyərək ətraflı məlumat əldə edə bilərsiniz.
+                            Peşəkar təcrübəm və bacarıqlarım haqqında daha ətraflı məlumat üçün CV-yə baxa bilərsiniz.
                         </p>
                         <a
-                            href="https://flowcv.com/resume/i4nksq7e64a1"
+                            href={siteProfile.cvUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-black rounded-lg hover:bg-yellow-300 transition-all duration-300 font-medium"

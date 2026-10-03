@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react"
 
 const NotFoundPage = () => {
   return (
-    <div className="relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-20">
+    <div className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-4 py-20">
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="h-96 w-96 rounded-full bg-yellow-400/20 blur-3xl" />
       </div>

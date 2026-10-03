@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent } from 'react'
+import { useEffect, useEffectEvent, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
 
@@ -10,6 +10,7 @@ interface ImageLightboxProps {
 
 function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
   const handleClose = useEffectEvent(onClose)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     if (!src) return
@@ -20,10 +21,15 @@ function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
       : null
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') handleClose()
+      if (event.key === 'Tab') {
+        event.preventDefault()
+        closeButtonRef.current?.focus()
+      }
     }
 
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', handleKeyDown)
+    closeButtonRef.current?.focus()
 
     return () => {
       document.body.style.overflow = previousOverflow
@@ -42,7 +48,7 @@ function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
           transition={{ duration: 0.2 }}
           role="dialog"
           aria-modal="true"
-          aria-label={alt}
+          aria-labelledby="lightbox-title"
           onClick={onClose}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
         >
@@ -54,9 +60,10 @@ function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
             onClick={(event) => event.stopPropagation()}
             className="relative flex max-h-[90vh] w-full max-w-6xl items-center justify-center overflow-hidden rounded-[1.5rem] border border-white/10 bg-neutral-950 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.6)] sm:p-3"
           >
+            <h2 id="lightbox-title" className="sr-only">{alt}</h2>
             <button
+              ref={closeButtonRef}
               type="button"
-              autoFocus
               onClick={onClose}
               aria-label="Şəkli bağla"
               className="absolute right-3 top-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/70 text-white shadow-lg backdrop-blur-md transition hover:border-yellow-300/40 hover:bg-yellow-300 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-300"
